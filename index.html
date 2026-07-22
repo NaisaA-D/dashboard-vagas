@@ -1,307 +1,185 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Painel de Controle de Vagas - FSA</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        body { font-family: 'Inter', sans-serif; }
-        [x-cloak] { display: none !important; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Painel de Controle de Vagas - FSA</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    :root {
+      --primary: #003366;
+      --secondary: #4682B4;
+      --bg: #f4f6f9;
+      --card-bg: #ffffff;
+      --text: #333333;
+      --border: #e0e0e0;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      margin: 0;
+      padding: 20px;
+    }
+    .header {
+      background-color: var(--primary);
+      color: white;
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .header h1 { margin: 0; font-size: 24px; }
+    .header p { margin: 5px 0 0 0; opacity: 0.8; font-size: 14px; }
+    
+    .cards-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+    .card {
+      background-color: var(--card-bg);
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      border-left: 4px solid var(--secondary);
+    }
+    .card h3 { margin: 0 0 10px 0; font-size: 14px; color: #666; text-transform: uppercase; }
+    .card .value { font-size: 24px; font-weight: bold; color: var(--primary); }
+
+    .table-container {
+      background-color: var(--card-bg);
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      overflow-x: auto;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
+    th, td {
+      padding: 12px 15px;
+      border-bottom: 1px solid var(--border);
+    }
+    th {
+      background-color: #f8f9fa;
+      color: var(--primary);
+      font-weight: 600;
+    }
+    tr:hover { background-color: #f1f5f9; }
+    
+    .progress-bar-bg {
+      background-color: #e9ecef;
+      border-radius: 4px;
+      height: 12px;
+      width: 100%;
+      overflow: hidden;
+    }
+    .progress-bar-fill {
+      background-color: #28a745;
+      height: 100%;
+    }
+  </style>
 </head>
-<body class="bg-slate-50 text-slate-800 antialiased font-sans min-h-screen flex flex-col" x-data="dashboardData()">
+<body>
 
-    <!-- Header -->
-    <header class="bg-slate-900 text-white border-b border-slate-800 sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-            <div class="flex items-center space-x-3">
-                <div class="bg-blue-600 p-2 rounded-lg text-white font-bold text-xl">FSA</div>
-                <div>
-                    <h1 class="text-xl font-bold tracking-tight">Controle de Vagas</h1>
-                    <p class="text-xs text-slate-400">Vestibular & CEBAS 2026/2</p>
-                </div>
+  <div class="header">
+    <div>
+      <h1>Painel de Controle de Vagas</h1>
+      <p>Acompanhamento Integrado (CRM + TOTVS + Planilha)</p>
+    </div>
+    <div style="text-align: right;">
+      <small>Última atualização:</small><br>
+      <strong>22/07/2026 16:04:01</strong>
+    </div>
+  </div>
+
+  <div class="cards-container" id="cards">
+    <!-- Gerado via JavaScript -->
+  </div>
+
+  <div class="table-container">
+    <h2>Resumo por Curso</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Curso</th>
+          <th>Período</th>
+          <th>Total Vagas</th>
+          <th>Inscritos</th>
+          <th>Matriculados</th>
+          <th>Matriculados (CEBAS)</th>
+          <th>% Preenchido</th>
+        </tr>
+      </thead>
+      <tbody id="tabela-corpo">
+        <!-- Gerado via JavaScript -->
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    const dados = [{"curso":"Administração (Bacharelado)","periodo":"Noturno","vagasVestibular":30,"vagasCebas":40,"bolsaFuncionario":1,"transferenciaInterna":0,"totalVagas":70,"inscritosVestibular":161,"convocadosVestibular":108,"pagosVestibular":14,"inscritosCebas":164,"classificadosCebas":46,"listaEsperaCebas":0,"inscritosTotal":325,"matriculadosTotal":60,"vagasMovimentadas":1},{"curso":"Análise e Desenvolvimento de Sistemas (Tecnólogo)","periodo":"Matutino","vagasVestibular":30,"vagasCebas":6,"bolsaFuncionario":0,"transferenciaInterna":1,"totalVagas":36,"inscritosVestibular":97,"convocadosVestibular":85,"pagosVestibular":21,"inscritosCebas":115,"classificadosCebas":4,"listaEsperaCebas":50,"inscritosTotal":212,"matriculadosTotal":25,"vagasMovimentadas":1},{"curso":"Análise e Desenvolvimento de Sistemas (Tecnólogo)","periodo":"Noturno","vagasVestibular":20,"vagasCebas":0,"bolsaFuncionario":0,"transferenciaInterna":1,"totalVagas":20,"inscritosVestibular":31,"convocadosVestibular":13,"pagosVestibular":8,"inscritosCebas":0,"classificadosCebas":0,"listaEsperaCebas":0,"inscritosTotal":31,"matriculadosTotal":8,"vagasMovimentadas":1},{"curso":"Arquitetura e Urbanismo (Bacharelado)","periodo":"Noturno","vagasVestibular":10,"vagasCebas":0,"bolsaFuncionario":0,"transferenciaInterna":1,"totalVagas":10,"inscritosVestibular":55,"convocadosVestibular":17,"pagosVestibular":4,"inscritosCebas":0,"classificadosCebas":0,"listaEsperaCebas":0,"inscritosTotal":55,"matriculadosTotal":4,"vagasMovimentadas":1},{"curso":"Ciência da Computação (Bacharelado)","periodo":"Noturno","vagasVestibular":65,"vagasCebas":5,"bolsaFuncionario":0,"transferenciaInterna":0,"totalVagas":70,"inscritosVestibular":123,"convocadosVestibular":98,"pagosVestibular":45,"inscritosCebas":102,"classificadosCebas":11,"listaEsperaCebas":46,"inscritosTotal":225,"matriculadosTotal":56,"vagasMovimentadas":0},{"curso":"Ciências Contábeis (Bacharelado)","periodo":"Noturno","vagasVestibular":15,"vagasCebas":26,"bolsaFuncionario":0,"transferenciaInterna":2,"totalVagas":39,"inscritosVestibular":86,"convocadosVestibular":58,"pagosVestibular":8,"inscritosCebas":71,"classificadosCebas":20,"listaEsperaCebas":0,"inscritosTotal":157,"matriculadosTotal":28,"vagasMovimentadas":2},{"curso":"Ciências Econômicas (Bacharelado)","periodo":"Noturno","vagasVestibular":25,"vagasCebas":11,"bolsaFuncionario":0,"transferenciaInterna":1,"totalVagas":36,"inscritosVestibular":36,"convocadosVestibular":18,"pagosVestibular":6,"inscritosCebas":28,"classificadosCebas":3,"listaEsperaCebas":0,"inscritosTotal":64,"matriculadosTotal":9,"vagasMovimentadas":1},{"curso":"Design (Bacharelado)","periodo":"Noturno","vagasVestibular":17,"vagasCebas":7,"bolsaFuncionario":1,"transferenciaInterna":0,"totalVagas":24,"inscritosVestibular":87,"convocadosVestibular":49,"pagosVestibular":16,"inscritosCebas":66,"classificadosCebas":4,"listaEsperaCebas":15,"inscritosTotal":153,"matriculadosTotal":20,"vagasMovimentadas":1},{"curso":"Direito (Bacharelado)","periodo":"Matutino","vagasVestibular":15,"vagasCebas":15,"bolsaFuncionario":1,"transferenciaInterna":2,"totalVagas":29,"inscritosVestibular":137,"convocadosVestibular":132,"pagosVestibular":7,"inscritosCebas":207,"classificadosCebas":14,"listaEsperaCebas":69,"inscritosTotal":344,"matriculadosTotal":21,"vagasMovimentadas":3},{"curso":"Engenharia (Bacharelado)","periodo":"Matutino","vagasVestibular":10,"vagasCebas":7,"bolsaFuncionario":0,"transferenciaInterna":0,"totalVagas":17,"inscritosVestibular":42,"convocadosVestibular":25,"pagosVestibular":10,"inscritosCebas":31,"classificadosCebas":8,"listaEsperaCebas":0,"inscritosTotal":73,"matriculadosTotal":18,"vagasMovimentadas":0},{"curso":"Engenharia (Bacharelado)","periodo":"Noturno","vagasVestibular":30,"vagasCebas":14,"bolsaFuncionario":1,"transferenciaInterna":0,"totalVagas":44,"inscritosVestibular":185,"convocadosVestibular":164,"pagosVestibular":29,"inscritosCebas":145,"classificadosCebas":2,"listaEsperaCebas":74,"inscritosTotal":330,"matriculadosTotal":31,"vagasMovimentadas":1},{"curso":"Engenharia de Software (Bacharelado)","periodo":"Noturno","vagasVestibular":70,"vagasCebas":0,"bolsaFuncionario":1,"transferenciaInterna":-2,"totalVagas":72,"inscritosVestibular":110,"convocadosVestibular":54,"pagosVestibular":29,"inscritosCebas":0,"classificadosCebas":0,"listaEsperaCebas":0,"inscritosTotal":110,"matriculadosTotal":29,"vagasMovimentadas":-1},{"curso":"Gestão de Recursos Humanos (Tecnólogo)","periodo":"Ead","vagasVestibular":20,"vagasCebas":50,"bolsaFuncionario":0,"transferenciaInterna":0,"totalVagas":70,"inscritosVestibular":70,"convocadosVestibular":100,"pagosVestibular":3,"inscritosCebas":228,"classificadosCebas":67,"listaEsperaCebas":1,"inscritosTotal":298,"matriculadosTotal":70,"vagasMovimentadas":0},{"curso":"Gestão Pública (Tecnólogo)","periodo":"Ead","vagasVestibular":15,"vagasCebas":45,"bolsaFuncionario":2,"transferenciaInterna":2,"totalVagas":60,"inscritosVestibular":27,"convocadosVestibular":28,"pagosVestibular":1,"inscritosCebas":107,"classificadosCebas":18,"listaEsperaCebas":0,"inscritosTotal":134,"matriculadosTotal":19,"vagasMovimentadas":4},{"curso":"Marketing (Tecnólogo)","periodo":"Ead","vagasVestibular":20,"vagasCebas":40,"bolsaFuncionario":0,"transferenciaInterna":0,"totalVagas":60,"inscritosVestibular":56,"convocadosVestibular":44,"pagosVestibular":3,"inscritosCebas":133,"classificadosCebas":23,"listaEsperaCebas":0,"inscritosTotal":189,"matriculadosTotal":26,"vagasMovimentadas":0},{"curso":"Pedagogia (Licenciatura)","periodo":"Semipresencial","vagasVestibular":40,"vagasCebas":80,"bolsaFuncionario":0,"transferenciaInterna":1,"totalVagas":120,"inscritosVestibular":302,"convocadosVestibular":102,"pagosVestibular":25,"inscritosCebas":332,"classificadosCebas":52,"listaEsperaCebas":0,"inscritosTotal":634,"matriculadosTotal":77,"vagasMovimentadas":1},{"curso":"Psicologia (Bacharelado)","periodo":"Matutino","vagasVestibular":20,"vagasCebas":0,"bolsaFuncionario":0,"transferenciaInterna":-1,"totalVagas":21,"inscritosVestibular":130,"convocadosVestibular":49,"pagosVestibular":20,"inscritosCebas":0,"classificadosCebas":0,"listaEsperaCebas":0,"inscritosTotal":130,"matriculadosTotal":20,"vagasMovimentadas":-1},{"curso":"Psicologia (Bacharelado)","periodo":"Noturno","vagasVestibular":45,"vagasCebas":10,"bolsaFuncionario":1,"transferenciaInterna":-1,"totalVagas":56,"inscritosVestibular":271,"convocadosVestibular":406,"pagosVestibular":18,"inscritosCebas":464,"classificadosCebas":16,"listaEsperaCebas":261,"inscritosTotal":735,"matriculadosTotal":34,"vagasMovimentadas":0},{"curso":"Química (Bacharelado)","periodo":"Noturno","vagasVestibular":17,"vagasCebas":22,"bolsaFuncionario":0,"transferenciaInterna":0,"totalVagas":39,"inscritosVestibular":56,"convocadosVestibular":26,"pagosVestibular":9,"inscritosCebas":50,"classificadosCebas":3,"listaEsperaCebas":0,"inscritosTotal":106,"matriculadosTotal":12,"vagasMovimentadas":0},{"curso":"Segurança da Informação (Tecnólogo)","periodo":"Noturno","vagasVestibular":20,"vagasCebas":0,"bolsaFuncionario":0,"transferenciaInterna":0,"totalVagas":20,"inscritosVestibular":10,"convocadosVestibular":6,"pagosVestibular":2,"inscritosCebas":0,"classificadosCebas":0,"listaEsperaCebas":0,"inscritosTotal":10,"matriculadosTotal":2,"vagasMovimentadas":0}];
+
+    let totalVagas = 0;
+    let totalInscritos = 0;
+    let totalMatriculados = 0;
+    let totalCebas = 0;
+
+    const tabelaCorpo = document.getElementById('tabela-corpo');
+
+    dados.forEach(item => {
+      totalVagas += item.totalVagas;
+      totalInscritos += item.inscritosTotal;
+      totalMatriculados += item.pagosVestibular;
+      totalCebas += item.classificadosCebas;
+
+      const perc = item.totalVagas > 0 ? Math.min(100, Math.round((item.matriculadosTotal / item.totalVagas) * 100)) : 0;
+
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td><strong>${item.curso}</strong></td>
+        <td>${item.periodo}</td>
+        <td>${item.totalVagas}</td>
+        <td>${item.inscritosTotal}</td>
+        <td>${item.pagosVestibular}</td>
+        <td>${item.classificadosCebas}</td>
+        <td>
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <span>${perc}%</span>
+            <div class="progress-bar-bg">
+              <div class="progress-bar-fill" style="width: ${perc}%;"></div>
             </div>
-            <div class="text-right hidden sm:block">
-                <span class="text-xs text-slate-400">Última atualização</span>
-                <p class="text-sm font-semibold text-slate-200">22/07/2026 16:04:01</p>
-            </div>
-        </div>
-    </header>
+          </div>
+        </td>
+      `;
+      tabelaCorpo.appendChild(tr);
+    });
 
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow w-full">
-        
-        <!-- Cards de KPIs -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-            <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
-                <p class="text-sm font-medium text-slate-500">Total de Vagas</p>
-                <p class="text-3xl font-bold text-slate-900 mt-2" x-text="getKpis().vagas">0</p>
-                <p class="text-xs text-slate-400 mt-1" x-text="getKpis().vagasSub"></p>
-            </div>
-            <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
-                <p class="text-sm font-medium text-slate-500">Inscrições Realizadas</p>
-                <p class="text-3xl font-bold text-blue-600 mt-2" x-text="getKpis().inscricoes">0</p>
-                <p class="text-xs font-semibold text-blue-600/80 mt-1" x-text="getKpis().demanda"></p>
-            </div>
-            
-            <!-- Balão de Matrículas com Barra de Progresso -->
-            <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm flex flex-col justify-between">
-                <div>
-                    <p class="text-sm font-medium text-slate-500" x-text="getKpis().sucessoLabel"></p>
-                    <div class="flex items-baseline justify-between mt-2">
-                        <p class="text-3xl font-bold text-emerald-600" x-text="getKpis().sucessoValor">0</p>
-                        <span class="text-sm font-bold text-emerald-700" x-text="getKpis().pctVal + '%'"></span>
-                    </div>
-                </div>
-                <div class="mt-3">
-                    <div class="w-full bg-slate-100 rounded-full h-3 overflow-hidden border border-slate-200">
-                        <div class="bg-emerald-500 h-3 rounded-full transition-all duration-500" :style="'width: ' + Math.min(getKpis().pctVal, 100) + '%'"></div>
-                    </div>
-                    <p class="text-xs text-slate-400 mt-1" x-text="getKpis().taxaSucesso"></p>
-                </div>
-            </div>
-
-            <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
-                <p class="text-sm font-medium text-slate-500" x-text="getKpis().apoioLabel"></p>
-                <p class="text-3xl font-bold text-amber-600 mt-2" x-text="getKpis().apoioValor">0</p>
-                <p class="text-xs text-slate-400 mt-1" x-text="getKpis().apoioSub"></p>
-            </div>
-        </div>
-
-        <!-- Botões de Navegação -->
-        <div class="border-b border-slate-200 mb-6">
-            <nav class="-mb-px flex space-x-8 overflow-x-auto">
-                <button @click="tab = 'vestibular'" :class="tab === 'vestibular' ? 'border-blue-600 text-blue-600 font-bold' : 'border-transparent text-slate-500 hover:text-slate-700'" class="whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm transition-colors">Vestibular Tradicional (ENEM / Prova Online / Redação)</button>
-                <button @click="tab = 'cebas'" :class="tab === 'cebas' ? 'border-blue-600 text-blue-600 font-bold' : 'border-transparent text-slate-500 hover:text-slate-700'" class="whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm transition-colors">Bolsas CEBAS</button>
-                <button @click="tab = 'geral'" :class="tab === 'geral' ? 'border-blue-600 text-blue-600 font-bold' : 'border-transparent text-slate-500 hover:text-slate-700'" class="whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm transition-colors">Visão Geral Combinada</button>
-                <button @click="tab = 'remanejamento'" :class="tab === 'remanejamento' ? 'border-blue-600 text-blue-600 font-bold' : 'border-transparent text-slate-500 hover:text-slate-700'" class="whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm transition-colors">Remanejamento & Movimentações</button>
-            </nav>
-        </div>
-
-        <!-- Filtros -->
-        <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm mb-6 flex flex-col md:flex-row justify-between items-center gap-4">
-            <div class="w-full md:w-1/3">
-                <input type="text" x-model="search" placeholder="Buscar curso..." class="w-full px-4 py-2 border border-slate-300 rounded-lg outline-none text-sm">
-            </div>
-            <div class="w-full md:w-auto flex gap-4">
-                <select x-model="filtroPeriodo" class="w-full md:w-auto px-4 py-2 border border-slate-300 rounded-lg outline-none text-sm bg-white">
-                    <option value="">Todos os Períodos</option>
-                    <option value="Noturno">Noturno</option>
-                    <option value="Matutino">Matutino</option>
-                    <option value="Ead">EAD</option>
-                    <option value="Semipresencial">Semipresencial</option>
-                </select>
-            </div>
-        </div>
-
-        <!-- Tabela -->
-        <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
-            <div class="overflow-x-auto">
-                <table class="w-full text-left border-collapse text-sm">
-                    <thead>
-                        <tr class="bg-slate-100 text-slate-700 font-semibold border-b border-slate-200">
-                            <th class="p-4">Curso</th>
-                            <th class="p-4">Período</th>
-                            <template x-if="tab === 'vestibular'"><th class="p-4 text-center">Vagas Vestibular</th></template>
-                            <template x-if="tab === 'vestibular'"><th class="p-4 text-center">Inscritos</th></template>
-                            <template x-if="tab === 'vestibular'"><th class="p-4 text-center">Convocados</th></template>
-                            <template x-if="tab === 'vestibular'"><th class="p-4 text-center">Matriculados</th></template>
-                            <template x-if="tab === 'vestibular'"><th class="p-4 text-center w-44">% Preenchido</th></template>
-                            
-                            <template x-if="tab === 'cebas'"><th class="p-4 text-center">Vagas CEBAS</th></template>
-                            <template x-if="tab === 'cebas'"><th class="p-4 text-center">Inscritos</th></template>
-                            <template x-if="tab === 'cebas'"><th class="p-4 text-center">Classificados</th></template>
-                            <template x-if="tab === 'cebas'"><th class="p-4 text-center">Lista de Espera</th></template>
-                            <template x-if="tab === 'cebas'"><th class="p-4 text-center w-44">% Preenchido</th></template>
-
-                            <template x-if="tab === 'geral'"><th class="p-4 text-center">Vagas Totais</th></template>
-                            <template x-if="tab === 'geral'"><th class="p-4 text-center">Inscritos Totais</th></template>
-                            <template x-if="tab === 'geral'"><th class="p-4 text-center">Matriculados Totais</th></template>
-                            <template x-if="tab === 'geral'"><th class="p-4 text-center w-44">% Preenchido Geral</th></template>
-
-                            <template x-if="tab === 'remanejamento'"><th class="p-4 text-center">Bolsa Func.</th></template>
-                            <template x-if="tab === 'remanejamento'"><th class="p-4 text-center">Transf. Interna</th></template>
-                            <template x-if="tab === 'remanejamento'"><th class="p-4 text-center">Saldo Movimentado</th></template>
-                        </tr>
-                    </thead>
-                    <tbody class="divide-y divide-slate-100">
-                        <template x-for="(item, index) in filteredList" :key="index">
-                            <tr class="hover:bg-slate-50/80 transition-colors">
-                                <td class="p-4 font-medium text-slate-900" x-text="item.curso"></td>
-                                <td class="p-4">
-                                    <span class="px-2.5 py-1 rounded-full text-xs font-semibold"
-                                          :class="{
-                                              'bg-blue-100 text-blue-800': item.periodo === 'Noturno',
-                                              'bg-amber-100 text-amber-800': item.periodo === 'Matutino',
-                                              'bg-purple-100 text-purple-800': item.periodo === 'Ead',
-                                              'bg-emerald-100 text-emerald-800': item.periodo === 'Semipresencial'
-                                          }" x-text="item.periodo"></span>
-                                </td>
-
-                                <!-- Vestibular -->
-                                <template x-if="tab === 'vestibular'"><td class="p-4 text-center font-medium" x-text="item.vagasVestibular"></td></template>
-                                <template x-if="tab === 'vestibular'"><td class="p-4 text-center" x-text="item.inscritosVestibular"></td></template>
-                                <template x-if="tab === 'vestibular'"><td class="p-4 text-center text-amber-600 font-medium" x-text="item.convocadosVestibular"></td></template>
-                                <template x-if="tab === 'vestibular'"><td class="p-4 text-center text-emerald-600 font-semibold" x-text="item.pagosVestibular"></td></template>
-                                <template x-if="tab === 'vestibular'">
-                                    <td class="p-4 text-center">
-                                        <div class="flex flex-col items-center w-full max-w-[120px] mx-auto">
-                                            <span class="text-xs font-bold text-slate-700 mb-1" x-text="getPct(item.pagosVestibular, item.vagasVestibular) + '%'"></span>
-                                            <div class="w-full bg-slate-200 rounded-full h-2.5 overflow-hidden border border-slate-300">
-                                                <div class="bg-blue-600 h-2.5 rounded-full" :style="'width: ' + Math.min(getPct(item.pagosVestibular, item.vagasVestibular), 100) + '%'"></div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </template>
-
-                                <!-- CEBAS -->
-                                <template x-if="tab === 'cebas'"><td class="p-4 text-center font-medium" x-text="item.vagasCebas"></td></template>
-                                <template x-if="tab === 'cebas'"><td class="p-4 text-center" x-text="item.inscritosCebas"></td></template>
-                                <template x-if="tab === 'cebas'"><td class="p-4 text-center text-emerald-600 font-semibold" x-text="item.classificadosCebas"></td></template>
-                                <template x-if="tab === 'cebas'"><td class="p-4 text-center text-amber-600" x-text="item.listaEsperaCebas"></td></template>
-                                <template x-if="tab === 'cebas'">
-                                    <td class="p-4 text-center">
-                                        <div class="flex flex-col items-center w-full max-w-[120px] mx-auto">
-                                            <span class="text-xs font-bold text-slate-700 mb-1" x-text="getPct(item.classificadosCebas, item.vagasCebas) + '%'"></span>
-                                            <div class="w-full bg-slate-200 rounded-full h-2.5 overflow-hidden border border-slate-300">
-                                                <div class="bg-emerald-500 h-2.5 rounded-full" :style="'width: ' + Math.min(getPct(item.classificadosCebas, item.vagasCebas), 100) + '%'"></div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </template>
-
-                                <!-- Visão Geral -->
-                                <template x-if="tab === 'geral'"><td class="p-4 text-center font-medium" x-text="item.totalVagas"></td></template>
-                                <template x-if="tab === 'geral'"><td class="p-4 text-center" x-text="item.inscritosTotal"></td></template>
-                                <template x-if="tab === 'geral'"><td class="p-4 text-center text-emerald-600 font-semibold" x-text="item.matriculadosTotal"></td></template>
-                                <template x-if="tab === 'geral'">
-                                    <td class="p-4 text-center">
-                                        <div class="flex flex-col items-center w-full max-w-[120px] mx-auto">
-                                            <span class="text-xs font-bold text-slate-700 mb-1" x-text="getPct(item.matriculadosTotal, item.totalVagas) + '%'"></span>
-                                            <div class="w-full bg-slate-200 rounded-full h-2.5 overflow-hidden border border-slate-300">
-                                                <div class="bg-indigo-600 h-2.5 rounded-full" :style="'width: ' + Math.min(getPct(item.matriculadosTotal, item.totalVagas), 100) + '%'"></div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </template>
-
-                                <!-- Remanejamento -->
-                                <template x-if="tab === 'remanejamento'"><td class="p-4 text-center" x-text="item.bolsaFuncionario"></td></template>
-                                <template x-if="tab === 'remanejamento'"><td class="p-4 text-center" x-text="item.transferenciaInterna"></td></template>
-                                <template x-if="tab === 'remanejamento'"><td class="p-4 text-center font-bold" :class="item.vagasMovimentadas > 0 ? 'text-emerald-600' : (item.vagasMovimentadas < 0 ? 'text-red-600' : 'text-slate-400')" x-text="item.vagasMovimentadas > 0 ? '+' + item.vagasMovimentadas : item.vagasMovimentadas"></td></template>
-                            </tr>
-                        </template>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </main>
-
-    <script>
-        function dashboardData() {
-            return {
-                tab: 'vestibular',
-                search: '',
-                filtroPeriodo: '',
-                vagasList: [{"curso":"Administração (Bacharelado)","periodo":"Noturno","vagasVestibular":30,"vagasCebas":40,"bolsaFuncionario":1,"transferenciaInterna":0,"totalVagas":70,"inscritosVestibular":325,"convocadosVestibular":108,"pagosVestibular":34,"inscritosCebas":164,"classificadosCebas":46,"listaEsperaCebas":0,"inscritosTotal":325,"matriculadosTotal":80,"vagasMovimentadas":1},{"curso":"Análise e Desenvolvimento de Sistemas (Tecnólogo)","periodo":"Matutino","vagasVestibular":30,"vagasCebas":6,"bolsaFuncionario":0,"transferenciaInterna":1,"totalVagas":36,"inscritosVestibular":243,"convocadosVestibular":85,"pagosVestibular":31,"inscritosCebas":115,"classificadosCebas":4,"listaEsperaCebas":50,"inscritosTotal":243,"matriculadosTotal":35,"vagasMovimentadas":1},{"curso":"Análise e Desenvolvimento de Sistemas (Tecnólogo)","periodo":"Noturno","vagasVestibular":20,"vagasCebas":0,"bolsaFuncionario":0,"transferenciaInterna":1,"totalVagas":20,"inscritosVestibular":243,"convocadosVestibular":13,"pagosVestibular":31,"inscritosCebas":0,"classificadosCebas":0,"listaEsperaCebas":0,"inscritosTotal":243,"matriculadosTotal":31,"vagasMovimentadas":1},{"curso":"Arquitetura e Urbanismo (Bacharelado)","periodo":"Noturno","vagasVestibular":10,"vagasCebas":0,"bolsaFuncionario":0,"transferenciaInterna":1,"totalVagas":10,"inscritosVestibular":55,"convocadosVestibular":17,"pagosVestibular":3,"inscritosCebas":0,"classificadosCebas":0,"listaEsperaCebas":0,"inscritosTotal":55,"matriculadosTotal":3,"vagasMovimentadas":1},{"curso":"Ciência da Computação (Bacharelado)","periodo":"Noturno","vagasVestibular":65,"vagasCebas":5,"bolsaFuncionario":0,"transferenciaInterna":0,"totalVagas":70,"inscritosVestibular":264,"convocadosVestibular":98,"pagosVestibular":42,"inscritosCebas":102,"classificadosCebas":11,"listaEsperaCebas":46,"inscritosTotal":264,"matriculadosTotal":53,"vagasMovimentadas":0},{"curso":"Ciências Contábeis (Bacharelado)","periodo":"Noturno","vagasVestibular":15,"vagasCebas":26,"bolsaFuncionario":0,"transferenciaInterna":2,"totalVagas":39,"inscritosVestibular":157,"convocadosVestibular":58,"pagosVestibular":21,"inscritosCebas":71,"classificadosCebas":20,"listaEsperaCebas":0,"inscritosTotal":157,"matriculadosTotal":41,"vagasMovimentadas":2},{"curso":"Ciências Econômicas (Bacharelado)","periodo":"Noturno","vagasVestibular":25,"vagasCebas":11,"bolsaFuncionario":0,"transferenciaInterna":1,"totalVagas":36,"inscritosVestibular":64,"convocadosVestibular":18,"pagosVestibular":11,"inscritosCebas":28,"classificadosCebas":3,"listaEsperaCebas":0,"inscritosTotal":64,"matriculadosTotal":14,"vagasMovimentadas":1},{"curso":"Design (Bacharelado)","periodo":"Noturno","vagasVestibular":17,"vagasCebas":7,"bolsaFuncionario":1,"transferenciaInterna":0,"totalVagas":24,"inscritosVestibular":153,"convocadosVestibular":49,"pagosVestibular":22,"inscritosCebas":66,"classificadosCebas":4,"listaEsperaCebas":15,"inscritosTotal":153,"matriculadosTotal":26,"vagasMovimentadas":1},{"curso":"Direito (Bacharelado)","periodo":"Matutino","vagasVestibular":15,"vagasCebas":15,"bolsaFuncionario":1,"transferenciaInterna":2,"totalVagas":29,"inscritosVestibular":344,"convocadosVestibular":132,"pagosVestibular":19,"inscritosCebas":207,"classificadosCebas":14,"listaEsperaCebas":69,"inscritosTotal":344,"matriculadosTotal":33,"vagasMovimentadas":3},{"curso":"Engenharia (Bacharelado)","periodo":"Matutino","vagasVestibular":10,"vagasCebas":7,"bolsaFuncionario":0,"transferenciaInterna":0,"totalVagas":17,"inscritosVestibular":403,"convocadosVestibular":25,"pagosVestibular":50,"inscritosCebas":1,"classificadosCebas":8,"listaEsperaCebas":0,"inscritosTotal":404,"matriculadosTotal":58,"vagasMovimentadas":0},{"curso":"Engenharia (Bacharelado)","periodo":"Noturno","vagasVestibular":30,"vagasCebas":14,"bolsaFuncionario":1,"transferenciaInterna":0,"totalVagas":44,"inscritosVestibular":403,"convocadosVestibular":164,"pagosVestibular":50,"inscritosCebas":1,"classificadosCebas":2,"listaEsperaCebas":74,"inscritosTotal":404,"matriculadosTotal":52,"vagasMovimentadas":1},{"curso":"Engenharia de Software (Bacharelado)","periodo":"Noturno","vagasVestibular":70,"vagasCebas":0,"bolsaFuncionario":1,"transferenciaInterna":-2,"totalVagas":72,"inscritosVestibular":118,"convocadosVestibular":54,"pagosVestibular":30,"inscritosCebas":0,"classificadosCebas":0,"listaEsperaCebas":0,"inscritosTotal":118,"matriculadosTotal":30,"vagasMovimentadas":-1},{"curso":"Gestão de Recursos Humanos (Tecnólogo)","periodo":"Ead","vagasVestibular":20,"vagasCebas":50,"bolsaFuncionario":0,"transferenciaInterna":0,"totalVagas":70,"inscritosVestibular":298,"convocadosVestibular":100,"pagosVestibular":32,"inscritosCebas":1,"classificadosCebas":67,"listaEsperaCebas":1,"inscritosTotal":299,"matriculadosTotal":99,"vagasMovimentadas":0},{"curso":"Gestão Pública (Tecnólogo)","periodo":"Ead","vagasVestibular":15,"vagasCebas":45,"bolsaFuncionario":2,"transferenciaInterna":2,"totalVagas":60,"inscritosVestibular":134,"convocadosVestibular":28,"pagosVestibular":23,"inscritosCebas":107,"classificadosCebas":18,"listaEsperaCebas":0,"inscritosTotal":134,"matriculadosTotal":41,"vagasMovimentadas":4},{"curso":"Marketing (Tecnólogo)","periodo":"Ead","vagasVestibular":20,"vagasCebas":40,"bolsaFuncionario":0,"transferenciaInterna":0,"totalVagas":60,"inscritosVestibular":189,"convocadosVestibular":44,"pagosVestibular":19,"inscritosCebas":133,"classificadosCebas":23,"listaEsperaCebas":0,"inscritosTotal":189,"matriculadosTotal":42,"vagasMovimentadas":0},{"curso":"Pedagogia (Licenciatura)","periodo":"Semipresencial","vagasVestibular":40,"vagasCebas":80,"bolsaFuncionario":0,"transferenciaInterna":1,"totalVagas":120,"inscritosVestibular":634,"convocadosVestibular":102,"pagosVestibular":66,"inscritosCebas":332,"classificadosCebas":52,"listaEsperaCebas":0,"inscritosTotal":634,"matriculadosTotal":118,"vagasMovimentadas":1},{"curso":"Psicologia (Bacharelado)","periodo":"Matutino","vagasVestibular":20,"vagasCebas":0,"bolsaFuncionario":0,"transferenciaInterna":-1,"totalVagas":21,"inscritosVestibular":865,"convocadosVestibular":49,"pagosVestibular":42,"inscritosCebas":0,"classificadosCebas":0,"listaEsperaCebas":0,"inscritosTotal":865,"matriculadosTotal":42,"vagasMovimentadas":-1},{"curso":"Psicologia (Bacharelado)","periodo":"Noturno","vagasVestibular":45,"vagasCebas":10,"bolsaFuncionario":1,"transferenciaInterna":-1,"totalVagas":56,"inscritosVestibular":865,"convocadosVestibular":406,"pagosVestibular":42,"inscritosCebas":464,"classificadosCebas":16,"listaEsperaCebas":261,"inscritosTotal":865,"matriculadosTotal":58,"vagasMovimentadas":0},{"curso":"Química (Bacharelado)","periodo":"Noturno","vagasVestibular":17,"vagasCebas":22,"bolsaFuncionario":0,"transferenciaInterna":0,"totalVagas":39,"inscritosVestibular":106,"convocadosVestibular":26,"pagosVestibular":20,"inscritosCebas":50,"classificadosCebas":3,"listaEsperaCebas":0,"inscritosTotal":106,"matriculadosTotal":23,"vagasMovimentadas":0},{"curso":"Segurança da Informação (Tecnólogo)","periodo":"Noturno","vagasVestibular":20,"vagasCebas":0,"bolsaFuncionario":0,"transferenciaInterna":0,"totalVagas":20,"inscritosVestibular":10,"convocadosVestibular":6,"pagosVestibular":2,"inscritosCebas":0,"classificadosCebas":0,"listaEsperaCebas":0,"inscritosTotal":10,"matriculadosTotal":2,"vagasMovimentadas":0}],
-
-                get filteredList() {
-                    return this.vagasList.filter(item => {
-                        const matchesSearch = item.curso.toLowerCase().includes(this.search.toLowerCase());
-                        const matchesPeriodo = this.filtroPeriodo === '' || item.periodo === this.filtroPeriodo;
-                        return matchesSearch && matchesPeriodo;
-                    });
-                },
-
-                getPct(parte, total) {
-                    if (!total || total <= 0) return 0;
-                    return Math.round((parte / total) * 100);
-                },
-
-                getKpis() {
-                    const list = this.filteredList;
-                    if (this.tab === 'vestibular') {
-                        const vagas = list.reduce((sum, item) => sum + item.vagasVestibular, 0);
-                        const inscricoes = list.reduce((sum, item) => sum + item.inscritosVestibular, 0);
-                        const pagos = list.reduce((sum, item) => sum + item.pagosVestibular, 0);
-                        const convocados = list.reduce((sum, item) => sum + item.convocadosVestibular, 0);
-                        const pct = this.getPct(pagos, vagas);
-
-                        return {
-                            vagas: vagas.toLocaleString(),
-                            vagasSub: 'Vagas Vestibular (ENEM/Online/Redação)',
-                            inscricoes: inscricoes.toLocaleString(),
-                            demanda: vagas > 0 ? (inscricoes / vagas).toFixed(1) + 'x cand / vaga' : '0x',
-                            sucessoLabel: 'Matrículas Efetuadas',
-                            sucessoValor: pagos.toLocaleString(),
-                            pctVal: pct,
-                            taxaSucesso: `${pct}% das vagas preenchidas`,
-                            apoioLabel: 'Convocados',
-                            apoioValor: convocados.toLocaleString(),
-                            apoioSub: 'Aguardando pagamento'
-                        };
-                    } else if (this.tab === 'cebas') {
-                        const vagas = list.reduce((sum, item) => sum + item.vagasCebas, 0);
-                        const inscricoes = list.reduce((sum, item) => sum + item.inscritosCebas, 0);
-                        const classificados = list.reduce((sum, item) => sum + item.classificadosCebas, 0);
-                        const listaEspera = list.reduce((sum, item) => sum + item.listaEsperaCebas, 0);
-                        const pct = this.getPct(classificados, vagas);
-
-                        return {
-                            vagas: vagas.toLocaleString(),
-                            vagasSub: 'Bolsas Assistenciais CEBAS',
-                            inscricoes: inscricoes.toLocaleString(),
-                            demanda: vagas > 0 ? (inscricoes / vagas).toFixed(1) + 'x cand / vaga' : '0x',
-                            sucessoLabel: 'Classificados CEBAS',
-                            sucessoValor: classificados.toLocaleString(),
-                            pctVal: pct,
-                            taxaSucesso: `${pct}% de bolsas preenchidas`,
-                            apoioLabel: 'Lista de Espera',
-                            apoioValor: listaEspera.toLocaleString(),
-                            apoioSub: 'Aguardando vaga'
-                        };
-                    } else if (this.tab === 'geral') {
-                        const vagas = list.reduce((sum, item) => sum + item.totalVagas, 0);
-                        const inscricoes = list.reduce((sum, item) => sum + item.inscritosTotal, 0);
-                        const matriculados = list.reduce((sum, item) => sum + item.matriculadosTotal, 0);
-                        const pct = this.getPct(matriculados, vagas);
-
-                        return {
-                            vagas: vagas.toLocaleString(),
-                            vagasSub: 'Total de Vagas Combinadas',
-                            inscricoes: inscricoes.toLocaleString(),
-                            demanda: vagas > 0 ? (inscricoes / vagas).toFixed(1) + 'x cand / vaga' : '0x',
-                            sucessoLabel: 'Matriculados Totais',
-                            sucessoValor: matriculados.toLocaleString(),
-                            pctVal: pct,
-                            taxaSucesso: `${pct}% de ocupação geral`,
-                            apoioLabel: 'Falta Preencher',
-                            apoioValor: (vagas - matriculados > 0 ? vagas - matriculados : 0).toLocaleString(),
-                            apoioSub: 'Vagas restantes'
-                        };
-                    } else {
-                        const totalVagasAfetadas = list.reduce((sum, item) => sum + Math.abs(item.vagasMovimentadas), 0);
-                        const balancoLiquido = list.reduce((sum, item) => sum + item.vagasMovimentadas, 0);
-                        
-                        return {
-                            vagas: totalVagasAfetadas.toLocaleString(),
-                            vagasSub: 'Vagas Remanejadas',
-                            inscricoes: '-',
-                            demanda: 'N/A',
-                            sucessoLabel: 'Balanço Líquido',
-                            sucessoValor: balancoLiquido >= 0 ? `+${balancoLiquido}` : balancoLiquido.toLocaleString(),
-                            pctVal: 100,
-                            taxaSucesso: 'Vagas alteradas',
-                            apoioLabel: 'Cursos Afetados',
-                            apoioValor: list.filter(item => item.vagasMovimentadas !== 0).length.toString(),
-                            apoioSub: 'Com movimentação'
-                        };
-                    }
-                }
-            }
-        }
-    </script>
+    const cardsDiv = document.getElementById('cards');
+    cardsDiv.innerHTML = `
+      <div class="card">
+        <h3>Total de Vagas</h3>
+        <div class="value">${totalVagas}</div>
+      </div>
+      <div class="card">
+        <h3>Inscritos Totais</h3>
+        <div class="value">${totalInscritos}</div>
+      </div>
+      <div class="card">
+        <h3>Matriculados Vestibular</h3>
+        <div class="value">${totalMatriculados}</div>
+      </div>
+      <div class="card">
+        <h3>Matriculados CEBAS</h3>
+        <div class="value">${totalCebas}</div>
+      </div>
+    `;
+  </script>
 </body>
 </html>
