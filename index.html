@@ -1,404 +1,409 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - Controle de Vagas 2026/2</title>
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Alpine.js para Interatividade -->
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <!-- Font Awesome para Ícones -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-        body { font-family: 'Inter', sans-serif; }
-    </style>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - Controle de Vagas 2026/2</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Alpine.js para Interatividade -->
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <!-- Font Awesome para Ícones -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+      body { font-family: 'Inter', sans-serif; }
+  </style>
 </head>
 
 <body class="bg-slate-50 text-slate-800" x-data="dashboardData()">
 
-    <!-- Header / Navbar -->
-    <header class="bg-white border-b border-slate-200 sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-            <div class="flex items-center space-x-3">
-                <div class="bg-indigo-600 text-white p-2 rounded-lg">
-                    <i class="fa-solid fa-chart-line text-lg"></i>
-                </div>
-                <div>
-                    <h1 class="text-lg font-bold text-slate-950">Controle de Vagas</h1>
-                    <p class="text-xs text-slate-500">Vestibular 2026/2</p>
-                </div>
-            </div>
-            <div class="text-right hidden sm:block">
-                <span class="text-xs text-slate-400">Última atualização</span>
-                <p class="text-sm font-semibold text-slate-700">22/07/2026 10:57:57</p>
-            </div>
-        </div>
-    </header>
+  <!-- Header / Navbar -->
+  <header class="bg-white border-b border-slate-200 sticky top-0 z-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+          <div class="flex items-center space-x-3">
+              <div class="bg-indigo-600 text-white p-2 rounded-lg">
+                  <i class="fa-solid fa-chart-line text-lg"></i>
+              </div>
+              <div>
+                  <h1 class="text-lg font-bold text-slate-950">Controle de Vagas</h1>
+                  <p class="text-xs text-slate-500">Vestibular 2026/2</p>
+              </div>
+          </div>
+          <div class="text-right hidden sm:block">
+              <span class="text-xs text-slate-400">Última atualização</span>
+              <p class="text-sm font-semibold text-slate-700">22/07/2026 11:53:03</p>
+          </div>
+      </div>
+  </header>
 
-    <!-- Main Content Container -->
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+  <!-- Main Content Container -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
 
-        <!-- KPI Cards Grid -->
-        <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex items-center space-x-4">
-                <div class="p-3 bg-blue-50 text-blue-600 rounded-xl"><i class="fa-solid fa-graduation-cap text-2xl"></i></div>
-                <div>
-                    <p class="text-sm text-slate-500 font-medium">Vagas Ofertadas</p>
-                    <h3 class="text-2xl font-bold text-slate-900" x-text="getKpis().vagas">0</h3>
-                    <span class="text-xs text-slate-400" x-text="getKpis().vagasSub">Subtítulo</span>
-                </div>
-            </div>
+      <!-- KPI Cards Grid -->
+      <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex items-center space-x-4">
+              <div class="p-3 bg-blue-50 text-blue-600 rounded-xl"><i class="fa-solid fa-graduation-cap text-2xl"></i></div>
+              <div>
+                  <p class="text-sm text-slate-500 font-medium">Vagas Ofertadas</p>
+                  <h3 class="text-2xl font-bold text-slate-900" x-text="getKpis().vagas">0</h3>
+                  <span class="text-xs text-slate-400" x-text="getKpis().vagasSub">Subtítulo</span>
+              </div>
+          </div>
 
-            <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex items-center space-x-4">
-                <div class="p-3 bg-purple-50 text-purple-600 rounded-xl"><i class="fa-solid fa-users text-2xl"></i></div>
-                <div>
-                    <p class="text-sm text-slate-500 font-medium">Inscrições Totais</p>
-                    <h3 class="text-2xl font-bold text-slate-900" x-text="getKpis().inscricoes">0</h3>
-                    <span class="text-xs text-purple-600 font-semibold" x-text="getKpis().demanda">Demanda</span>
-                </div>
-            </div>
+          <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex items-center space-x-4">
+              <div class="p-3 bg-purple-50 text-purple-600 rounded-xl"><i class="fa-solid fa-users text-2xl"></i></div>
+              <div>
+                  <p class="text-sm text-slate-500 font-medium">Inscrições Totais</p>
+                  <h3 class="text-2xl font-bold text-slate-900" x-text="getKpis().inscricoes">0</h3>
+                  <span class="text-xs text-purple-600 font-semibold" x-text="getKpis().demanda">Demanda</span>
+              </div>
+          </div>
 
-            <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex items-center space-x-4">
-                <div class="p-3 bg-emerald-50 text-emerald-600 rounded-xl"><i class="fa-solid fa-user-check text-2xl"></i></div>
-                <div>
-                    <p class="text-sm text-slate-500 font-medium" x-text="getKpis().sucessoLabel">Sucesso</p>
-                    <h3 class="text-2xl font-bold text-slate-900" x-text="getKpis().sucessoValor">0</h3>
-                    <span class="text-xs text-emerald-600 font-semibold" x-text="getKpis().taxaSucesso">Taxa</span>
-                </div>
-            </div>
+          <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex items-center space-x-4">
+              <div class="p-3 bg-emerald-50 text-emerald-600 rounded-xl"><i class="fa-solid fa-user-check text-2xl"></i></div>
+              <div>
+                  <p class="text-sm text-slate-500 font-medium" x-text="getKpis().sucessoLabel">Sucesso</p>
+                  <h3 class="text-2xl font-bold text-slate-900" x-text="getKpis().sucessoValor">0</h3>
+                  <span class="text-xs text-emerald-600 font-semibold" x-text="getKpis().taxaSucesso">Taxa</span>
+              </div>
+          </div>
 
-            <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex items-center space-x-4">
-                <div class="p-3 bg-amber-50 text-amber-600 rounded-xl"><i class="fa-solid fa-bullhorn text-2xl"></i></div>
-                <div>
-                    <p class="text-sm text-slate-500 font-medium" x-text="getKpis().apoioLabel">Status</p>
-                    <h3 class="text-2xl font-bold text-slate-900" x-text="getKpis().apoioValor">0</h3>
-                    <span class="text-xs text-slate-400" x-text="getKpis().apoioSub">Subtítulo</span>
-                </div>
-            </div>
-        </section>
+          <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex items-center space-x-4">
+              <div class="p-3 bg-amber-50 text-amber-600 rounded-xl"><i class="fa-solid fa-bullhorn text-2xl"></i></div>
+              <div>
+                  <p class="text-sm text-slate-500 font-medium" x-text="getKpis().apoioLabel">Status</p>
+                  <h3 class="text-2xl font-bold text-slate-900" x-text="getKpis().apoioValor">0</h3>
+                  <span class="text-xs text-slate-400" x-text="getKpis().apoioSub">Subtítulo</span>
+              </div>
+          </div>
+      </section>
 
-        <!-- Navigation Tabs -->
-        <div class="border-b border-slate-200">
-            <nav class="-mb-px flex space-x-8" aria-label="Tabs">
-                <button @click="tab = 'vestibular'" :class="tab === 'vestibular' ? 'border-indigo-600 text-indigo-600' : 'border-transparent text-slate-500 hover:text-slate-700 hover:border-slate-300'" class="whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm transition-colors duration-150">
-                    <i class="fa-solid fa-user-graduate mr-2"></i>Vagas Vestibular
-                </button>
-                <button @click="tab = 'cebas'" :class="tab === 'cebas' ? 'border-indigo-600 text-indigo-600' : 'border-transparent text-slate-500 hover:text-slate-700 hover:border-slate-300'" class="whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm transition-colors duration-150">
-                    <i class="fa-solid fa-hand-holding-heart mr-2"></i>Vagas CEBAS
-                </button>
-                <button @click="tab = 'geral'" :class="tab === 'geral' ? 'border-indigo-600 text-indigo-600' : 'border-transparent text-slate-500 hover:text-slate-700 hover:border-slate-300'" class="whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm transition-colors duration-150">
-                    <i class="fa-solid fa-globe mr-2"></i>Visão Geral Combinada
-                </button>
-                <button @click="tab = 'transferencia'" :class="tab === 'transferencia' ? 'border-indigo-600 text-indigo-600' : 'border-transparent text-slate-500 hover:text-slate-700 hover:border-slate-300'" class="whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm transition-colors duration-150">
-                    <i class="fa-solid fa-right-from-bracket mr-2 rotate-180"></i>Vagas Transferência / Ajustes
-                </button>
-            </nav>
-        </div>
+      <!-- Navigation Tabs -->
+      <div class="border-b border-slate-200">
+          <nav class="-mb-px flex space-x-8" aria-label="Tabs">
+              <button @click="tab = 'vestibular'" :class="tab === 'vestibular' ? 'border-indigo-600 text-indigo-600' : 'border-transparent text-slate-500 hover:text-slate-700 hover:border-slate-300'" class="whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm transition-colors duration-150">
+                  <i class="fa-solid fa-user-graduate mr-2"></i>Vagas Vestibular
+              </button>
+              <button @click="tab = 'cebas'" :class="tab === 'cebas' ? 'border-indigo-600 text-indigo-600' : 'border-transparent text-slate-500 hover:text-slate-700 hover:border-slate-300'" class="whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm transition-colors duration-150">
+                  <i class="fa-solid fa-hand-holding-heart mr-2"></i>Vagas CEBAS
+              </button>
+              <button @click="tab = 'geral'" :class="tab === 'geral' ? 'border-indigo-600 text-indigo-600' : 'border-transparent text-slate-500 hover:text-slate-700 hover:border-slate-300'" class="whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm transition-colors duration-150">
+                  <i class="fa-solid fa-globe mr-2"></i>Visão Geral Combinada
+              </button>
+              <button @click="tab = 'transferencia'" :class="tab === 'transferencia' ? 'border-indigo-600 text-indigo-600' : 'border-transparent text-slate-500 hover:text-slate-700 hover:border-slate-300'" class="whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm transition-colors duration-150">
+                  <i class="fa-solid fa-right-from-bracket mr-2 rotate-180"></i>Vagas Transferência / Ajustes
+              </button>
+          </nav>
+      </div>
 
-        <!-- Filtros Globais -->
-        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-white p-4 rounded-xl border border-slate-200">
-            <div class="relative flex-1">
-                <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-slate-400">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </span>
-                <input type="text" x-model="search" placeholder="Buscar por curso..." class="pl-10 pr-4 py-2 w-full border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm">
-            </div>
-            <div class="flex gap-2">
-                <button @click="filtroPeriodo = ''" :class="filtroPeriodo === '' ? 'bg-slate-900 text-white' : 'bg-slate-100 hover:bg-slate-200 text-slate-700'" class="px-4 py-2 rounded-lg text-xs font-semibold transition">Todos</button>
-                <button @click="filtroPeriodo = 'Noturno'" :class="filtroPeriodo === 'Noturno' ? 'bg-slate-900 text-white' : 'bg-slate-100 hover:bg-slate-200 text-slate-700'" class="px-4 py-2 rounded-lg text-xs font-semibold transition">Noturno</button>
-                <button @click="filtroPeriodo = 'Matutino'" :class="filtroPeriodo === 'Matutino' ? 'bg-slate-900 text-white' : 'bg-slate-100 hover:bg-slate-200 text-slate-700'" class="px-4 py-2 rounded-lg text-xs font-semibold transition">Matutino</button>
-                <button @click="filtroPeriodo = 'Ead'" :class="filtroPeriodo === 'Ead' ? 'bg-slate-900 text-white' : 'bg-slate-100 hover:bg-slate-200 text-slate-700'" class="px-4 py-2 rounded-lg text-xs font-semibold transition">EaD</button>
-            </div>
-        </div>
+      <!-- Filtros Globais -->
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-white p-4 rounded-xl border border-slate-200">
+          <div class="relative flex-1">
+              <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-slate-400">
+                  <i class="fa-solid fa-magnifying-glass"></i>
+              </span>
+              <input type="text" x-model="search" placeholder="Buscar por curso..." class="pl-10 pr-4 py-2 w-full border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm">
+          </div>
+          <div class="flex gap-2">
+              <button @click="filtroPeriodo = ''" :class="filtroPeriodo === '' ? 'bg-slate-900 text-white' : 'bg-slate-100 hover:bg-slate-200 text-slate-700'" class="px-4 py-2 rounded-lg text-xs font-semibold transition">Todos</button>
+              <button @click="filtroPeriodo = 'Noturno'" :class="filtroPeriodo === 'Noturno' ? 'bg-slate-900 text-white' : 'bg-slate-100 hover:bg-slate-200 text-slate-700'" class="px-4 py-2 rounded-lg text-xs font-semibold transition">Noturno</button>
+              <button @click="filtroPeriodo = 'Matutino'" :class="filtroPeriodo === 'Matutino' ? 'bg-slate-900 text-white' : 'bg-slate-100 hover:bg-slate-200 text-slate-700'" class="px-4 py-2 rounded-lg text-xs font-semibold transition">Matutino</button>
+              <button @click="filtroPeriodo = 'Ead'" :class="filtroPeriodo === 'Ead' ? 'bg-slate-900 text-white' : 'bg-slate-100 hover:bg-slate-200 text-slate-700'" class="px-4 py-2 rounded-lg text-xs font-semibold transition">EaD</button>
+          </div>
+      </div>
 
-        <!-- TABELA 1: VESTIBULAR -->
-        <div x-show="tab === 'vestibular'">
-            <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
-                <div class="overflow-x-auto">
-                    <table class="w-full text-left border-collapse">
-                        <thead>
-                            <tr class="bg-slate-50 border-b border-slate-200 text-xs font-semibold text-slate-500 uppercase tracking-wider">
-                                <th class="py-4 px-6">Curso</th>
-                                <th class="py-4 px-4">Período</th>
-                                <th class="py-4 px-4 text-center">Vagas Vestibular</th>
-                                <th class="py-4 px-4 text-center">Inscrições</th>
-                                <th class="py-4 px-4 text-center">Convocados</th>
-                                <th class="py-4 px-4 text-center">Pagos</th>
-                                <th class="py-4 px-4 text-center">Ocupação (Vest.)</th>
-                            </tr>
-                        </thead>
-                        <tbody class="divide-y divide-slate-100 text-sm">
-                            <template x-for="item in filteredList" :key="item.curso + item.periodo">
-                                <tr class="hover:bg-slate-50/80 transition">
-                                    <td class="py-4 px-6 font-semibold text-slate-900" x-text="item.curso"></td>
-                                    <td class="py-4 px-4">
-                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-50 text-indigo-700" x-text="item.periodo"></span>
-                                    </td>
-                                    <td class="py-4 px-4 text-center font-medium text-slate-700" x-text="item.vagasVestibular"></td>
-                                    <td class="py-4 px-4 text-center text-slate-600" x-text="item.inscritosVestibular"></td>
-                                    <td class="py-4 px-4 text-center text-slate-600" x-text="item.convocados"></td>
-                                    <td class="py-4 px-4 text-center text-emerald-600 font-semibold" x-text="item.pagos"></td>
-                                    <td class="py-4 px-4 text-center">
-                                        <div class="flex items-center justify-center space-x-2">
-                                            <div class="w-16 bg-slate-100 rounded-full h-2">
-                                                <div class="bg-indigo-500 h-2 rounded-full" :style="`width: ${Math.min((item.pagos / (item.vagasVestibular || 1)) * 100, 100)}%`"></div>
-                                            </div>
-                                            <span class="text-xs text-slate-500 font-medium" x-text="item.vagasVestibular > 0 ? Math.round((item.pagos / item.vagasVestibular) * 100) + '%' : '0%'"></span>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </template>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
+      <!-- TABELA 1: VESTIBULAR -->
+      <div x-show="tab === 'vestibular'">
+          <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+              <div class="overflow-x-auto">
+                  <table class="w-full text-left border-collapse">
+                      <thead>
+                          <tr class="bg-slate-50 border-b border-slate-200 text-xs font-semibold text-slate-500 uppercase tracking-wider">
+                              <th class="py-4 px-6">Curso</th>
+                              <th class="py-4 px-4">Período</th>
+                              <th class="py-4 px-4 text-center">Vagas Vestibular</th>
+                              <th class="py-4 px-4 text-center">Inscrições</th>
+                              <th class="py-4 px-4 text-center">Convocados</th>
+                              <th class="py-4 px-4 text-center">Pagos</th>
+                              <th class="py-4 px-4 text-center">Ocupação (Vest.)</th>
+                          </tr>
+                      </thead>
+                      <tbody class="divide-y divide-slate-100 text-sm">
+                          <template x-for="item in filteredList" :key="item.curso + item.periodo">
+                              <tr class="hover:bg-slate-50/80 transition">
+                                  <td class="py-4 px-6 font-semibold text-slate-900" x-text="item.curso"></td>
+                                  <td class="py-4 px-4">
+                                      <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-50 text-indigo-700" x-text="item.periodo"></span>
+                                  </td>
+                                  <td class="py-4 px-4 text-center font-medium text-slate-700" x-text="item.vagasVestibular"></td>
+                                  <td class="py-4 px-4 text-center text-slate-600" x-text="item.inscritosVestibular"></td>
+                                  <td class="py-4 px-4 text-center text-slate-600" x-text="item.convocados"></td>
+                                  <td class="py-4 px-4 text-center text-emerald-600 font-semibold" x-text="item.pagos"></td>
+                                  <td class="py-4 px-4 text-center">
+                                      <div class="flex items-center justify-center space-x-2">
+                                          <div class="w-16 bg-slate-100 rounded-full h-2">
+                                              <div class="bg-indigo-500 h-2 rounded-full" :style="`width: ${Math.min((item.pagos / (item.vagasVestibular || 1)) * 100, 100)}%`"></div>
+                                          </div>
+                                          <span class="text-xs text-slate-500 font-medium" x-text="item.vagasVestibular > 0 ? Math.round((item.pagos / item.vagasVestibular) * 100) + '%' : '0%'"></span>
+                                      </div>
+                                  </td>
+                              </tr>
+                          </template>
+                      </tbody>
+                  </table>
+              </div>
+          </div>
+      </div>
 
-        <!-- TABELA 2: CEBAS -->
-        <div x-show="tab === 'cebas'">
-            <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
-                <div class="overflow-x-auto">
-                    <table class="w-full text-left border-collapse">
-                        <thead>
-                            <tr class="bg-slate-50 border-b border-slate-200 text-xs font-semibold text-slate-500 uppercase tracking-wider">
-                                <th class="py-4 px-6">Curso</th>
-                                <th class="py-4 px-4">Período</th>
-                                <th class="py-4 px-4 text-center">Vagas CEBAS</th>
-                                <th class="py-4 px-4 text-center">Inscrições (Bolsa)</th>
-                                <th class="py-4 px-4 text-center">Classificados</th>
-                                <th class="py-4 px-4 text-center">Lista de Espera</th>
-                                <th class="py-4 px-4 text-center">Doc. em Análise</th>
-                            </tr>
-                        </thead>
-                        <tbody class="divide-y divide-slate-100 text-sm">
-                            <template x-for="item in filteredList" :key="item.curso + item.periodo">
-                                <tr class="hover:bg-slate-50/80 transition">
-                                    <td class="py-4 px-6 font-semibold text-slate-900" x-text="item.curso"></td>
-                                    <td class="py-4 px-4">
-                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-rose-50 text-rose-700" x-text="item.periodo"></span>
-                                    </td>
-                                    <td class="py-4 px-4 text-center font-medium text-slate-700" x-text="item.vagasCebas"></td>
-                                    <td class="py-4 px-4 text-center text-slate-600" x-text="item.inscritosCebas"></td>
-                                    <td class="py-4 px-4 text-center text-emerald-600 font-semibold" x-text="item.classificadosCebas"></td>
-                                    <td class="py-4 px-4 text-center text-amber-600 font-medium" x-text="item.listaEsperaCebas"></td>
-                                    <td class="py-4 px-4 text-center text-slate-500" x-text="item.docAnaliseCebas"></td>
-                                </tr>
-                            </template>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
+      <!-- TABELA 2: CEBAS -->
+      <div x-show="tab === 'cebas'">
+          <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+              <div class="overflow-x-auto">
+                  <table class="w-full text-left border-collapse">
+                      <thead>
+                          <tr class="bg-slate-50 border-b border-slate-200 text-xs font-semibold text-slate-500 uppercase tracking-wider">
+                              <th class="py-4 px-6">Curso</th>
+                              <th class="py-4 px-4">Período</th>
+                              <th class="py-4 px-4 text-center">Vagas CEBAS</th>
+                              <th class="py-4 px-4 text-center">Inscrições (Bolsa)</th>
+                              <th class="py-4 px-4 text-center">Classificados</th>
+                              <th class="py-4 px-4 text-center">Lista de Espera</th>
+                              <th class="py-4 px-4 text-center">Doc. em Análise</th>
+                          </tr>
+                      </thead>
+                      <tbody class="divide-y divide-slate-100 text-sm">
+                          <template x-for="item in filteredList" :key="item.curso + item.periodo">
+                              <tr class="hover:bg-slate-50/80 transition">
+                                  <td class="py-4 px-6 font-semibold text-slate-900" x-text="item.curso"></td>
+                                  <td class="py-4 px-4">
+                                      <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-rose-50 text-rose-700" x-text="item.periodo"></span>
+                                  </td>
+                                  <td class="py-4 px-4 text-center font-medium text-slate-700" x-text="item.vagasCebas"></td>
+                                  <td class="py-4 px-4 text-center text-slate-600" x-text="item.inscritosCebas"></td>
+                                  <td class="py-4 px-4 text-center text-emerald-600 font-semibold" x-text="item.classificadosCebas"></td>
+                                  <td class="py-4 px-4 text-center text-amber-600 font-medium" x-text="item.listaEsperaCebas"></td>
+                                  <td class="py-4 px-4 text-center text-slate-500" x-text="item.docAnaliseCebas"></td>
+                              </tr>
+                          </template>
+                      </tbody>
+                  </table>
+              </div>
+          </div>
+      </div>
 
-        <!-- TABELA 3: VISÃO GERAL COMBINADA -->
-        <div x-show="tab === 'geral'">
-            <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
-                <div class="overflow-x-auto">
-                    <table class="w-full text-left border-collapse">
-                        <thead>
-                            <tr class="bg-slate-50 border-b border-slate-200 text-xs font-semibold text-slate-500 uppercase tracking-wider">
-                                <th class="py-4 px-6">Curso</th>
-                                <th class="py-4 px-4">Período</th>
-                                <th class="py-4 px-4 text-center">Vagas Vestibular</th>
-                                <th class="py-4 px-4 text-center">Vagas CEBAS</th>
-                                <th class="py-4 px-4 text-center">Vagas Totais</th>
-                                <th class="py-4 px-4 text-center">Total Inscrições</th>
-                                <th class="py-4 px-4 text-center">Total Matriculados</th>
-                                <th class="py-4 px-4 text-center">Ocupação Total</th>
-                            </tr>
-                        </thead>
-                        <tbody class="divide-y divide-slate-100 text-sm">
-                            <template x-for="item in filteredList" :key="item.curso + item.periodo">
-                                <tr class="hover:bg-slate-50/80 transition">
-                                    <td class="py-4 px-6 font-semibold text-slate-900" x-text="item.curso"></td>
-                                    <td class="py-4 px-4">
-                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 text-slate-700" x-text="item.periodo"></span>
-                                    </td>
-                                    <td class="py-4 px-4 text-center text-indigo-600 font-medium" x-text="item.vagasVestibular"></td>
-                                    <td class="py-4 px-4 text-center text-rose-600 font-medium" x-text="item.vagasCebas"></td>
-                                    <td class="py-4 px-4 text-center font-bold text-slate-900" x-text="item.totalVagas"></td>
-                                    <td class="py-4 px-4 text-center text-slate-600 font-medium" x-text="item.inscritosVestibular + item.inscritosCebas"></td>
-                                    <td class="py-4 px-4 text-center text-emerald-600 font-bold" x-text="item.matriculados"></td>
-                                    <td class="py-4 px-4 text-center">
-                                        <div class="flex items-center justify-center space-x-2">
-                                            <div class="w-16 bg-slate-100 rounded-full h-2">
-                                                <div class="bg-emerald-500 h-2 rounded-full" :style="`width: ${Math.min((item.matriculados / (item.totalVagas || 1)) * 100, 100)}%`"></div>
-                                            </div>
-                                            <span class="text-xs text-slate-500 font-medium" x-text="item.totalVagas > 0 ? Math.round((item.matriculados / item.totalVagas) * 100) + '%' : '0%'"></span>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </template>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
+      <!-- TABELA 3: VISÃO GERAL COMBINADA -->
+      <div x-show="tab === 'geral'">
+          <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+              <div class="overflow-x-auto">
+                  <table class="w-full text-left border-collapse">
+                      <thead>
+                          <tr class="bg-slate-50 border-b border-slate-200 text-xs font-semibold text-slate-500 uppercase tracking-wider">
+                              <th class="py-4 px-6">Curso</th>
+                              <th class="py-4 px-4">Período</th>
+                              <th class="py-4 px-4 text-center">Vagas Vestibular</th>
+                              <th class="py-4 px-4 text-center">Vagas CEBAS</th>
+                              <th class="py-4 px-4 text-center">Vagas Totais</th>
+                              <th class="py-4 px-4 text-center">Total Inscrições</th>
+                              <th class="py-4 px-4 text-center">Total Matriculados</th>
+                              <th class="py-4 px-4 text-center">Ocupação Total</th>
+                          </tr>
+                      </thead>
+                      <tbody class="divide-y divide-slate-100 text-sm">
+                          <template x-for="item in filteredList" :key="item.curso + item.periodo">
+                              <tr class="hover:bg-slate-50/80 transition">
+                                  <td class="py-4 px-6 font-semibold text-slate-900" x-text="item.curso"></td>
+                                  <td class="py-4 px-4">
+                                      <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 text-slate-700" x-text="item.periodo"></span>
+                                  </td>
+                                  <td class="py-4 px-4 text-center text-indigo-600 font-medium" x-text="item.vagasVestibular"></td>
+                                  <td class="py-4 px-4 text-center text-rose-600 font-medium" x-text="item.vagasCebas"></td>
+                                  <td class="py-4 px-4 text-center font-bold text-slate-900" x-text="item.totalVagas"></td>
+                                  <td class="py-4 px-4 text-center text-slate-600 font-medium" x-text="item.inscritosVestibular + item.inscritosCebas"></td>
+                                  <td class="py-4 px-4 text-center text-emerald-600 font-bold" x-text="item.matriculados"></td>
+                                  <td class="py-4 px-4 text-center">
+                                      <div class="flex items-center justify-center space-x-2">
+                                          <div class="w-16 bg-slate-100 rounded-full h-2">
+                                              <div class="bg-emerald-500 h-2 rounded-full" :style="`width: ${Math.min((item.matriculados / (item.totalVagas || 1)) * 100, 100)}%`"></div>
+                                          </div>
+                                          <span class="text-xs text-slate-500 font-medium" x-text="item.totalVagas > 0 ? Math.round((item.matriculados / item.totalVagas) * 100) + '%' : '0%'"></span>
+                                      </div>
+                                  </td>
+                              </tr>
+                          </template>
+                      </tbody>
+                  </table>
+              </div>
+          </div>
+      </div>
 
-        <!-- TABELA 4: TRANSFERÊNCIA INTERNA / OBSERVAÇÕES -->
-        <div x-show="tab === 'transferencia'">
-            <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
-                <div class="overflow-x-auto">
-                    <table class="w-full text-left border-collapse">
-                        <thead>
-                            <tr class="bg-slate-50 border-b border-slate-200 text-xs font-semibold text-slate-500 uppercase tracking-wider">
-                                <th class="py-4 px-6">Curso</th>
-                                <th class="py-4 px-4">Período</th>
-                                <th class="py-4 px-4 text-center">Ajuste de Vagas (Qtd)</th>
-                                <th class="py-4 px-6">Observação Oficial da Planilha</th>
-                            </tr>
-                        </thead>
-                        <tbody class="divide-y divide-slate-100 text-sm">
-                            <template x-for="item in filteredList" :key="item.curso + item.periodo">
-                                <tr class="hover:bg-slate-50/80 transition" :class="item.vagasMovimentadas !== 0 ? 'bg-amber-50/40' : ''">
-                                    <td class="py-4 px-6 font-semibold text-slate-900" x-text="item.curso"></td>
-                                    <td class="py-4 px-4">
-                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-50 text-amber-700" x-text="item.periodo"></span>
-                                    </td>
-                                    <td class="py-4 px-4 text-center font-bold" :class="item.vagasMovimentadas < 0 ? 'text-rose-600' : (item.vagasMovimentadas > 0 ? 'text-emerald-600' : 'text-slate-400')" x-text="item.vagasMovimentadas > 0 ? '+' + item.vagasMovimentadas : item.vagasMovimentadas"></td>
-                                    <td class="py-4 px-6 text-slate-600 italic text-xs" x-text="item.observacao || 'Nenhuma alteração registrada'"></td>
-                                </tr>
-                            </template>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
+      <!-- TABELA 4: TRANSFERÊNCIA INTERNA / OBSERVAÇÕES -->
+      <div x-show="tab === 'transferencia'">
+          <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+              <div class="overflow-x-auto">
+                  <table class="w-full text-left border-collapse">
+                      <thead>
+                          <tr class="bg-slate-50 border-b border-slate-200 text-xs font-semibold text-slate-500 uppercase tracking-wider">
+                              <th class="py-4 px-6">Curso</th>
+                              <th class="py-4 px-4">Período</th>
+                              <th class="py-4 px-4 text-center">Ajuste de Vagas (Qtd)</th>
+                              <th class="py-4 px-6">Observação Oficial da Planilha</th>
+                          </tr>
+                      </thead>
+                      <tbody class="divide-y divide-slate-100 text-sm">
+                          <template x-for="item in filteredList" :key="item.curso + item.periodo">
+                              <tr class="hover:bg-slate-50/80 transition" :class="item.vagasMovimentadas !== 0 ? 'bg-amber-50/40' : ''">
+                                  <td class="py-4 px-6 font-semibold text-slate-900" x-text="item.curso"></td>
+                                  <td class="py-4 px-4">
+                                      <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-50 text-amber-700" x-text="item.periodo"></span>
+                                  </td>
+                                  <td class="py-4 px-4 text-center font-bold" :class="item.vagasMovimentadas < 0 ? 'text-rose-600' : (item.vagasMovimentadas > 0 ? 'text-emerald-600' : 'text-slate-400')" x-text="item.vagasMovimentadas > 0 ? '+' + item.vagasMovimentadas : item.vagasMovimentadas"></td>
+                                  <td class="py-4 px-6 text-slate-600 italic text-xs" x-text="item.observacao || 'Nenhuma alteração registrada'"></td>
+                              </tr>
+                          </template>
+                      </tbody>
+                  </table>
+              </div>
+          </div>
+      </div>
 
-    </main>
+  </main>
 
-    <footer class="bg-white border-t border-slate-200 py-6 mt-12">
-        <div class="max-w-7xl mx-auto px-4 text-center text-xs text-slate-400">
-            Controle de Vagas - Vestibular 2026/2.
-        </div>
-    </footer>
+  <footer class="bg-white border-t border-slate-200 py-6 mt-12">
+      <div class="max-w-7xl mx-auto px-4 text-center text-xs text-slate-400">
+          Controle de Vagas - Vestibular 2026/2.
+      </div>
+  </footer>
 
-    <script>
-        function dashboardData() {
-            return {
-                tab: 'vestibular',
-                search: '',
-                filtroPeriodo: '',
-                
-                vagasList: [
-                    { curso: "Administração (Bacharelado)", periodo: "Noturno", vagasVestibular: 30, vagasCebas: 40, totalVagas: 70, inscritosVestibular: 155, inscritosCebas: 164, convocados: 120, classificadosCebas: 46, listaEsperaCebas: 0, docAnaliseCebas: 16, pagos: 13, matriculados: 37, vagasMovimentadas: -1, observacao: "-1 vaga para bolsa funcionário" },
-                    { curso: "Análise e Desenvolvimento de Sistemas (Tecnólogo)", periodo: "Matutino", vagasVestibular: 30, vagasCebas: 6, totalVagas: 36, inscritosVestibular: 97, inscritosCebas: 115, convocados: 85, classificadosCebas: 4, listaEsperaCebas: 50, docAnaliseCebas: 2, pagos: 18, matriculados: 15, vagasMovimentadas: -1, observacao: "-1 vaga para transferência interna" },
-                    { curso: "Análise e Desenvolvimento de Sistemas (Tecnólogo)", periodo: "Noturno", vagasVestibular: 20, vagasCebas: 0, totalVagas: 20, inscritosVestibular: 30, inscritosCebas: 0, convocados: 11, classificadosCebas: 1, listaEsperaCebas: 4, docAnaliseCebas: 0, pagos: 4, matriculados: 16, vagasMovimentadas: 1, observacao: "1 transferência de calouro vindo de Ciência da Computação noturno" },
-                    { curso: "Arquitetura e Urbanismo (Bacharelado)", periodo: "Noturno", vagasVestibular: 10, vagasCebas: 0, totalVagas: 10, inscritosVestibular: 53, inscritosCebas: 0, convocados: 17, classificadosCebas: 0, listaEsperaCebas: 0, docAnaliseCebas: 0, pagos: 4, matriculados: 6, vagasMovimentadas: 1, observacao: "+1 vaga adicionada por transferência interna" },
-                    { curso: "Ciência da Computação (Bacharelado)", periodo: "Matutino", vagasVestibular: 0, vagasCebas: 5, totalVagas: 5, inscritosVestibular: 0, inscritosCebas: 49, convocados: 15, classificadosCebas: 2, listaEsperaCebas: 6, docAnaliseCebas: 2, pagos: 1, matriculados: 0, vagasMovimentadas: 0, observacao: "" },
-                    { curso: "Ciência da Computação (Bacharelado)", periodo: "Noturno", vagasVestibular: 65, vagasCebas: 5, totalVagas: 71, inscritosVestibular: 120, inscritosCebas: 102, convocados: 99, classificadosCebas: 11, listaEsperaCebas: 46, docAnaliseCebas: 6, pagos: 43, matriculados: 25, vagasMovimentadas: -1, observacao: "Calouro transferido para ADS Noturno" },
-                    { curso: "Ciências Contábeis (Bacharelado)", periodo: "Noturno", vagasVestibular: 15, vagasCebas: 26, totalVagas: 41, inscritosVestibular: 83, inscritosCebas: 71, convocados: 68, classificadosCebas: 20, listaEsperaCebas: 0, docAnaliseCebas: 7, pagos: 6, matriculados: 21, vagasMovimentadas: -1, observacao: "-1 vaga tranferência interna" },
-                    { curso: "Ciências Econômicas (Bacharelado)", periodo: "Noturno", vagasVestibular: 25, vagasCebas: 11, totalVagas: 36, inscritosVestibular: 33, inscritosCebas: 28, convocados: 19, classificadosCebas: 3, listaEsperaCebas: 0, docAnaliseCebas: 1, pagos: 5, matriculados: 26, vagasMovimentadas: -1, observacao: "-1 vaga transferência interna (Arquitetura 2º sem. para C. Econ 1º sem.)" },
-                    { curso: "Design (Bacharelado)", periodo: "Noturno", vagasVestibular: 15, vagasCebas: 9, totalVagas: 24, inscritosVestibular: 86, inscritosCebas: 66, convocados: 52, classificadosCebas: 4, listaEsperaCebas: 15, docAnaliseCebas: 0, pagos: 16, matriculados: 5, vagasMovimentadas: -1, observacao: "-1 vaga para bolsa funcionário" },
-                    { curso: "Direito (Bacharelado)", periodo: "Matutino", vagasVestibular: 15, vagasCebas: 15, totalVagas: 30, inscritosVestibular: 132, inscritosCebas: 207, convocados: 129, classificadosCebas: 14, listaEsperaCebas: 69, docAnaliseCebas: 6, pagos: 7, matriculados: 11, vagasMovimentadas: -2, observacao: "-1 vaga transferência interna / -1 vaga bolsa funcionário" },
-                    { curso: "Engenharia (Bacharelado)", periodo: "Matutino", vagasVestibular: 10, vagasCebas: 7, totalVagas: 17, inscritosVestibular: 41, inscritosCebas: 31, convocados: 25, classificadosCebas: 8, listaEsperaCebas: 0, docAnaliseCebas: 4, pagos: 9, matriculados: 4, vagasMovimentadas: 0, observacao: "" },
-                    { curso: "Engenharia (Bacharelado)", periodo: "Noturno", vagasVestibular: 30, vagasCebas: 14, totalVagas: 44, inscritosVestibular: 179, inscritosCebas: 145, convocados: 164, classificadosCebas: 2, listaEsperaCebas: 74, docAnaliseCebas: 1, pagos: 26, matriculados: 10, vagasMovimentadas: -1, observacao: "-1 vaga para bolsa funcionário" },
-                    { curso: "Engenharia de Software (Bacharelado)", periodo: "Noturno", vagasVestibular: 70, vagasCebas: 0, totalVagas: 72, inscritosVestibular: 108, inscritosCebas: 0, convocados: 54, classificadosCebas: 0, listaEsperaCebas: 0, docAnaliseCebas: 0, pagos: 25, matriculados: 50, vagasMovimentadas: -1, observacao: "-1 vaga para bolsa funcionário" },
-                    { curso: "Gestão de Negócios Imobiliários (Tecnólogo)", periodo: "Ead", vagasVestibular: 0, vagasCebas: 30, totalVagas: 30, inscritosVestibular: 0, inscritosCebas: 33, convocados: 0, classificadosCebas: 0, listaEsperaCebas: 0, docAnaliseCebas: 0, pagos: 0, matriculados: 0, vagasMovimentadas: 0, observacao: "" },
-                    { curso: "Gestão de Recursos Humanos (Tecnólogo)", periodo: "Ead", vagasVestibular: 20, vagasCebas: 50, totalVagas: 70, inscritosVestibular: 67, inscritosCebas: 228, convocados: 100, classificadosCebas: 67, listaEsperaCebas: 1, docAnaliseCebas: 19, pagos: 2, matriculados: 70, vagasMovimentadas: 0, observacao: "" },
-                    { curso: "Gestão Pública (Tecnólogo)", periodo: "Ead", vagasVestibular: 15, vagasCebas: 45, totalVagas: 60, inscritosVestibular: 27, inscritosCebas: 107, convocados: 33, classificadosCebas: 18, listaEsperaCebas: 0, docAnaliseCebas: 9, pagos: 1, matriculados: 60, vagasMovimentadas: -4, observacao: "-2 vagas bolsa funcionário / -2 vagas transferência interna" },
-                    { curso: "Marketing (Tecnólogo)", periodo: "Ead", vagasVestibular: 20, vagasCebas: 40, totalVagas: 60, inscritosVestibular: 55, inscritosCebas: 133, convocados: 45, classificadosCebas: 23, listaEsperaCebas: 0, docAnaliseCebas: 9, pagos: 3, matriculados: 60, vagasMovimentadas: 0, observacao: "" },
-                    { curso: "Pedagogia (Licenciatura)", periodo: "Semipresencial", vagasVestibular: 40, vagasCebas: 80, totalVagas: 120, inscritosVestibular: 298, inscritosCebas: 332, convocados: 103, classificadosCebas: 52, listaEsperaCebas: 0, docAnaliseCebas: 20, pagos: 23, matriculados: 55, vagasMovimentadas: -1, observacao: "-1 vaga transferência interna" },
-                    { curso: "Psicologia (Bacharelado)", periodo: "Matutino", vagasVestibular: 20, vagasCebas: 0, totalVagas: 21, inscritosVestibular: 130, inscritosCebas: 0, convocados: 49, classificadosCebas: 0, listaEsperaCebas: 0, docAnaliseCebas: 0, pagos: 20, matriculados: 2, vagasMovimentadas: -1, observacao: "-1 vaga transferência interna" },
-                    { curso: "Psicologia (Bacharelado)", periodo: "Noturno", vagasVestibular: 45, vagasCebas: 10, totalVagas: 56, inscritosVestibular: 262, inscritosCebas: 464, convocados: 401, classificadosCebas: 16, listaEsperaCebas: 261, docAnaliseCebas: 10, pagos: 15, matriculados: 36, vagasMovimentadas: -2, observacao: "-1 vaga bolsa funcionário / -1 vaga transferência interna" },
-                    { curso: "Química (Bacharelado)", periodo: "Noturno", vagasVestibular: 17, vagasCebas: 22, totalVagas: 39, inscritosVestibular: 54, inscritosCebas: 50, convocados: 25, classificadosCebas: 3, listaEsperaCebas: 0, docAnaliseCebas: 1, pagos: 9, matriculados: 21, vagasMovimentadas: 0, observacao: "" },
-                    { curso: "Sistemas de Informação (Bacharelado)", periodo: "Noturno", vagasVestibular: 20, vagasCebas: 0, totalVagas: 20, inscritosVestibular: 10, inscritosCebas: 0, convocados: 7, classificadosCebas: 0, listaEsperaCebas: 0, docAnaliseCebas: 0, pagos: 2, matriculados: 0, vagasMovimentadas: 0, observacao: "" },
-                    { curso: "Segurança da Informação (Tecnólogo)", periodo: "Noturno", vagasVestibular: 20, vagasCebas: 0, totalVagas: 20, inscritosVestibular: 10, inscritosCebas: 0, convocados: 7, classificadosCebas: 0, listaEsperaCebas: 0, docAnaliseCebas: 0, pagos: 2, matriculados: 0, vagasMovimentadas: 0, observacao: "" }
-                ],
+  <script>
+      function dashboardData() {
+          return {
+              tab: 'vestibular',
+              search: '',
+              filtroPeriodo: '',
+              
+              vagasList: [
+                  { curso: "Administração (Bacharelado)", periodo: "Noturno", vagasVestibular: 30, vagasCebas: 40, totalVagas: 70, inscritosVestibular: 155, inscritosCebas: 164, convocados: 120, classificadosCebas: 46, listaEsperaCebas: 0, docAnaliseCebas: 16, pagos: 13, matriculados: 37, vagasMovimentadas: -1, observacao: "-1 vaga para bolsa funcionário" },
+                  { curso: "Análise e Desenvolvimento de Sistemas (Tecnólogo)", periodo: "Matutino", vagasVestibular: 30, vagasCebas: 6, totalVagas: 36, inscritosVestibular: 97, inscritosCebas: 115, convocados: 85, classificadosCebas: 4, listaEsperaCebas: 50, docAnaliseCebas: 2, pagos: 18, matriculados: 15, vagasMovimentadas: -1, observacao: "-1 vaga para transferência interna" },
+                  { curso: "Análise e Desenvolvimento de Sistemas (Tecnólogo)", periodo: "Noturno", vagasVestibular: 20, vagasCebas: 0, totalVagas: 20, inscritosVestibular: 30, inscritosCebas: 0, convocados: 11, classificadosCebas: 1, listaEsperaCebas: 4, docAnaliseCebas: 0, pagos: 4, matriculados: 16, vagasMovimentadas: 1, observacao: "1 transferência de calouro vindo de Ciência da Computação noturno" },
+                  { curso: "Arquitetura e Urbanismo (Bacharelado)", periodo: "Noturno", vagasVestibular: 10, vagasCebas: 0, totalVagas: 10, inscritosVestibular: 53, inscritosCebas: 0, convocados: 17, classificadosCebas: 0, listaEsperaCebas: 0, docAnaliseCebas: 0, pagos: 4, matriculados: 6, vagasMovimentadas: 1, observacao: "+1 vaga adicionada por transferência interna" },
+                  { curso: "Ciência da Computação (Bacharelado)", periodo: "Matutino", vagasVestibular: 0, vagasCebas: 5, totalVagas: 5, inscritosVestibular: 0, inscritosCebas: 49, convocados: 15, classificadosCebas: 2, listaEsperaCebas: 6, docAnaliseCebas: 2, pagos: 1, matriculados: 0, vagasMovimentadas: 0, observacao: "" },
+                  { curso: "Ciência da Computação (Bacharelado)", periodo: "Noturno", vagasVestibular: 65, vagasCebas: 5, totalVagas: 71, inscritosVestibular: 120, inscritosCebas: 102, convocados: 99, classificadosCebas: 11, listaEsperaCebas: 46, docAnaliseCebas: 6, pagos: 43, matriculados: 25, vagasMovimentadas: -1, observacao: "Calouro transferido para ADS Noturno" },
+                  { curso: "Ciências Contábeis (Bacharelado)", periodo: "Noturno", vagasVestibular: 15, vagasCebas: 26, totalVagas: 41, inscritosVestibular: 83, inscritosCebas: 71, convocados: 68, classificadosCebas: 20, listaEsperaCebas: 0, docAnaliseCebas: 7, pagos: 6, matriculados: 21, vagasMovimentadas: -1, observacao: "-1 vaga tranferência interna" },
+                  { curso: "Ciências Econômicas (Bacharelado)", periodo: "Noturno", vagasVestibular: 25, vagasCebas: 11, totalVagas: 36, inscritosVestibular: 33, inscritosCebas: 28, convocados: 19, classificadosCebas: 3, listaEsperaCebas: 0, docAnaliseCebas: 1, pagos: 5, matriculados: 26, vagasMovimentadas: -1, observacao: "-1 vaga transferência interna (Arquitetura 2º sem. para C. Econ 1º sem.)" },
+                  { curso: "Design (Bacharelado)", periodo: "Noturno", vagasVestibular: 15, vagasCebas: 9, totalVagas: 24, inscritosVestibular: 86, inscritosCebas: 66, convocados: 52, classificadosCebas: 4, listaEsperaCebas: 15, docAnaliseCebas: 0, pagos: 16, matriculados: 5, vagasMovimentadas: -1, observacao: "-1 vaga para bolsa funcionário" },
+                  { curso: "Direito (Bacharelado)", periodo: "Matutino", vagasVestibular: 15, vagasCebas: 15, totalVagas: 30, inscritosVestibular: 132, inscritosCebas: 207, convocados: 129, classificadosCebas: 14, listaEsperaCebas: 69, docAnaliseCebas: 6, pagos: 7, matriculados: 11, vagasMovimentadas: -2, observacao: "-1 vaga transferência interna / -1 vaga bolsa funcionário" },
+                  { curso: "Engenharia (Bacharelado)", periodo: "Matutino", vagasVestibular: 10, vagasCebas: 7, totalVagas: 17, inscritosVestibular: 41, inscritosCebas: 31, convocados: 25, classificadosCebas: 8, listaEsperaCebas: 0, docAnaliseCebas: 4, pagos: 9, matriculados: 4, vagasMovimentadas: 0, observacao: "" },
+                  { curso: "Engenharia (Bacharelado)", periodo: "Noturno", vagasVestibular: 30, vagasCebas: 14, totalVagas: 44, inscritosVestibular: 179, inscritosCebas: 145, convocados: 164, classificadosCebas: 2, listaEsperaCebas: 74, docAnaliseCebas: 1, pagos: 26, matriculados: 10, vagasMovimentadas: -1, observacao: "-1 vaga para bolsa funcionário" },
+                  { curso: "Engenharia de Software (Bacharelado)", periodo: "Noturno", vagasVestibular: 70, vagasCebas: 0, totalVagas: 72, inscritosVestibular: 108, inscritosCebas: 0, convocados: 54, classificadosCebas: 0, listaEsperaCebas: 0, docAnaliseCebas: 0, pagos: 25, matriculados: 50, vagasMovimentadas: -1, observacao: "-1 vaga para bolsa funcionário" },
+                  { curso: "Gestão de Negócios Imobiliários (Tecnólogo)", periodo: "Ead", vagasVestibular: 0, vagasCebas: 30, totalVagas: 30, inscritosVestibular: 0, inscritosCebas: 33, convocados: 0, classificadosCebas: 0, listaEsperaCebas: 0, docAnaliseCebas: 0, pagos: 0, matriculados: 0, vagasMovimentadas: 0, observacao: "" },
+                  { curso: "Gestão de Recursos Humanos (Tecnólogo)", periodo: "Ead", vagasVestibular: 20, vagasCebas: 50, totalVagas: 70, inscritosVestibular: 67, inscritosCebas: 228, convocados: 100, classificadosCebas: 67, listaEsperaCebas: 1, docAnaliseCebas: 19, pagos: 2, matriculados: 70, vagasMovimentadas: 0, observacao: "" },
+                  { curso: "Gestão Pública (Tecnólogo)", periodo: "Ead", vagasVestibular: 15, vagasCebas: 45, totalVagas: 60, inscritosVestibular: 27, inscritosCebas: 107, convocados: 33, classificadosCebas: 18, listaEsperaCebas: 0, docAnaliseCebas: 9, pagos: 1, matriculados: 60, vagasMovimentadas: -4, observacao: "-2 vagas bolsa funcionário / -2 vagas transferência interna" },
+                  { curso: "Marketing (Tecnólogo)", periodo: "Ead", vagasVestibular: 20, vagasCebas: 40, totalVagas: 60, inscritosVestibular: 55, inscritosCebas: 133, convocados: 45, classificadosCebas: 23, listaEsperaCebas: 0, docAnaliseCebas: 9, pagos: 3, matriculados: 60, vagasMovimentadas: 0, observacao: "" },
+                  { curso: "Pedagogia (Licenciatura)", periodo: "Semipresencial", vagasVestibular: 40, vagasCebas: 80, totalVagas: 120, inscritosVestibular: 298, inscritosCebas: 332, convocados: 103, classificadosCebas: 52, listaEsperaCebas: 0, docAnaliseCebas: 20, pagos: 23, matriculados: 55, vagasMovimentadas: -1, observacao: "-1 vaga transferência interna" },
+                  { curso: "Psicologia (Bacharelado)", periodo: "Matutino", vagasVestibular: 20, vagasCebas: 0, totalVagas: 21, inscritosVestibular: 130, inscritosCebas: 0, convocados: 49, classificadosCebas: 0, listaEsperaCebas: 0, docAnaliseCebas: 0, pagos: 20, matriculados: 2, vagasMovimentadas: -1, observacao: "-1 vaga transferência interna" },
+                  { curso: "Psicologia (Bacharelado)", periodo: "Noturno", vagasVestibular: 45, vagasCebas: 10, totalVagas: 56, inscritosVestibular: 262, inscritosCebas: 464, convocados: 401, classificadosCebas: 16, listaEsperaCebas: 261, docAnaliseCebas: 10, pagos: 15, matriculados: 36, vagasMovimentadas: -2, observacao: "-1 vaga bolsa funcionário / -1 vaga transferência interna" },
+                  { curso: "Química (Bacharelado)", periodo: "Noturno", vagasVestibular: 17, vagasCebas: 22, totalVagas: 39, inscritosVestibular: 54, inscritosCebas: 50, convocados: 25, classificadosCebas: 3, listaEsperaCebas: 0, docAnaliseCebas: 1, pagos: 9, matriculados: 21, vagasMovimentadas: 0, observacao: "" },
+                  { curso: "Sistemas de Informação (Bacharelado)", periodo: "Noturno", vagasVestibular: 20, vagasCebas: 0, totalVagas: 20, inscritosVestibular: 10, inscritosCebas: 0, convocados: 7, classificadosCebas: 0, listaEsperaCebas: 0, docAnaliseCebas: 0, pagos: 2, matriculados: 0, vagasMovimentadas: 0, observacao: "" },
+                  { curso: "Segurança da Informação (Tecnólogo)", periodo: "Noturno", vagasVestibular: 20, vagasCebas: 0, totalVagas: 20, inscritosVestibular: 10, inscritosCebas: 0, convocados: 7, classificadosCebas: 0, listaEsperaCebas: 0, docAnaliseCebas: 0, pagos: 2, matriculados: 0, vagasMovimentadas: 0, observacao: "" }
+              ],
 
-                get filteredList() {
-                    return this.vagasList.filter(item => {
-                        const matchesSearch = item.curso.toLowerCase().includes(this.search.toLowerCase());
-                        const matchesPeriodo = this.filtroPeriodo === '' || item.periodo === this.filtroPeriodo;
-                        return matchesSearch && matchesPeriodo;
-                    });
-                },
+              get filteredList() {
+  return this.vagasList.filter(item => {
+      // Se estiver na aba CEBAS, esconde cursos com 0 vagas no edital
+      if (this.tab === 'cebas' && item.vagasCebas === 0) {
+          return false;
+      }
 
-                getKpis() {
-                    const list = this.filteredList;
-                    if (this.tab === 'vestibular') {
-                        const vagas = list.reduce((sum, item) => sum + item.vagasVestibular, 0);
-                        const inscricoes = list.reduce((sum, item) => sum + item.inscritosVestibular, 0);
-                        const pagos = list.reduce((sum, item) => sum + item.pagos, 0);
-                        const convocados = list.reduce((sum, item) => sum + item.convocados, 0);
-                        const demanda = vagas > 0 ? (inscricoes / vagas).toFixed(1) : 0;
-                        const taxaSucesso = convocados > 0 ? Math.round((pagos / convocados) * 100) : 0;
+      const matchesSearch = item.curso.toLowerCase().includes(this.search.toLowerCase());
+      const matchesPeriodo = this.filtroPeriodo === '' || item.periodo === this.filtroPeriodo;
+      return matchesSearch && matchesPeriodo;
+  });
+}
 
-                        return {
-                            vagas: vagas.toLocaleString(),
-                            vagasSub: 'Ingresso por Vestibular Tradicional',
-                            inscricoes: inscricoes.toLocaleString(),
-                            demanda: `${demanda}x cand / vaga`,
-                            sucessoLabel: 'Matrículas Pagas',
-                            sucessoValor: pagos.toLocaleString(),
-                            taxaSucesso: `${taxaSucesso}% conv. matriculados`,
-                            apoioLabel: 'Convocados',
-                            apoioValor: convocados.toLocaleString(),
-                            apoioSub: 'Aguardando ação'
-                        };
-                    } else if (this.tab === 'cebas') {
-                        const vagas = list.reduce((sum, item) => sum + item.vagasCebas, 0);
-                        const inscricoes = list.reduce((sum, item) => sum + item.inscritosCebas, 0);
-                        const classificados = list.reduce((sum, item) => sum + item.classificadosCebas, 0);
-                        const listaEspera = list.reduce((sum, item) => sum + item.listaEsperaCebas, 0);
-                        const demanda = vagas > 0 ? (inscricoes / vagas).toFixed(1) : 0;
-                        const taxaSucesso = inscricoes > 0 ? Math.round((classificados / inscricoes) * 100) : 0;
+              getKpis() {
+                  const list = this.filteredList;
+                  if (this.tab === 'vestibular') {
+                      const vagas = list.reduce((sum, item) => sum + item.vagasVestibular, 0);
+                      const inscricoes = list.reduce((sum, item) => sum + item.inscritosVestibular, 0);
+                      const pagos = list.reduce((sum, item) => sum + item.pagos, 0);
+                      const convocados = list.reduce((sum, item) => sum + item.convocados, 0);
+                      const demanda = vagas > 0 ? (inscricoes / vagas).toFixed(1) : 0;
+                      const taxaSucesso = convocados > 0 ? Math.round((pagos / convocados) * 100) : 0;
 
-                        return {
-                            vagas: vagas.toLocaleString(),
-                            vagasSub: 'Bolsas Assistenciais CEBAS',
-                            inscricoes: inscricoes.toLocaleString(),
-                            demanda: `${demanda}x cand / vaga`,
-                            sucessoLabel: 'Classificados (Bolsa)',
-                            sucessoValor: classificados.toLocaleString(),
-                            taxaSucesso: `${taxaSucesso}% de aproveitamento`,
-                            apoioLabel: 'Em Lista de Espera',
-                            apoioValor: listaEspera.toLocaleString(),
-                            apoioSub: 'Aguardando classificação'
-                        };
-                    } else if (this.tab === 'geral') {
-                        const vagas = list.reduce((sum, item) => sum + item.totalVagas, 0);
-                        const inscricoes = list.reduce((sum, item) => sum + (item.inscritosVestibular + item.inscritosCebas), 0);
-                        const matriculados = list.reduce((sum, item) => sum + item.matriculados, 0);
-                        const convocados = list.reduce((sum, item) => sum + item.convocados, 0);
-                        const demanda = vagas > 0 ? (inscricoes / vagas).toFixed(1) : 0;
-                        const taxaOcupacao = vagas > 0 ? Math.round((matriculados / vagas) * 100) : 0;
+                      return {
+                          vagas: vagas.toLocaleString(),
+                          vagasSub: 'Ingresso por Vestibular Tradicional',
+                          inscricoes: inscricoes.toLocaleString(),
+                          demanda: `${demanda}x cand / vaga`,
+                          sucessoLabel: 'Matrículas Pagas',
+                          sucessoValor: pagos.toLocaleString(),
+                          taxaSucesso: `${taxaSucesso}% conv. matriculados`,
+                          apoioLabel: 'Convocados',
+                          apoioValor: convocados.toLocaleString(),
+                          apoioSub: 'Aguardando ação'
+                      };
+                  } else if (this.tab === 'cebas') {
+                      const vagas = list.reduce((sum, item) => sum + item.vagasCebas, 0);
+                      const inscricoes = list.reduce((sum, item) => sum + item.inscritosCebas, 0);
+                      const classificados = list.reduce((sum, item) => sum + item.classificadosCebas, 0);
+                      const listaEspera = list.reduce((sum, item) => sum + item.listaEsperaCebas, 0);
+                      const demanda = vagas > 0 ? (inscricoes / vagas).toFixed(1) : 0;
+                      const taxaSucesso = inscricoes > 0 ? Math.round((classificados / inscricoes) * 100) : 0;
 
-                        return {
-                            vagas: vagas.toLocaleString(),
-                            vagasSub: 'Total Combinado (Geral)',
-                            inscricoes: inscricoes.toLocaleString(),
-                            demanda: `${demanda}x cand / vaga total`,
-                            sucessoLabel: 'Matriculados Totais',
-                            sucessoValor: matriculados.toLocaleString(),
-                            taxaSucesso: `${taxaOcupacao}% de ocupação geral`,
-                            apoioLabel: 'Total Convocados',
-                            apoioValor: convocados.toLocaleString(),
-                            apoioSub: 'Processo seletivo ativo'
-                        };
-                    } else {
-                        const totalVagasAfetadas = list.reduce((sum, item) => sum + Math.abs(item.vagasMovimentadas), 0);
-                        const balancoLiquido = list.reduce((sum, item) => sum + item.vagasMovimentadas, 0);
-                        
-                        return {
-                            vagas: totalVagasAfetadas.toLocaleString(),
-                            vagasSub: 'Vagas Remanejadas / Alteradas',
-                            inscricoes: '-',
-                            demanda: 'N/A',
-                            sucessoLabel: 'Balanço Líquido (Saldo)',
-                            sucessoValor: balancoLiquido >= 0 ? `+${balancoLiquido}` : balancoLiquido.toLocaleString(),
-                            taxaSucesso: 'Vagas subtraídas ou adicionadas',
-                            apoioLabel: 'Cursos Alterados',
-                            apoioValor: list.filter(item => item.vagasMovimentadas !== 0).length.toString(),
-                            apoioSub: 'Cursos com observações'
-                        };
-                    }
-                }
-            }
-        }
-    </script>
+                      return {
+                          vagas: vagas.toLocaleString(),
+                          vagasSub: 'Bolsas Assistenciais CEBAS',
+                          inscricoes: inscricoes.toLocaleString(),
+                          demanda: `${demanda}x cand / vaga`,
+                          sucessoLabel: 'Classificados (Bolsa)',
+                          sucessoValor: classificados.toLocaleString(),
+                          taxaSucesso: `${taxaSucesso}% de aproveitamento`,
+                          apoioLabel: 'Em Lista de Espera',
+                          apoioValor: listaEspera.toLocaleString(),
+                          apoioSub: 'Aguardando classificação'
+                      };
+                  } else if (this.tab === 'geral') {
+                      const vagas = list.reduce((sum, item) => sum + item.totalVagas, 0);
+                      const inscricoes = list.reduce((sum, item) => sum + (item.inscritosVestibular + item.inscritosCebas), 0);
+                      const matriculados = list.reduce((sum, item) => sum + item.matriculados, 0);
+                      const convocados = list.reduce((sum, item) => sum + item.convocados, 0);
+                      const demanda = vagas > 0 ? (inscricoes / vagas).toFixed(1) : 0;
+                      const taxaOcupacao = vagas > 0 ? Math.round((matriculados / vagas) * 100) : 0;
+
+                      return {
+                          vagas: vagas.toLocaleString(),
+                          vagasSub: 'Total Combinado (Geral)',
+                          inscricoes: inscricoes.toLocaleString(),
+                          demanda: `${demanda}x cand / vaga total`,
+                          sucessoLabel: 'Matriculados Totais',
+                          sucessoValor: matriculados.toLocaleString(),
+                          taxaSucesso: `${taxaOcupacao}% de ocupação geral`,
+                          apoioLabel: 'Total Convocados',
+                          apoioValor: convocados.toLocaleString(),
+                          apoioSub: 'Processo seletivo ativo'
+                      };
+                  } else {
+                      const totalVagasAfetadas = list.reduce((sum, item) => sum + Math.abs(item.vagasMovimentadas), 0);
+                      const balancoLiquido = list.reduce((sum, item) => sum + item.vagasMovimentadas, 0);
+                      
+                      return {
+                          vagas: totalVagasAfetadas.toLocaleString(),
+                          vagasSub: 'Vagas Remanejadas / Alteradas',
+                          inscricoes: '-',
+                          demanda: 'N/A',
+                          sucessoLabel: 'Balanço Líquido (Saldo)',
+                          sucessoValor: balancoLiquido >= 0 ? `+${balancoLiquido}` : balancoLiquido.toLocaleString(),
+                          taxaSucesso: 'Vagas subtraídas ou adicionadas',
+                          apoioLabel: 'Cursos Alterados',
+                          apoioValor: list.filter(item => item.vagasMovimentadas !== 0).length.toString(),
+                          apoioSub: 'Cursos com observações'
+                      };
+                  }
+              }
+          }
+      }
+  </script>
 </body>
 </html>
