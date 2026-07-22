@@ -4,87 +4,113 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Painel de Controle de Vagas - FSA</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --primary: #003366;
-      --secondary: #4682B4;
-      --bg: #f4f6f9;
-      --card-bg: #ffffff;
-      --text: #333333;
-      --border: #e0e0e0;
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --border: #334155;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --primary: #38bdf8;
+      --success: #22c55e;
+      --warning: #f59e0b;
     }
+    * { box-sizing: border-box; }
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: 'Inter', sans-serif;
       background-color: var(--bg);
       color: var(--text);
       margin: 0;
-      padding: 20px;
+      padding: 24px;
     }
     .header {
-      background-color: var(--primary);
-      color: white;
-      padding: 20px;
-      border-radius: 8px;
-      margin-bottom: 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-    }
-    .header h1 { margin: 0; font-size: 24px; }
-    .header p { margin: 5px 0 0 0; opacity: 0.8; font-size: 14px; }
-    
-    .cards-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 15px;
-      margin-bottom: 25px;
-    }
-    .card {
-      background-color: var(--card-bg);
-      padding: 15px;
-      border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-      border-left: 4px solid var(--secondary);
-    }
-    .card h3 { margin: 0 0 10px 0; font-size: 13px; color: #666; text-transform: uppercase; }
-    .card .value { font-size: 24px; font-weight: bold; color: var(--primary); }
-
-    .table-container {
-      background-color: var(--card-bg);
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-      overflow-x: auto;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      text-align: left;
-    }
-    th, td {
-      padding: 12px 15px;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
       border-bottom: 1px solid var(--border);
     }
-    th {
-      background-color: #f8f9fa;
+    .header h1 { margin: 0; font-size: 22px; font-weight: 700; color: #fff; }
+    .header p { margin: 4px 0 0 0; color: var(--text-muted); font-size: 13px; }
+    .badge-update {
+      background: rgba(56, 189, 248, 0.1);
       color: var(--primary);
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 500;
+      border: 1px solid rgba(56, 189, 248, 0.2);
+    }
+
+    /* CARDS TOP */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      padding: 20px;
+      border-radius: 12px;
+    }
+    .card-title { font-size: 12px; color: var(--text-muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+    .card-value { font-size: 28px; font-weight: 700; color: #fff; margin-top: 8px; }
+
+    /* ABAS DE NAVEGAÇÃO */
+    .tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 8px;
+    }
+    .tab-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+    .tab-btn:hover { color: #fff; background: rgba(255,255,255,0.05); }
+    .tab-btn.active { background: var(--primary); color: #0f172a; font-weight: 600; }
+
+    /* TABELA */
+    .table-container {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow-x: auto;
+    }
+    table { width: 100%; border-collapse: collapse; text-align: left; font-size: 13px; }
+    th {
+      background: #111827;
+      color: var(--text-muted);
       font-weight: 600;
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--border);
+      white-space: nowrap;
     }
-    tr:hover { background-color: #f1f5f9; }
-    
-    .progress-bar-bg {
-      background-color: #e9ecef;
-      border-radius: 4px;
-      height: 10px;
-      width: 100px;
+    td { padding: 14px 16px; border-bottom: 1px solid var(--border); color: #e2e8f0; }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: rgba(255, 255, 255, 0.02); }
+
+    .progress-bar {
+      width: 100%;
+      height: 6px;
+      background: #334155;
+      border-radius: 3px;
       overflow: hidden;
-      display: inline-block;
-      margin-left: 8px;
+      margin-top: 6px;
     }
-    .progress-bar-fill {
-      background-color: #28a745;
-      height: 100%;
-    }
+    .progress-fill { height: 100%; background: var(--success); border-radius: 3px; }
   </style>
 </head>
 <body>
@@ -94,26 +120,31 @@
       <h1>Painel de Controle de Vagas</h1>
       <p>Acompanhamento Integrado (CRM + TOTVS + Planilha)</p>
     </div>
-    <div style="text-align: right;">
-      <small>Última atualização:</small><br>
-      <strong>22/07/2026 16:04:01</strong>
+    <div class="badge-update">
+      Última atualização: <strong>22/07/2026 16:57:49</strong>
     </div>
   </div>
 
-  <div class="cards-container" id="cards"></div>
+  <div class="cards-grid" id="cards"></div>
+
+  <div class="tabs">
+    <button class="tab-btn active" onclick="filtrarTurno('TODOS', this)">Todos os Turnos</button>
+    <button class="tab-btn" onclick="filtrarTurno('Matutino', this)">Matutino</button>
+    <button class="tab-btn" onclick="filtrarTurno('Noturno', this)">Noturno</button>
+  </div>
 
   <div class="table-container">
-    <h2>Resumo por Curso</h2>
     <table>
       <thead>
         <tr>
           <th>Curso</th>
           <th>Período</th>
           <th>Total Vagas</th>
-          <th>Inscritos</th>
+          <th>Inscritos Total</th>
           <th>Matriculados Vest.</th>
           <th>Matriculados CEBAS</th>
-          <th>% Preenchido</th>
+          <th>Matriculados Total</th>
+          <th>% Preenchimento</th>
         </tr>
       </thead>
       <tbody id="tabela-corpo"></tbody>
@@ -122,59 +153,66 @@
 
   <script>
     const dados = [{"curso":"Administração (Bacharelado)","periodo":"Noturno","vagasVestibular":30,"vagasCebas":40,"bolsaFuncionario":1,"transferenciaInterna":0,"totalVagas":70,"inscritosVestibular":161,"convocadosVestibular":108,"pagosVestibular":14,"inscritosCebas":164,"classificadosCebas":46,"listaEsperaCebas":0,"inscritosTotal":325,"matriculadosTotal":60,"vagasMovimentadas":1},{"curso":"Análise e Desenvolvimento de Sistemas (Tecnólogo)","periodo":"Matutino","vagasVestibular":30,"vagasCebas":6,"bolsaFuncionario":0,"transferenciaInterna":1,"totalVagas":36,"inscritosVestibular":97,"convocadosVestibular":85,"pagosVestibular":21,"inscritosCebas":115,"classificadosCebas":4,"listaEsperaCebas":50,"inscritosTotal":212,"matriculadosTotal":25,"vagasMovimentadas":1},{"curso":"Análise e Desenvolvimento de Sistemas (Tecnólogo)","periodo":"Noturno","vagasVestibular":20,"vagasCebas":0,"bolsaFuncionario":0,"transferenciaInterna":1,"totalVagas":20,"inscritosVestibular":31,"convocadosVestibular":13,"pagosVestibular":8,"inscritosCebas":0,"classificadosCebas":0,"listaEsperaCebas":0,"inscritosTotal":31,"matriculadosTotal":8,"vagasMovimentadas":1},{"curso":"Arquitetura e Urbanismo (Bacharelado)","periodo":"Noturno","vagasVestibular":10,"vagasCebas":0,"bolsaFuncionario":0,"transferenciaInterna":1,"totalVagas":10,"inscritosVestibular":55,"convocadosVestibular":17,"pagosVestibular":4,"inscritosCebas":0,"classificadosCebas":0,"listaEsperaCebas":0,"inscritosTotal":55,"matriculadosTotal":4,"vagasMovimentadas":1},{"curso":"Ciência da Computação (Bacharelado)","periodo":"Noturno","vagasVestibular":65,"vagasCebas":5,"bolsaFuncionario":0,"transferenciaInterna":0,"totalVagas":70,"inscritosVestibular":123,"convocadosVestibular":98,"pagosVestibular":45,"inscritosCebas":102,"classificadosCebas":11,"listaEsperaCebas":46,"inscritosTotal":225,"matriculadosTotal":56,"vagasMovimentadas":0},{"curso":"Ciências Contábeis (Bacharelado)","periodo":"Noturno","vagasVestibular":15,"vagasCebas":26,"bolsaFuncionario":0,"transferenciaInterna":2,"totalVagas":39,"inscritosVestibular":86,"convocadosVestibular":58,"pagosVestibular":8,"inscritosCebas":71,"classificadosCebas":20,"listaEsperaCebas":0,"inscritosTotal":157,"matriculadosTotal":28,"vagasMovimentadas":2},{"curso":"Ciências Econômicas (Bacharelado)","periodo":"Noturno","vagasVestibular":25,"vagasCebas":11,"bolsaFuncionario":0,"transferenciaInterna":1,"totalVagas":36,"inscritosVestibular":36,"convocadosVestibular":18,"pagosVestibular":6,"inscritosCebas":28,"classificadosCebas":3,"listaEsperaCebas":0,"inscritosTotal":64,"matriculadosTotal":9,"vagasMovimentadas":1},{"curso":"Design (Bacharelado)","periodo":"Noturno","vagasVestibular":17,"vagasCebas":7,"bolsaFuncionario":1,"transferenciaInterna":0,"totalVagas":24,"inscritosVestibular":87,"convocadosVestibular":49,"pagosVestibular":16,"inscritosCebas":66,"classificadosCebas":4,"listaEsperaCebas":15,"inscritosTotal":153,"matriculadosTotal":20,"vagasMovimentadas":1},{"curso":"Direito (Bacharelado)","periodo":"Matutino","vagasVestibular":15,"vagasCebas":15,"bolsaFuncionario":1,"transferenciaInterna":2,"totalVagas":29,"inscritosVestibular":137,"convocadosVestibular":132,"pagosVestibular":7,"inscritosCebas":207,"classificadosCebas":14,"listaEsperaCebas":69,"inscritosTotal":344,"matriculadosTotal":21,"vagasMovimentadas":3},{"curso":"Engenharia (Bacharelado)","periodo":"Matutino","vagasVestibular":10,"vagasCebas":7,"bolsaFuncionario":0,"transferenciaInterna":0,"totalVagas":17,"inscritosVestibular":42,"convocadosVestibular":25,"pagosVestibular":10,"inscritosCebas":31,"classificadosCebas":8,"listaEsperaCebas":0,"inscritosTotal":73,"matriculadosTotal":18,"vagasMovimentadas":0},{"curso":"Engenharia (Bacharelado)","periodo":"Noturno","vagasVestibular":30,"vagasCebas":14,"bolsaFuncionario":1,"transferenciaInterna":0,"totalVagas":44,"inscritosVestibular":185,"convocadosVestibular":164,"pagosVestibular":29,"inscritosCebas":145,"classificadosCebas":2,"listaEsperaCebas":74,"inscritosTotal":330,"matriculadosTotal":31,"vagasMovimentadas":1},{"curso":"Engenharia de Software (Bacharelado)","periodo":"Noturno","vagasVestibular":70,"vagasCebas":0,"bolsaFuncionario":1,"transferenciaInterna":-2,"totalVagas":72,"inscritosVestibular":110,"convocadosVestibular":54,"pagosVestibular":29,"inscritosCebas":0,"classificadosCebas":0,"listaEsperaCebas":0,"inscritosTotal":110,"matriculadosTotal":29,"vagasMovimentadas":-1},{"curso":"Gestão de Recursos Humanos (Tecnólogo)","periodo":"EAD","vagasVestibular":20,"vagasCebas":50,"bolsaFuncionario":0,"transferenciaInterna":0,"totalVagas":70,"inscritosVestibular":70,"convocadosVestibular":100,"pagosVestibular":3,"inscritosCebas":228,"classificadosCebas":67,"listaEsperaCebas":1,"inscritosTotal":298,"matriculadosTotal":70,"vagasMovimentadas":0},{"curso":"Gestão Pública (Tecnólogo)","periodo":"EAD","vagasVestibular":15,"vagasCebas":45,"bolsaFuncionario":2,"transferenciaInterna":2,"totalVagas":60,"inscritosVestibular":27,"convocadosVestibular":28,"pagosVestibular":1,"inscritosCebas":107,"classificadosCebas":18,"listaEsperaCebas":0,"inscritosTotal":134,"matriculadosTotal":19,"vagasMovimentadas":4},{"curso":"Marketing (Tecnólogo)","periodo":"EAD","vagasVestibular":20,"vagasCebas":40,"bolsaFuncionario":0,"transferenciaInterna":0,"totalVagas":60,"inscritosVestibular":56,"convocadosVestibular":44,"pagosVestibular":3,"inscritosCebas":133,"classificadosCebas":23,"listaEsperaCebas":0,"inscritosTotal":189,"matriculadosTotal":26,"vagasMovimentadas":0},{"curso":"Pedagogia (Licenciatura)","periodo":"Semipresencial","vagasVestibular":40,"vagasCebas":80,"bolsaFuncionario":0,"transferenciaInterna":1,"totalVagas":120,"inscritosVestibular":302,"convocadosVestibular":102,"pagosVestibular":25,"inscritosCebas":332,"classificadosCebas":52,"listaEsperaCebas":0,"inscritosTotal":634,"matriculadosTotal":77,"vagasMovimentadas":1},{"curso":"Psicologia (Bacharelado)","periodo":"Matutino","vagasVestibular":20,"vagasCebas":0,"bolsaFuncionario":0,"transferenciaInterna":-1,"totalVagas":21,"inscritosVestibular":130,"convocadosVestibular":49,"pagosVestibular":20,"inscritosCebas":0,"classificadosCebas":0,"listaEsperaCebas":0,"inscritosTotal":130,"matriculadosTotal":20,"vagasMovimentadas":-1},{"curso":"Psicologia (Bacharelado)","periodo":"Noturno","vagasVestibular":45,"vagasCebas":10,"bolsaFuncionario":1,"transferenciaInterna":-1,"totalVagas":56,"inscritosVestibular":271,"convocadosVestibular":406,"pagosVestibular":18,"inscritosCebas":464,"classificadosCebas":16,"listaEsperaCebas":261,"inscritosTotal":735,"matriculadosTotal":34,"vagasMovimentadas":0},{"curso":"Química (Bacharelado)","periodo":"Noturno","vagasVestibular":17,"vagasCebas":22,"bolsaFuncionario":0,"transferenciaInterna":0,"totalVagas":39,"inscritosVestibular":56,"convocadosVestibular":26,"pagosVestibular":9,"inscritosCebas":50,"classificadosCebas":3,"listaEsperaCebas":0,"inscritosTotal":106,"matriculadosTotal":12,"vagasMovimentadas":0},{"curso":"Segurança da Informação (Tecnólogo)","periodo":"Noturno","vagasVestibular":20,"vagasCebas":0,"bolsaFuncionario":0,"transferenciaInterna":0,"totalVagas":20,"inscritosVestibular":10,"convocadosVestibular":6,"pagosVestibular":2,"inscritosCebas":0,"classificadosCebas":0,"listaEsperaCebas":0,"inscritosTotal":10,"matriculadosTotal":2,"vagasMovimentadas":0}];
+    let turnoAtual = 'TODOS';
 
-    let totalVagas = 0;
-    let totalInscritos = 0;
-    let totalMatriculados = 0;
-    let totalCebas = 0;
+    function renderizar() {
+      const tabela = document.getElementById('tabela-corpo');
+      tabela.innerHTML = '';
 
-    const tabelaCorpo = document.getElementById('tabela-corpo');
+      let totalVagas = 0;
+      let totalInscritos = 0;
+      let totalMatricVest = 0;
+      let totalMatricCebas = 0;
 
-    dados.forEach(item => {
-      totalVagas += item.totalVagas;
-      totalInscritos += item.inscritosTotal;
-      totalMatriculados += item.pagosVestibular;
-      totalCebas += item.classificadosCebas;
+      const filtrados = dados.filter(item => {
+        if (turnoAtual === 'TODOS') return true;
+        return item.periodo.toLowerCase() === turnoAtual.toLowerCase();
+      });
 
-      const perc = item.totalVagas > 0 ? Math.min(100, Math.round((item.matriculadosTotal / item.totalVagas) * 100)) : 0;
+      filtrados.forEach(item => {
+        totalVagas += item.totalVagas;
+        totalInscritos += item.inscritosTotal;
+        totalMatricVest += item.pagosVestibular;
+        totalMatricCebas += item.classificadosCebas;
 
-      const tr = document.createElement('tr');
-      tr.innerHTML = `
-        <td><strong>${item.curso}</strong></td>
-        <td>${item.periodo}</td>
-        <td>${item.totalVagas}</td>
-        <td>${item.inscritosTotal}</td>
-        <td>${item.pagosVestibular}</td>
-        <td>${item.classificadosCebas}</td>
-        <td>
-          <span>${perc}%</span>
-          <div class="progress-bar-bg">
-            <div class="progress-bar-fill" style="width: ${perc}%;"></div>
-          </div>
-        </td>
+        const totalMatric = item.pagosVestibular + item.classificadosCebas;
+        const perc = item.totalVagas > 0 ? Math.min(100, Math.round((totalMatric / item.totalVagas) * 100)) : 0;
+
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td><strong>${item.curso}</strong></td>
+          <td>${item.periodo}</td>
+          <td>${item.totalVagas}</td>
+          <td>${item.inscritosTotal}</td>
+          <td>${item.pagosVestibular}</td>
+          <td>${item.classificadosCebas}</td>
+          <td><strong>${totalMatric}</strong></td>
+          <td>
+            ${perc}%
+            <div class="progress-bar"><div class="progress-fill" style="width: ${perc}%;"></div></div>
+          </td>
+        `;
+        tabela.appendChild(tr);
+      });
+
+      // Atualizar Cards Topo
+      document.getElementById('cards').innerHTML = `
+        <div class="card"><div class="card-title">Total de Vagas</div><div class="card-value">${totalVagas}</div></div>
+        <div class="card"><div class="card-title">Inscritos Totais</div><div class="card-value">${totalInscritos}</div></div>
+        <div class="card"><div class="card-title">Matriculados Vestibular</div><div class="card-value">${totalMatricVest}</div></div>
+        <div class="card"><div class="card-title">Matriculados CEBAS</div><div class="card-value">${totalMatricCebas}</div></div>
       `;
-      tabelaCorpo.appendChild(tr);
-    });
+    }
 
-    const cardsDiv = document.getElementById('cards');
-    cardsDiv.innerHTML = `
-      <div class="card">
-        <h3>Total de Vagas</h3>
-        <div class="value">${totalVagas}</div>
-      </div>
-      <div class="card">
-        <h3>Inscritos Totais</h3>
-        <div class="value">${totalInscritos}</div>
-      </div>
-      <div class="card">
-        <h3>Matriculados Vestibular</h3>
-        <div class="value">${totalMatriculados}</div>
-      </div>
-      <div class="card">
-        <h3>Matriculados CEBAS</h3>
-        <div class="value">${totalCebas}</div>
-      </div>
-    `;
+    function filtrarTurno(turno, btn) {
+      turnoAtual = turno;
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderizar();
+    }
+
+    // Inicializar Dashboard
+    renderizar();
   </script>
 </body>
 </html>
