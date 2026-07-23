@@ -33,7 +33,7 @@
             </div>
             <div class="text-right hidden sm:block">
                 <span class="text-xs text-slate-400">Última atualização</span>
-                <p class="text-sm font-semibold text-slate-700">23/07/2026 12:27:09</p>
+                <p class="text-sm font-semibold text-slate-700">23/07/2026 15:59:19</p>
             </div>
         </div>
     </header>
@@ -168,8 +168,9 @@
                                 <th class="py-4 px-4">Período</th>
                                 <th class="py-4 px-4 text-center">Vagas CEBAS</th>
                                 <th class="py-4 px-4 text-center">Inscrições (Bolsa)</th>
-                                <th class="py-4 px-4 text-center">Classificados</th>
+                                <th class="py-4 px-4 text-center">Classificados / Isentos</th>
                                 <th class="py-4 px-4 text-center">Lista de Espera</th>
+                                <th class="py-4 px-4 text-center">Ocupação (CEBAS)</th>
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-slate-100 text-sm">
@@ -183,6 +184,14 @@
                                     <td class="py-4 px-4 text-center text-slate-600" x-text="item.inscritosCebas"></td>
                                     <td class="py-4 px-4 text-center text-emerald-600 font-semibold" x-text="item.classificadosCebas"></td>
                                     <td class="py-4 px-4 text-center text-amber-600 font-medium" x-text="item.listaEsperaCebas"></td>
+                                    <td class="py-4 px-4 text-center">
+                                        <div class="flex items-center justify-center space-x-2">
+                                            <div class="w-16 bg-slate-100 rounded-full h-2">
+                                                <div class="bg-rose-500 h-2 rounded-full" :style="'width: ' + Math.min(((Number(item.classificadosCebas) || 0) / (Number(item.vagasCebas) || 1)) * 100, 100) + '%'"></div>
+                                            </div>
+                                            <span class="text-xs text-slate-500 font-medium" x-text="(item.vagasCebas > 0 && item.classificadosCebas) ? Math.round(((Number(item.classificadosCebas) || 0) / Number(item.vagasCebas)) * 100) + '%' : '0%'"></span>
+                                        </div>
+                                    </td>
                                 </tr>
                             </template>
                         </tbody>
