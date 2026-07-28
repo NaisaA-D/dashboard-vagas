@@ -24,8 +24,8 @@
                     <i class="fa-solid fa-table-list text-lg"></i>
                 </div>
                 <div>
-                    <h1 class="text-lg font-bold text-slate-950">Controle de Vagas</h1>
-                    <p class="text-xs text-slate-500">Vestibular vs. CEBAS 2026/2</p>
+                    <h1 class="text-lg font-bold text-slate-950">Tabela de Vagas</h1>
+                    <p class="text-xs text-slate-500">Vestibular 2026/2</p>
                 </div>
             </div>
             <div class="text-right hidden sm:block">
@@ -37,35 +37,35 @@
 
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6">
 
-        <!-- KPIs Cards -->
+        <!-- KPIs Totais Separados -->
         <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            <div class="bg-white p-5 rounded-2xl border border-blue-100 shadow-sm flex items-center space-x-4 border-l-4 border-l-blue-600">
+            <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex items-center space-x-4">
                 <div class="p-3 bg-blue-50 text-blue-600 rounded-xl"><i class="fa-solid fa-graduation-cap text-2xl"></i></div>
                 <div>
                     <p class="text-xs text-slate-500 font-medium">Vagas Vestibular</p>
                     <h3 class="text-xl font-bold text-slate-900" x-text="kpis.vagasVestibular"></h3>
-                    <span class="text-xs text-blue-600" x-text="kpis.inscritosVestibular + ' inscritos'"></span>
-                </div>
-            </div>
-
-            <div class="bg-white p-5 rounded-2xl border border-purple-100 shadow-sm flex items-center space-x-4 border-l-4 border-l-purple-600">
-                <div class="p-3 bg-purple-50 text-purple-600 rounded-xl"><i class="fa-solid fa-hand-holding-heart text-2xl"></i></div>
-                <div>
-                    <p class="text-xs text-slate-500 font-medium">Vagas CEBAS</p>
-                    <h3 class="text-xl font-bold text-slate-900" x-text="kpis.vagasCebas"></h3>
-                    <span class="text-xs text-purple-600" x-text="kpis.inscritosCebas + ' inscritos'"></span>
+                    <p class="text-xs text-slate-400" x-text="kpis.inscritosVestibular + ' inscrições'"></p>
                 </div>
             </div>
 
             <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex items-center space-x-4">
-                <div class="p-3 bg-slate-100 text-slate-700 rounded-xl"><i class="fa-solid fa-layer-group text-2xl"></i></div>
+                <div class="p-3 bg-purple-50 text-purple-600 rounded-xl"><i class="fa-solid fa-hand-holding-heart text-2xl"></i></div>
+                <div>
+                    <p class="text-xs text-slate-500 font-medium">Vagas CEBAS</p>
+                    <h3 class="text-xl font-bold text-slate-900" x-text="kpis.vagasCebas"></h3>
+                    <p class="text-xs text-slate-400" x-text="kpis.inscritosCebas + ' inscrições'"></p>
+                </div>
+            </div>
+
+            <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex items-center space-x-4">
+                <div class="p-3 bg-indigo-50 text-indigo-600 rounded-xl"><i class="fa-solid fa-layer-group text-2xl"></i></div>
                 <div>
                     <p class="text-xs text-slate-500 font-medium">Total de Vagas</p>
                     <h3 class="text-xl font-bold text-slate-900" x-text="kpis.vagasTotal"></h3>
                 </div>
             </div>
 
-            <div class="bg-white p-5 rounded-2xl border border-emerald-100 shadow-sm flex items-center space-x-4 border-l-4 border-l-emerald-600">
+            <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex items-center space-x-4">
                 <div class="p-3 bg-emerald-50 text-emerald-600 rounded-xl"><i class="fa-solid fa-users text-2xl"></i></div>
                 <div>
                     <p class="text-xs text-slate-500 font-medium">Inscrições Totais</p>
@@ -87,45 +87,29 @@
             </div>
         </div>
 
-        <!-- Tabela Completa com Separação de Blocos -->
+        <!-- Tabela Fiel à Planilha -->
         <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-x-auto">
             <table class="w-full text-left text-sm whitespace-nowrap border-collapse">
-                <thead>
-                    <!-- Super Cabeçalho categorizado -->
-                    <tr class="bg-slate-100 text-xs font-bold text-slate-700 uppercase border-b border-slate-200">
-                        <th colspan="2" class="p-3 text-left border-r border-slate-200">Informações Gerais</th>
-                        <th colspan="2" class="p-3 text-center bg-blue-50 text-blue-900 border-r border-slate-200"><i class="fa-solid fa-graduation-cap mr-1"></i> Vestibular Tradicional</th>
-                        <th colspan="2" class="p-3 text-center bg-purple-50 text-purple-900 border-r border-slate-200"><i class="fa-solid fa-hand-holding-heart mr-1"></i> Bolsas CEBAS</th>
-                        <th colspan="2" class="p-3 text-center border-r border-slate-200">Outros Ajustes</th>
-                        <th colspan="2" class="p-3 text-center bg-emerald-100 text-emerald-900"><i class="fa-solid fa-chart-pie mr-1"></i> Consolidação Total</th>
-                    </tr>
-                    <tr class="bg-slate-50 border-b border-slate-200 text-xs font-semibold text-slate-600 uppercase">
-                        <th class="p-3 border-r border-slate-100">Curso</th>
-                        <th class="p-3 border-r border-slate-200">Período</th>
-                        
-                        <!-- Vestibular -->
-                        <th class="p-3 text-center bg-blue-50/50">Vagas</th>
-                        <th class="p-3 text-center bg-blue-50/50 border-r border-slate-200">Inscritos</th>
-                        
-                        <!-- CEBAS -->
-                        <th class="p-3 text-center bg-purple-50/50">Vagas</th>
-                        <th class="p-3 text-center bg-purple-50/50 border-r border-slate-200">Inscritos</th>
-                        
-                        <!-- Outros -->
-                        <th class="p-3 text-center">Bolsa Func.</th>
-                        <th class="p-3 text-center border-r border-slate-200">Transf. Int.</th>
-                        
-                        <!-- Totais -->
-                        <th class="p-3 text-center font-bold bg-slate-100">Vagas Total</th>
-                        <th class="p-3 text-center font-bold bg-emerald-50 text-emerald-800">Insc. Total</th>
+                <thead class="bg-slate-50 border-b border-slate-200 text-xs font-semibold text-slate-600 uppercase">
+                    <tr>
+                        <th class="p-4 border-r border-slate-100">Curso</th>
+                        <th class="p-4 border-r border-slate-100">Período</th>
+                        <th class="p-4 text-center">Vagas Vest.</th>
+                        <th class="p-4 text-center">Vagas CEBAS</th>
+                        <th class="p-4 text-center">Bolsa Func.</th>
+                        <th class="p-4 text-center">Transf. Int.</th>
+                        <th class="p-4 text-center bg-indigo-50 font-bold text-indigo-900 border-x border-slate-200">Vagas Total</th>
+                        <th class="p-4 text-center">Insc. Vest.</th>
+                        <th class="p-4 text-center">Insc. CEBAS</th>
+                        <th class="p-4 text-center font-bold bg-emerald-50 text-emerald-900">Insc. Total</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-slate-100">
                     <template x-for="item in filteredList" :key="item.curso + item.periodo">
                         <tr class="hover:bg-slate-50 transition-colors">
-                            <td class="p-3 font-semibold text-slate-900 border-r border-slate-100" x-text="item.curso"></td>
-                            <td class="p-3 border-r border-slate-200">
-                                <span class="px-2 py-0.5 rounded-full text-xs font-medium"
+                            <td class="p-4 font-semibold text-slate-900 border-r border-slate-100" x-text="item.curso"></td>
+                            <td class="p-4 border-r border-slate-100">
+                                <span class="px-2.5 py-1 rounded-full text-xs font-medium"
                                       :class="{
                                         'bg-blue-50 text-blue-700': item.periodo === 'Noturno',
                                         'bg-amber-50 text-amber-700': item.periodo === 'Matutino',
@@ -133,22 +117,14 @@
                                         'bg-emerald-50 text-emerald-700': item.periodo === 'Semipresencial'
                                       }" x-text="item.periodo"></span>
                             </td>
-                            
-                            <!-- Vestibular -->
-                            <td class="p-3 text-center bg-blue-50/30 font-medium text-slate-800" x-text="item.vagasVestibular || '-'"></td>
-                            <td class="p-3 text-center bg-blue-50/30 text-blue-700 font-semibold border-r border-slate-200" x-text="item.inscritosVestibular || '-'"></td>
-                            
-                            <!-- CEBAS -->
-                            <td class="p-3 text-center bg-purple-50/30 font-medium text-slate-800" x-text="item.vagasCebas || '-'"></td>
-                            <td class="p-3 text-center bg-purple-50/30 text-purple-700 font-semibold border-r border-slate-200" x-text="item.inscritosCebas || '-'"></td>
-                            
-                            <!-- Outros -->
-                            <td class="p-3 text-center text-slate-500" x-text="item.bolsaFuncionario || '-'"></td>
-                            <td class="p-3 text-center border-r border-slate-200" :class="item.transfInterna < 0 ? 'text-rose-600 font-semibold' : (item.transfInterna > 0 ? 'text-emerald-600 font-semibold' : 'text-slate-400')" x-text="item.transfInterna || '0'"></td>
-                            
-                            <!-- Totais -->
-                            <td class="p-3 text-center font-bold bg-slate-50 text-slate-900" x-text="item.vagasTotal"></td>
-                            <td class="p-3 text-center font-bold text-emerald-700 bg-emerald-50/50" x-text="item.inscritosTotal"></td>
+                            <td class="p-4 text-center" x-text="item.vagasVestibular || '-'"></td>
+                            <td class="p-4 text-center" x-text="item.vagasCebas || '-'"></td>
+                            <td class="p-4 text-center text-slate-500" x-text="item.bolsaFuncionario || '-'"></td>
+                            <td class="p-4 text-center" :class="item.transfInterna < 0 ? 'text-rose-600 font-semibold' : (item.transfInterna > 0 ? 'text-emerald-600 font-semibold' : 'text-slate-400')" x-text="item.transfInterna || '0'"></td>
+                            <td class="p-4 text-center font-bold bg-indigo-50/50 text-indigo-950 border-x border-slate-200" x-text="item.vagasTotal"></td>
+                            <td class="p-4 text-center" x-text="item.inscritosVestibular || '-'"></td>
+                            <td class="p-4 text-center" x-text="item.inscritosCebas || '-'"></td>
+                            <td class="p-4 text-center font-bold text-emerald-800 bg-emerald-50/50" x-text="item.inscritosTotal"></td>
                         </tr>
                     </template>
                 </tbody>
@@ -158,7 +134,7 @@
     </main>
 
     <script>
-        const INITIAL_DATA = {"lastUpdated":"28/07/2026 10:27","vagasList":[{"curso":"Administração (Bacharelado)","periodo":"Noturno","vagasVestibular":30,"vagasCebas":40,"bolsaFuncionario":1,"transfInterna":0,"vagasTotal":70,"inscritosVestibular":173,"inscritosCebas":163,"inscritosTotal":336},{"curso":"Análise e Desenvolvimento de Sistemas (Tecnólogo)","periodo":"Matutino","vagasVestibular":30,"vagasCebas":6,"bolsaFuncionario":0,"transfInterna":1,"vagasTotal":36,"inscritosVestibular":97,"inscritosCebas":115,"inscritosTotal":212},{"curso":"Análise e Desenvolvimento de Sistemas (Tecnólogo)","periodo":"Noturno","vagasVestibular":20,"vagasCebas":0,"bolsaFuncionario":0,"transfInterna":1,"vagasTotal":20,"inscritosVestibular":43,"inscritosCebas":0,"inscritosTotal":43},{"curso":"Arquitetura e Urbanismo (Bacharelado)","periodo":"Noturno","vagasVestibular":10,"vagasCebas":0,"bolsaFuncionario":0,"transfInterna":1,"vagasTotal":10,"inscritosVestibular":58,"inscritosCebas":0,"inscritosTotal":58},{"curso":"Ciência da Computação (Bacharelado)","periodo":"Matutino","vagasVestibular":30,"vagasCebas":5,"bolsaFuncionario":0,"transfInterna":0,"vagasTotal":5,"inscritosVestibular":20,"inscritosCebas":19,"inscritosTotal":39},{"curso":"Ciência da Computação (Bacharelado)","periodo":"Noturno","vagasVestibular":65,"vagasCebas":5,"bolsaFuncionario":0,"transfInterna":0,"vagasTotal":70,"inscritosVestibular":135,"inscritosCebas":102,"inscritosTotal":237},{"curso":"Ciência de Dados e Inteligência Artificial (Bacharelado)","periodo":"Noturno","vagasVestibular":50,"vagasCebas":0,"bolsaFuncionario":0,"transfInterna":0,"vagasTotal":50,"inscritosVestibular":42,"inscritosCebas":0,"inscritosTotal":42},{"curso":"Ciências Contábeis (Bacharelado)","periodo":"Noturno","vagasVestibular":15,"vagasCebas":26,"bolsaFuncionario":0,"transfInterna":3,"vagasTotal":39,"inscritosVestibular":93,"inscritosCebas":71,"inscritosTotal":164},{"curso":"Ciências Econômicas (Bacharelado)","periodo":"Noturno","vagasVestibular":25,"vagasCebas":11,"bolsaFuncionario":0,"transfInterna":1,"vagasTotal":36,"inscritosVestibular":46,"inscritosCebas":28,"inscritosTotal":74},{"curso":"Design (Bacharelado)","periodo":"Noturno","vagasVestibular":17,"vagasCebas":7,"bolsaFuncionario":1,"transfInterna":0,"vagasTotal":24,"inscritosVestibular":85,"inscritosCebas":66,"inscritosTotal":151},{"curso":"Direito (Bacharelado)","periodo":"Matutino","vagasVestibular":15,"vagasCebas":15,"bolsaFuncionario":1,"transfInterna":2,"vagasTotal":29,"inscritosVestibular":158,"inscritosCebas":207,"inscritosTotal":366},{"curso":"Engenharia (Bacharelado)","periodo":"Matutino","vagasVestibular":10,"vagasCebas":7,"bolsaFuncionario":0,"transfInterna":0,"vagasTotal":17,"inscritosVestibular":41,"inscritosCebas":31,"inscritosTotal":74},{"curso":"Engenharia (Bacharelado)","periodo":"Noturno","vagasVestibular":30,"vagasCebas":14,"bolsaFuncionario":1,"transfInterna":1,"vagasTotal":43,"inscritosVestibular":212,"inscritosCebas":144,"inscritosTotal":357},{"curso":"Engenharia de Software (Bacharelado)","periodo":"Matutino","vagasVestibular":40,"vagasCebas":0,"bolsaFuncionario":0,"transfInterna":0,"vagasTotal":40,"inscritosVestibular":8,"inscritosCebas":0,"inscritosTotal":8},{"curso":"Engenharia de Software (Bacharelado)","periodo":"Noturno","vagasVestibular":70,"vagasCebas":0,"bolsaFuncionario":1,"transfInterna":-2,"vagasTotal":72,"inscritosVestibular":121,"inscritosCebas":0,"inscritosTotal":123},{"curso":"Gestão de Negócios Imobiliários (Tecnólogo)","periodo":"Ead","vagasVestibular":30,"vagasCebas":30,"bolsaFuncionario":0,"transfInterna":0,"vagasTotal":30,"inscritosVestibular":7,"inscritosCebas":33,"inscritosTotal":40},{"curso":"Gestão de Recursos Humanos (Tecnólogo)","periodo":"Ead","vagasVestibular":20,"vagasCebas":50,"bolsaFuncionario":0,"transfInterna":0,"vagasTotal":70,"inscritosVestibular":72,"inscritosCebas":228,"inscritosTotal":300},{"curso":"Gestão Pública (Tecnólogo)","periodo":"Ead","vagasVestibular":15,"vagasCebas":45,"bolsaFuncionario":2,"transfInterna":2,"vagasTotal":60,"inscritosVestibular":31,"inscritosCebas":107,"inscritosTotal":138},{"curso":"Marketing (Tecnólogo)","periodo":"Ead","vagasVestibular":20,"vagasCebas":40,"bolsaFuncionario":0,"transfInterna":0,"vagasTotal":60,"inscritosVestibular":61,"inscritosCebas":133,"inscritosTotal":194},{"curso":"Pedagogia (Licenciatura)","periodo":"Semipresencial","vagasVestibular":40,"vagasCebas":80,"bolsaFuncionario":0,"transfInterna":1,"vagasTotal":120,"inscritosVestibular":322,"inscritosCebas":332,"inscritosTotal":654},{"curso":"Psicologia (Bacharelado)","periodo":"Matutino","vagasVestibular":20,"vagasCebas":0,"bolsaFuncionario":0,"transfInterna":-1,"vagasTotal":21,"inscritosVestibular":130,"inscritosCebas":0,"inscritosTotal":130},{"curso":"Psicologia (Bacharelado)","periodo":"Noturno","vagasVestibular":45,"vagasCebas":10,"bolsaFuncionario":1,"transfInterna":-1,"vagasTotal":56,"inscritosVestibular":296,"inscritosCebas":464,"inscritosTotal":760},{"curso":"Química (Bacharelado)","periodo":"Noturno","vagasVestibular":17,"vagasCebas":22,"bolsaFuncionario":0,"transfInterna":0,"vagasTotal":39,"inscritosVestibular":59,"inscritosCebas":49,"inscritosTotal":109},{"curso":"Segurança da Informação (Tecnólogo)","periodo":"Noturno","vagasVestibular":20,"vagasCebas":0,"bolsaFuncionario":0,"transfInterna":0,"vagasTotal":20,"inscritosVestibular":10,"inscritosCebas":0,"inscritosTotal":10},{"curso":"Totais","periodo":"","vagasVestibular":684,"vagasCebas":413,"bolsaFuncionario":8,"transfInterna":9,"vagasTotal":1037,"inscritosVestibular":2320,"inscritosCebas":2292,"inscritosTotal":4619},{"curso":"Ultima atualização: 28/07/2026 10:21:26","periodo":"Vagas","vagasVestibular":0,"vagasCebas":0,"bolsaFuncionario":0,"transfInterna":0,"vagasTotal":0,"inscritosVestibular":0,"inscritosCebas":0,"inscritosTotal":0}]};
+        const INITIAL_DATA = {"lastUpdated":"28/07/2026 10:30","vagasList":[{"curso":"Administração (Bacharelado)","periodo":"Noturno","vagasVestibular":30,"vagasCebas":40,"bolsaFuncionario":1,"transfInterna":0,"vagasTotal":70,"inscritosVestibular":173,"inscritosCebas":163,"inscritosTotal":336},{"curso":"Análise e Desenvolvimento de Sistemas (Tecnólogo)","periodo":"Matutino","vagasVestibular":30,"vagasCebas":6,"bolsaFuncionario":0,"transfInterna":1,"vagasTotal":36,"inscritosVestibular":97,"inscritosCebas":115,"inscritosTotal":212},{"curso":"Análise e Desenvolvimento de Sistemas (Tecnólogo)","periodo":"Noturno","vagasVestibular":20,"vagasCebas":0,"bolsaFuncionario":0,"transfInterna":1,"vagasTotal":20,"inscritosVestibular":43,"inscritosCebas":0,"inscritosTotal":43},{"curso":"Arquitetura e Urbanismo (Bacharelado)","periodo":"Noturno","vagasVestibular":10,"vagasCebas":0,"bolsaFuncionario":0,"transfInterna":1,"vagasTotal":10,"inscritosVestibular":58,"inscritosCebas":0,"inscritosTotal":58},{"curso":"Ciência da Computação (Bacharelado)","periodo":"Matutino","vagasVestibular":30,"vagasCebas":5,"bolsaFuncionario":0,"transfInterna":0,"vagasTotal":5,"inscritosVestibular":20,"inscritosCebas":19,"inscritosTotal":39},{"curso":"Ciência da Computação (Bacharelado)","periodo":"Noturno","vagasVestibular":65,"vagasCebas":5,"bolsaFuncionario":0,"transfInterna":0,"vagasTotal":70,"inscritosVestibular":135,"inscritosCebas":102,"inscritosTotal":237},{"curso":"Ciência de Dados e Inteligência Artificial (Bacharelado)","periodo":"Noturno","vagasVestibular":50,"vagasCebas":0,"bolsaFuncionario":0,"transfInterna":0,"vagasTotal":50,"inscritosVestibular":42,"inscritosCebas":0,"inscritosTotal":42},{"curso":"Ciências Contábeis (Bacharelado)","periodo":"Noturno","vagasVestibular":15,"vagasCebas":26,"bolsaFuncionario":0,"transfInterna":3,"vagasTotal":39,"inscritosVestibular":93,"inscritosCebas":71,"inscritosTotal":164},{"curso":"Ciências Econômicas (Bacharelado)","periodo":"Noturno","vagasVestibular":25,"vagasCebas":11,"bolsaFuncionario":0,"transfInterna":1,"vagasTotal":36,"inscritosVestibular":46,"inscritosCebas":28,"inscritosTotal":74},{"curso":"Design (Bacharelado)","periodo":"Noturno","vagasVestibular":17,"vagasCebas":7,"bolsaFuncionario":1,"transfInterna":0,"vagasTotal":24,"inscritosVestibular":85,"inscritosCebas":66,"inscritosTotal":151},{"curso":"Direito (Bacharelado)","periodo":"Matutino","vagasVestibular":15,"vagasCebas":15,"bolsaFuncionario":1,"transfInterna":2,"vagasTotal":29,"inscritosVestibular":158,"inscritosCebas":207,"inscritosTotal":366},{"curso":"Engenharia (Bacharelado)","periodo":"Matutino","vagasVestibular":10,"vagasCebas":7,"bolsaFuncionario":0,"transfInterna":0,"vagasTotal":17,"inscritosVestibular":41,"inscritosCebas":31,"inscritosTotal":74},{"curso":"Engenharia (Bacharelado)","periodo":"Noturno","vagasVestibular":30,"vagasCebas":14,"bolsaFuncionario":2,"transfInterna":1,"vagasTotal":43,"inscritosVestibular":212,"inscritosCebas":144,"inscritosTotal":357},{"curso":"Engenharia de Software (Bacharelado)","periodo":"Matutino","vagasVestibular":40,"vagasCebas":0,"bolsaFuncionario":0,"transfInterna":0,"vagasTotal":40,"inscritosVestibular":8,"inscritosCebas":0,"inscritosTotal":8},{"curso":"Engenharia de Software (Bacharelado)","periodo":"Noturno","vagasVestibular":70,"vagasCebas":0,"bolsaFuncionario":1,"transfInterna":-2,"vagasTotal":72,"inscritosVestibular":121,"inscritosCebas":0,"inscritosTotal":123},{"curso":"Gestão de Negócios Imobiliários (Tecnólogo)","periodo":"Ead","vagasVestibular":30,"vagasCebas":30,"bolsaFuncionario":0,"transfInterna":0,"vagasTotal":30,"inscritosVestibular":7,"inscritosCebas":33,"inscritosTotal":40},{"curso":"Gestão de Recursos Humanos (Tecnólogo)","periodo":"Ead","vagasVestibular":20,"vagasCebas":50,"bolsaFuncionario":0,"transfInterna":0,"vagasTotal":70,"inscritosVestibular":72,"inscritosCebas":228,"inscritosTotal":300},{"curso":"Gestão Pública (Tecnólogo)","periodo":"Ead","vagasVestibular":15,"vagasCebas":45,"bolsaFuncionario":3,"transfInterna":2,"vagasTotal":60,"inscritosVestibular":31,"inscritosCebas":107,"inscritosTotal":138},{"curso":"Marketing (Tecnólogo)","periodo":"Ead","vagasVestibular":20,"vagasCebas":40,"bolsaFuncionario":0,"transfInterna":0,"vagasTotal":60,"inscritosVestibular":61,"inscritosCebas":133,"inscritosTotal":194},{"curso":"Pedagogia (Licenciatura)","periodo":"Semipresencial","vagasVestibular":40,"vagasCebas":80,"bolsaFuncionario":0,"transfInterna":1,"vagasTotal":120,"inscritosVestibular":322,"inscritosCebas":332,"inscritosTotal":654},{"curso":"Psicologia (Bacharelado)","periodo":"Matutino","vagasVestibular":20,"vagasCebas":0,"bolsaFuncionario":0,"transfInterna":-1,"vagasTotal":21,"inscritosVestibular":130,"inscritosCebas":0,"inscritosTotal":130},{"curso":"Psicologia (Bacharelado)","periodo":"Noturno","vagasVestibular":45,"vagasCebas":10,"bolsaFuncionario":1,"transfInterna":-1,"vagasTotal":56,"inscritosVestibular":296,"inscritosCebas":464,"inscritosTotal":760},{"curso":"Química (Bacharelado)","periodo":"Noturno","vagasVestibular":17,"vagasCebas":22,"bolsaFuncionario":0,"transfInterna":0,"vagasTotal":39,"inscritosVestibular":59,"inscritosCebas":49,"inscritosTotal":109},{"curso":"Segurança da Informação (Tecnólogo)","periodo":"Noturno","vagasVestibular":20,"vagasCebas":0,"bolsaFuncionario":0,"transfInterna":0,"vagasTotal":20,"inscritosVestibular":10,"inscritosCebas":0,"inscritosTotal":10},{"curso":"Totais","periodo":"","vagasVestibular":684,"vagasCebas":413,"bolsaFuncionario":10,"transfInterna":9,"vagasTotal":1037,"inscritosVestibular":2320,"inscritosCebas":2292,"inscritosTotal":4619},{"curso":"Ultima atualização: 28/07/2026 10:28:40","periodo":"Vagas","vagasVestibular":0,"vagasCebas":0,"bolsaFuncionario":0,"transfInterna":0,"vagasTotal":0,"inscritosVestibular":0,"inscritosCebas":0,"inscritosTotal":0}]};
 
         function dashboardData() {
             return {
