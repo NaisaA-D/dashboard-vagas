@@ -408,7 +408,7 @@
                     } else if (this.tab === 'geral') {
                         const vagasTotalCalculado = list.reduce((sum, item) => sum + (item.vagasVestibular + item.vagasCebas), 0);
                         const inscricoes = list.reduce((sum, item) => sum + (item.inscritosVestibular + item.inscritosCebas), 0);
-                        const matriculados = list.reduce((sum, item) => sum + item.matriculados, 0);
+                        const matriculados = list.reduce((sum, item) => sum + (item.classificadosCebas + item.pagos), 0);
                         const convocados = list.reduce((sum, item) => sum + item.convocados, 0);
                         const demanda = vagasTotalCalculado > 0 ? (inscricoes / vagasTotalCalculado).toFixed(1) : '0';
                         const taxaOcupacao = vagasTotalCalculado > 0 ? Math.round((matriculados / vagasTotalCalculado) * 100) : 0;
