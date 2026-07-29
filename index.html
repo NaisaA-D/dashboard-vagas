@@ -275,19 +275,20 @@
     </footer>
 
     <script>
-        // Exemplo: Insira no topo do seu <script> ou logo acima da função de renderização
-const cursosOcultosPorProcesso = {
-  "Vestibular": [
-    "Ciência da Computação - Matutino",
-    "Ciência de Dados e Inteligência Artificial - Noturno",
-    "Engenharia de Software - Matutino",
-    "Gestão de Negócios Imobiliários - Ead",
-    "Segurança da Informação - Noturno"
-  ],
-  "CEBAS": [
-    // Cursos do CEBAS que deseja ocultar
-  ]
-};
+        // Cursos que NÃO devem aparecer no Vestibular e CEBAS
+        const cursosOcultosPorProcesso = {
+            "vestibular": [
+                "Ciência da Computação - Matutino",
+                "Ciência de Dados e Inteligência Artificial - Noturno",
+                "Engenharia de Software - Matutino",
+                "Gestão de Negócios Imobiliários - Ead",
+                "Segurança da Informação - Noturno"
+            ],
+            "cebas": [
+                // Adicione os cursos do CEBAS a ocultar aqui
+            ]
+        };
+
         function dashboardData() {
             return {
                 tab: 'vestibular',
@@ -298,7 +299,6 @@ const cursosOcultosPorProcesso = {
                 vagasList: [],
 
                 initData() {
-                    // Busca dinamicamente o arquivo data.json atualizado pelo Apps Script
                     fetch('data.json?t=' + new Date().getTime())
                         .then(response => response.json())
                         .then(data => {
@@ -336,7 +336,15 @@ const cursosOcultosPorProcesso = {
                     return this.vagasList.filter(item => {
                         const matchesSearch = item.curso.toLowerCase().includes(this.search.toLowerCase());
                         const matchesPeriodo = this.filtroPeriodo === '' || item.periodo === this.filtroPeriodo;
-                        return matchesSearch && matchesPeriodo;
+                        
+                        // Aplica a regra de ocultar por aba (vestibular / cebas)
+                        const ocultos = cursosOcultosPorProcesso[this.tab] || [];
+                        const ehOculto = ocultos.some(bloqueado => {
+                            const [cursoBloq, periodoBloq] = bloqueado.split(' - ').map(s => s.trim().toLowerCase());
+                            return item.curso.toLowerCase().includes(cursoBloq) && item.periodo.toLowerCase() === periodoBloq;
+                        });
+
+                        return matchesSearch && matchesPeriodo && !ehOculto;
                     });
                 },
 
