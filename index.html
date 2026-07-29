@@ -204,8 +204,18 @@
                                         <th class="py-4 px-4 text-center">Vagas Totais</th>
                                         <th class="py-4 px-4 text-center">Total Inscrições</th>
                                         <th class="py-4 px-4 text-center">Total Matriculados</th>
-                                        <th class="py-4 px-4 text-center">Ocupação Total</th>
-                                    </tr>
+                                        <td class="py-4 px-4 text-center">
+    <div class="flex items-center justify-center space-x-2">
+        <div class="w-16 bg-slate-100 rounded-full h-2">
+            <div class="bg-emerald-500 h-2 rounded-full" 
+                 :style="`width: ${(item.vagasVestibular + item.vagasCebas) > 0 ? Math.min(((item.classificadosCebas + item.pagos) / (item.vagasVestibular + item.vagasCebas)) * 100, 100) : 0}%`">
+            </div>
+        </div>
+        <span class="text-xs text-slate-500 font-medium" 
+              x-text="(item.vagasVestibular + item.vagasCebas) > 0 ? Math.round(((item.classificadosCebas + item.pagos) / (item.vagasVestibular + item.vagasCebas)) * 100) + '%' : '0%'">
+        </span>
+    </div>
+</td>
                                 </thead>
                                 <tbody class="divide-y divide-slate-100 text-sm">
                                     <template x-for="item in filteredList" :key="item.curso + item.periodo">
