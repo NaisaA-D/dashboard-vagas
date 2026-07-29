@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "29/07/2026 14:06",
+  "lastUpdated": "29/07/2026 14:15",
   "vagasList": [
     {
       "Curso": "Administração (Bacharelado)",
@@ -32,11 +32,10 @@
       "Vagas Restantes\nVestibular": 14,
       "Vagas Restantes\nCEBAS": 5,
       "Vagas Restantes\nFuncionário": 1,
-      "Vagas Restantes\nna turma": 20,
+      "Vagas Restantes\nna turma": 0,
       "Turma": "123ADM_2D/N",
-      "Limite de alunos\nna sala/turma": 70,
-      "Observação": "-1 vaga para bolsa funcionário",
-      "": "#NAME?"
+      "Limite mínimo de alunos\nna sala/turma": 50,
+      "Observação": "-1 vaga para bolsa funcionário"
     },
     {
       "Curso": "Análise e Desenvolvimento de Sistemas (Tecnólogo)",
@@ -71,9 +70,8 @@
       "Vagas Restantes\nFuncionário": "",
       "Vagas Restantes\nna turma": 3,
       "Turma": "134TAD_2A/M",
-      "Limite de alunos\nna sala/turma": 60,
-      "Observação": "-1 vaga para transferência interna",
-      "": ""
+      "Limite mínimo de alunos\nna sala/turma": 60,
+      "Observação": "-1 vaga para transferência interna"
     },
     {
       "Curso": "Análise e Desenvolvimento de Sistemas (Tecnólogo)",
@@ -108,9 +106,8 @@
       "Vagas Restantes\nFuncionário": "",
       "Vagas Restantes\nna turma": 7,
       "Turma": "134TAD_2X/N",
-      "Limite de alunos\nna sala/turma": 20,
-      "Observação": "2 transferências matutino para noturno / 1 transferência de calouro vindo de Ciência da Computação noturno",
-      "": ""
+      "Limite mínimo de alunos\nna sala/turma": 20,
+      "Observação": "2 transferências matutino para noturno / 1 transferência de calouro vindo de Ciência da Computação noturno"
     },
     {
       "Curso": "Arquitetura e Urbanismo (Bacharelado)",
@@ -145,9 +142,8 @@
       "Vagas Restantes\nFuncionário": "",
       "Vagas Restantes\nna turma": 13,
       "Turma": "22YARQ_2B/N",
-      "Limite de alunos\nna sala/turma": 70,
-      "Observação": "+1 vaga adicionada por transferência interna",
-      "": ""
+      "Limite mínimo de alunos\nna sala/turma": 70,
+      "Observação": "+1 vaga adicionada por transferência interna"
     },
     {
       "Curso": "Ciência da Computação (Bacharelado)",
@@ -182,9 +178,8 @@
       "Vagas Restantes\nFuncionário": "",
       "Vagas Restantes\nna turma": 29,
       "Turma": "153CDC_2A/M",
-      "Limite de alunos\nna sala/turma": 60,
-      "Observação": "",
-      "": ""
+      "Limite mínimo de alunos\nna sala/turma": 60,
+      "Observação": ""
     },
     {
       "Curso": "Ciência da Computação (Bacharelado)",
@@ -219,9 +214,8 @@
       "Vagas Restantes\nFuncionário": "",
       "Vagas Restantes\nna turma": 0,
       "Turma": "153CDC_2D/N",
-      "Limite de alunos\nna sala/turma": 60,
-      "Observação": "-1 vaga para transferência interna, veterano de Engenharia da Comp.",
-      "": ""
+      "Limite mínimo de alunos\nna sala/turma": 60,
+      "Observação": "-1 vaga para transferência interna, veterano de Engenharia da Comp."
     },
     {
       "Curso": "Ciência de Dados e Inteligência Artificial (Bacharelado)",
@@ -256,9 +250,8 @@
       "Vagas Restantes\nFuncionário": "",
       "Vagas Restantes\nna turma": 70,
       "Turma": "139DIA_2D/N",
-      "Limite de alunos\nna sala/turma": 70,
-      "Observação": "",
-      "": ""
+      "Limite mínimo de alunos\nna sala/turma": 70,
+      "Observação": ""
     },
     {
       "Curso": "Ciências Contábeis (Bacharelado)",
@@ -293,9 +286,8 @@
       "Vagas Restantes\nFuncionário": "",
       "Vagas Restantes\nna turma": 44,
       "Turma": "122CON_2D/N",
-      "Limite de alunos\nna sala/turma": 50,
-      "Observação": "-2 vagas tranferência interna",
-      "": ""
+      "Limite mínimo de alunos\nna sala/turma": 50,
+      "Observação": "-2 vagas tranferência interna"
     },
     {
       "Curso": "Ciências Econômicas (Bacharelado)",
@@ -330,9 +322,8 @@
       "Vagas Restantes\nFuncionário": "",
       "Vagas Restantes\nna turma": 36,
       "Turma": "131ECO_2D/N",
-      "Limite de alunos\nna sala/turma": 36,
-      "Observação": "-1 vaga transferência interna (Arquitetura 2º sem. para C. Econ 1º sem.)",
-      "": ""
+      "Limite mínimo de alunos\nna sala/turma": 36,
+      "Observação": "-1 vaga transferência interna (Arquitetura 2º sem. para C. Econ 1º sem.)"
     },
     {
       "Curso": "Design (Bacharelado)",
@@ -367,9 +358,8 @@
       "Vagas Restantes\nFuncionário": 0,
       "Vagas Restantes\nna turma": 7,
       "Turma": "152DSG_2B/N",
-      "Limite de alunos\nna sala/turma": 68,
-      "Observação": "-1 vaga para bolsa funcionário",
-      "": ""
+      "Limite mínimo de alunos\nna sala/turma": 68,
+      "Observação": "-1 vaga para bolsa funcionário"
     },
     {
       "Curso": "Direito (Bacharelado)",
@@ -404,9 +394,8 @@
       "Vagas Restantes\nFuncionário": 0,
       "Vagas Restantes\nna turma": 7,
       "Turma": "22WDIR_2A/M",
-      "Limite de alunos\nna sala/turma": 63,
-      "Observação": "-2 vaga transferência interna / -1 vaga bolsa funcionário",
-      "": ""
+      "Limite mínimo de alunos\nna sala/turma": 63,
+      "Observação": "-2 vaga transferência interna / -1 vaga bolsa funcionário"
     },
     {
       "Curso": "Engenharia (Bacharelado)",
@@ -441,9 +430,8 @@
       "Vagas Restantes\nFuncionário": "",
       "Vagas Restantes\nna turma": 5,
       "Turma": "620ENG_2A/M",
-      "Limite de alunos\nna sala/turma": 68,
-      "Observação": "",
-      "": ""
+      "Limite mínimo de alunos\nna sala/turma": 68,
+      "Observação": ""
     },
     {
       "Curso": "Engenharia (Bacharelado)",
@@ -478,9 +466,8 @@
       "Vagas Restantes\nFuncionário": 1,
       "Vagas Restantes\nna turma": 3,
       "Turma": "620ENG_2F/N",
-      "Limite de alunos\nna sala/turma": 70,
-      "Observação": "-1 vaga transferência interna / -1 vaga para bolsa funcionário",
-      "": ""
+      "Limite mínimo de alunos\nna sala/turma": 70,
+      "Observação": "-1 vaga transferência interna / -1 vaga para bolsa funcionário"
     },
     {
       "Curso": "Engenharia de Software (Bacharelado)",
@@ -515,9 +502,8 @@
       "Vagas Restantes\nFuncionário": "",
       "Vagas Restantes\nna turma": 50,
       "Turma": "628SOF_2A/M",
-      "Limite de alunos\nna sala/turma": 70,
-      "Observação": "",
-      "": ""
+      "Limite mínimo de alunos\nna sala/turma": 70,
+      "Observação": ""
     },
     {
       "Curso": "Engenharia de Software (Bacharelado)",
@@ -552,9 +538,8 @@
       "Vagas Restantes\nFuncionário": 0,
       "Vagas Restantes\nna turma": 41,
       "Turma": "628SOF_2D/N",
-      "Limite de alunos\nna sala/turma": 70,
-      "Observação": "-1 vaga para bolsa funcionário",
-      "": ""
+      "Limite mínimo de alunos\nna sala/turma": 70,
+      "Observação": "-1 vaga para bolsa funcionário"
     },
     {
       "Curso": "Gestão de Negócios Imobiliários (Tecnólogo)",
@@ -589,9 +574,8 @@
       "Vagas Restantes\nFuncionário": "",
       "Vagas Restantes\nna turma": 15,
       "Turma": "EADTNI_2J",
-      "Limite de alunos\nna sala/turma": 15,
-      "Observação": "",
-      "": ""
+      "Limite mínimo de alunos\nna sala/turma": 15,
+      "Observação": ""
     },
     {
       "Curso": "Gestão de Recursos Humanos (Tecnólogo)",
@@ -626,9 +610,8 @@
       "Vagas Restantes\nFuncionário": "",
       "Vagas Restantes\nna turma": 70,
       "Turma": "EADRHU_2L",
-      "Limite de alunos\nna sala/turma": 70,
-      "Observação": "",
-      "": ""
+      "Limite mínimo de alunos\nna sala/turma": 70,
+      "Observação": ""
     },
     {
       "Curso": "Gestão Pública (Tecnólogo)",
@@ -663,9 +646,8 @@
       "Vagas Restantes\nFuncionário": 0,
       "Vagas Restantes\nna turma": 60,
       "Turma": "EADGPB_2K",
-      "Limite de alunos\nna sala/turma": 60,
-      "Observação": "-2 vagas bolsa funcionário / -2 vagas transferência interna",
-      "": ""
+      "Limite mínimo de alunos\nna sala/turma": 60,
+      "Observação": "-2 vagas bolsa funcionário / -2 vagas transferência interna"
     },
     {
       "Curso": "Marketing (Tecnólogo)",
@@ -700,9 +682,8 @@
       "Vagas Restantes\nFuncionário": "",
       "Vagas Restantes\nna turma": 70,
       "Turma": "EADMKD_2L",
-      "Limite de alunos\nna sala/turma": 70,
-      "Observação": "",
-      "": ""
+      "Limite mínimo de alunos\nna sala/turma": 70,
+      "Observação": ""
     },
     {
       "Curso": "Pedagogia (Licenciatura)",
@@ -737,9 +718,8 @@
       "Vagas Restantes\nFuncionário": "",
       "Vagas Restantes\nna turma": 120,
       "Turma": "SPRPED_2J/N",
-      "Limite de alunos\nna sala/turma": 120,
-      "Observação": "-1 vaga transferência interna",
-      "": ""
+      "Limite mínimo de alunos\nna sala/turma": 120,
+      "Observação": "-1 vaga transferência interna"
     },
     {
       "Curso": "Psicologia (Bacharelado)",
@@ -772,11 +752,10 @@
       "Vagas Restantes\nVestibular": 3,
       "Vagas Restantes\nCEBAS": "",
       "Vagas Restantes\nFuncionário": "",
-      "Vagas Restantes\nna turma": 23,
+      "Vagas Restantes\nna turma": 4,
       "Turma": "22UPSI_2C/M",
-      "Limite de alunos\nna sala/turma": 70,
-      "Observação": "-1 vaga transferência interna",
-      "": ""
+      "Limite mínimo de alunos\nna sala/turma": 51,
+      "Observação": "-1 vaga transferência interna"
     },
     {
       "Curso": "Psicologia (Bacharelado)",
@@ -811,9 +790,8 @@
       "Vagas Restantes\nFuncionário": 1,
       "Vagas Restantes\nna turma": 20,
       "Turma": "22UPSI_2F/N",
-      "Limite de alunos\nna sala/turma": 55,
-      "Observação": "-1 vaga bolsa funcionário / -1 vaga transferência interna",
-      "": ""
+      "Limite mínimo de alunos\nna sala/turma": 55,
+      "Observação": "-1 vaga bolsa funcionário / -1 vaga transferência interna"
     },
     {
       "Curso": "Química (Bacharelado)",
@@ -848,9 +826,8 @@
       "Vagas Restantes\nFuncionário": "",
       "Vagas Restantes\nna turma": 23,
       "Turma": "228QUI_2B/N",
-      "Limite de alunos\nna sala/turma": 70,
-      "Observação": "",
-      "": ""
+      "Limite mínimo de alunos\nna sala/turma": 70,
+      "Observação": ""
     },
     {
       "Curso": "Segurança da Informação (Tecnólogo)",
@@ -885,9 +862,8 @@
       "Vagas Restantes\nFuncionário": "",
       "Vagas Restantes\nna turma": 19,
       "Turma": "137TSI_2X/N",
-      "Limite de alunos\nna sala/turma": 20,
-      "Observação": "",
-      "": ""
+      "Limite mínimo de alunos\nna sala/turma": 20,
+      "Observação": ""
     },
     {
       "Curso": "Totais",
@@ -920,14 +896,13 @@
       "Vagas Restantes\nVestibular": 376,
       "Vagas Restantes\nCEBAS": 110,
       "Vagas Restantes\nFuncionário": 3,
-      "Vagas Restantes\nna turma": 755,
+      "Vagas Restantes\nna turma": 716,
       "Turma": "",
-      "Limite de alunos\nna sala/turma": 1455,
-      "Observação": "",
-      "": ""
+      "Limite mínimo de alunos\nna sala/turma": 1416,
+      "Observação": ""
     },
     {
-      "Curso": "Ultima atualização: 29/07/2026 14:06:45",
+      "Curso": "Ultima atualização: 29/07/2026 14:15:14",
       "Período": "Vagas",
       "Vagas\nVestibular": "",
       "Vagas\nCEBAS": "",
@@ -959,9 +934,8 @@
       "Vagas Restantes\nFuncionário": "",
       "Vagas Restantes\nna turma": "",
       "Turma": "",
-      "Limite de alunos\nna sala/turma": "",
-      "Observação": "",
-      "": ""
+      "Limite mínimo de alunos\nna sala/turma": "",
+      "Observação": ""
     }
   ]
 }
