@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "29/07/2026 13:26",
+  "lastUpdated": "29/07/2026 13:37",
   "vagasList": [
     {
       "Curso": "Administração (Bacharelado)",
@@ -68,9 +68,9 @@
       "Vagas Restantes\nVestibular": 8,
       "Vagas Restantes\nCEBAS": 0,
       "Vagas Restantes\nFuncionário": "",
-      "Vagas Restantes\nna turma": -14,
+      "Vagas Restantes\nna turma": 3,
       "Turma": "134TAD_2A/M",
-      "Limite de alunos\nna sala/turma": 36,
+      "Limite de alunos\nna sala/turma": 60,
       "Observação": "-1 vaga para transferência interna"
     },
     {
@@ -140,9 +140,9 @@
       "Vagas Restantes\nVestibular": 5,
       "Vagas Restantes\nCEBAS": "",
       "Vagas Restantes\nFuncionário": "",
-      "Vagas Restantes\nna turma": -40,
+      "Vagas Restantes\nna turma": 13,
       "Turma": "22YARQ_2B/N",
-      "Limite de alunos\nna sala/turma": 11,
+      "Limite de alunos\nna sala/turma": 70,
       "Observação": "+1 vaga adicionada por transferência interna"
     },
     {
@@ -176,9 +176,9 @@
       "Vagas Restantes\nVestibular": 30,
       "Vagas Restantes\nCEBAS": 5,
       "Vagas Restantes\nFuncionário": "",
-      "Vagas Restantes\nna turma": 7,
+      "Vagas Restantes\nna turma": 29,
       "Turma": "153CDC_2A/M",
-      "Limite de alunos\nna sala/turma": 35,
+      "Limite de alunos\nna sala/turma": 60,
       "Observação": ""
     },
     {
@@ -212,9 +212,9 @@
       "Vagas Restantes\nVestibular": 15,
       "Vagas Restantes\nCEBAS": -4,
       "Vagas Restantes\nFuncionário": "",
-      "Vagas Restantes\nna turma": 10,
+      "Vagas Restantes\nna turma": 0,
       "Turma": "153CDC_2D/N",
-      "Limite de alunos\nna sala/turma": 70,
+      "Limite de alunos\nna sala/turma": 60,
       "Observação": "-1 vaga para transferência interna, veterano de Engenharia da Comp."
     },
     {
@@ -284,9 +284,9 @@
       "Vagas Restantes\nVestibular": 4,
       "Vagas Restantes\nCEBAS": 7,
       "Vagas Restantes\nFuncionário": "",
-      "Vagas Restantes\nna turma": 35,
+      "Vagas Restantes\nna turma": 44,
       "Turma": "122CON_2D/N",
-      "Limite de alunos\nna sala/turma": 41,
+      "Limite de alunos\nna sala/turma": 50,
       "Observação": "-2 vagas tranferência interna"
     },
     {
@@ -356,9 +356,9 @@
       "Vagas Restantes\nVestibular": 0,
       "Vagas Restantes\nCEBAS": 2,
       "Vagas Restantes\nFuncionário": 0,
-      "Vagas Restantes\nna turma": -35,
+      "Vagas Restantes\nna turma": 7,
       "Turma": "152DSG_2B/N",
-      "Limite de alunos\nna sala/turma": 24,
+      "Limite de alunos\nna sala/turma": 68,
       "Observação": "-1 vaga para bolsa funcionário"
     },
     {
@@ -392,9 +392,9 @@
       "Vagas Restantes\nVestibular": 6,
       "Vagas Restantes\nCEBAS": 1,
       "Vagas Restantes\nFuncionário": 0,
-      "Vagas Restantes\nna turma": -17,
+      "Vagas Restantes\nna turma": 7,
       "Turma": "22WDIR_2A/M",
-      "Limite de alunos\nna sala/turma": 39,
+      "Limite de alunos\nna sala/turma": 63,
       "Observação": "-2 vaga transferência interna / -1 vaga bolsa funcionário"
     },
     {
@@ -428,9 +428,9 @@
       "Vagas Restantes\nVestibular": 0,
       "Vagas Restantes\nCEBAS": -2,
       "Vagas Restantes\nFuncionário": "",
-      "Vagas Restantes\nna turma": -42,
+      "Vagas Restantes\nna turma": 5,
       "Turma": "620ENG_2A/M",
-      "Limite de alunos\nna sala/turma": 17,
+      "Limite de alunos\nna sala/turma": 68,
       "Observação": ""
     },
     {
@@ -464,7 +464,7 @@
       "Vagas Restantes\nVestibular": -5,
       "Vagas Restantes\nCEBAS": 4,
       "Vagas Restantes\nFuncionário": 1,
-      "Vagas Restantes\nna turma": 4,
+      "Vagas Restantes\nna turma": 3,
       "Turma": "620ENG_2F/N",
       "Limite de alunos\nna sala/turma": 70,
       "Observação": "-1 vaga transferência interna / -1 vaga para bolsa funcionário"
@@ -500,9 +500,9 @@
       "Vagas Restantes\nVestibular": 40,
       "Vagas Restantes\nCEBAS": "",
       "Vagas Restantes\nFuncionário": "",
-      "Vagas Restantes\nna turma": 22,
+      "Vagas Restantes\nna turma": 50,
       "Turma": "628SOF_2A/M",
-      "Limite de alunos\nna sala/turma": 40,
+      "Limite de alunos\nna sala/turma": 70,
       "Observação": ""
     },
     {
@@ -572,9 +572,9 @@
       "Vagas Restantes\nVestibular": 30,
       "Vagas Restantes\nCEBAS": 30,
       "Vagas Restantes\nFuncionário": "",
-      "Vagas Restantes\nna turma": 60,
+      "Vagas Restantes\nna turma": 15,
       "Turma": "EADTNI_2J",
-      "Limite de alunos\nna sala/turma": 60,
+      "Limite de alunos\nna sala/turma": 15,
       "Observação": ""
     },
     {
@@ -752,9 +752,9 @@
       "Vagas Restantes\nVestibular": 3,
       "Vagas Restantes\nCEBAS": "",
       "Vagas Restantes\nFuncionário": "",
-      "Vagas Restantes\nna turma": -25,
+      "Vagas Restantes\nna turma": 23,
       "Turma": "22UPSI_2C/M",
-      "Limite de alunos\nna sala/turma": 20,
+      "Limite de alunos\nna sala/turma": 70,
       "Observação": "-1 vaga transferência interna"
     },
     {
@@ -824,9 +824,9 @@
       "Vagas Restantes\nVestibular": 11,
       "Vagas Restantes\nCEBAS": 10,
       "Vagas Restantes\nFuncionário": "",
-      "Vagas Restantes\nna turma": -6,
+      "Vagas Restantes\nna turma": 23,
       "Turma": "228QUI_2B/N",
-      "Limite de alunos\nna sala/turma": 39,
+      "Limite de alunos\nna sala/turma": 70,
       "Observação": ""
     },
     {
@@ -896,13 +896,13 @@
       "Vagas Restantes\nVestibular": 374,
       "Vagas Restantes\nCEBAS": 110,
       "Vagas Restantes\nFuncionário": 3,
-      "Vagas Restantes\nna turma": 492,
+      "Vagas Restantes\nna turma": 755,
       "Turma": "",
-      "Limite de alunos\nna sala/turma": 1163,
+      "Limite de alunos\nna sala/turma": 1455,
       "Observação": ""
     },
     {
-      "Curso": "Ultima atualização: 29/07/2026 13:26:43",
+      "Curso": "Ultima atualização: 29/07/2026 13:37:36",
       "Período": "Vagas",
       "Vagas\nVestibular": "",
       "Vagas\nCEBAS": "",
