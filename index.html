@@ -425,3 +425,145 @@
 </script>
 </body>
 </html>
+
+<footer class="bg-white border-t border-slate-200 py-6 mt-12">
+        <div class="max-w-7xl mx-auto px-4 text-center text-xs text-slate-400">
+            Controle de Vagas - Vestibular 2026/2.
+        </div>
+    </footer>
+
+    <script>
+        function dashboardData() {
+            return {
+                tab: 'vestibular',
+                search: '',
+                filtroPeriodo: '',
+                loading: true,
+                ultimaAtualizacao: '',
+                vagasList: [],
+
+                initData() {
+                    // Lê os dados injetados via window.SERVER_DATA
+                    if (window.SERVER_DATA) {
+                        this.ultimaAtualizacao = window.SERVER_DATA.lastUpdated || '';
+                        
+                        // Mapeia a lista de vagas
+                        this.vagasList = (window.SERVER_DATA.vagasList || [])
+                            .filter(item => item["Curso"] && item["Curso"] !== "Totais" && !item["Curso"].includes("Ultima atualização"))
+                            .map(item => ({
+                                curso: item["Curso"],
+                                periodo: item["Período"],
+                                vagasVestibular: Number(item["Vagas\nVestibular"]) || 0,
+                                vagasCebas: Number(item["Vagas\nCEBAS"]) || 0,
+                                totalVagas: Number(item["Vagas\nTotal"]) || 0,
+                                inscritosVestibular: Number(item["Inscrições\n(vestibular)"]) || 0,
+                                inscritosCebas: Number(item["Inscrições\n(CEBAS)"]) || 0,
+                                convocados: Number(item["Convocados"]) || 0,
+                                pagos: Number(item["Pagos"]) || 0,
+                                classificadosCebas: Number(item["Aprovados\n(CEBAS)"]) || 0,
+                                listaEsperaCebas: Number(item["Lista de espera\n(CEBAS)"]) || 0,
+                                docAnaliseCebas: Number(item["Doc. em análise\n(CEBAS)"]) || 0,
+                                matriculados: Number(item["Matriculados"]) || 0,
+                                vagasMovimentadas: Number(item["Transferência\nInterna"]) || 0,
+                                observacao: item["Observação"] || ''
+                            }));
+
+                        this.loading = false;
+                    } else {
+                        console.error("Variável SERVER_DATA não encontrada!");
+                    }
+                },
+
+                get filteredList() {
+                    return this.vagasList.filter(item => {
+                        const matchesSearch = item.curso.toLowerCase().includes(this.search.toLowerCase());
+                        const matchesPeriodo = this.filtroPeriodo === '' || item.periodo === this.filtroPeriodo;
+                        return matchesSearch && matchesPeriodo;
+                    });
+                },
+
+                getKpis() {
+                    const list = this.filteredList;
+                    if (this.tab === 'vestibular') {
+                        const vagas = list.reduce((sum, item) => sum + item.vagasVestibular, 0);
+                        const inscricoes = list.reduce((sum, item) => sum + item.inscritosVestibular, 0);
+                        const pagos = list.reduce((sum, item) => sum + item.pagos, 0);
+                        const convocados = list.reduce((sum, item) => sum + item.convocados, 0);
+                        const demanda = vagas > 0 ? (inscricoes / vagas).toFixed(1) : 0;
+                        const taxaSucesso = convocados > 0 ? Math.round((pagos / convocados) * 100) : 0;
+
+                        return {
+                            vagas: vagas.toLocaleString(),
+                            vagasSub: 'Ingresso por Vestibular Tradicional',
+                            inscricoes: inscricoes.toLocaleString(),
+                            demanda: `${demanda}x cand / vaga`,
+                            sucessoLabel: 'Matrículas Pagas',
+                            sucessoValor: pagos.toLocaleString(),
+                            taxaSucesso: `${taxaSucesso}% conv. matriculados`,
+                            apoioLabel: 'Convocados',
+                            apoioValor: convocados.toLocaleString(),
+                            apoioSub: 'Aguardando ação'
+                        };
+                    } else if (this.tab === 'cebas') {
+                        const vagas = list.reduce((sum, item) => sum + item.vagasCebas, 0);
+                        const inscricoes = list.reduce((sum, item) => sum + item.inscritosCebas, 0);
+                        const classificados = list.reduce((sum, item) => sum + item.classificadosCebas, 0);
+                        const listaEspera = list.reduce((sum, item) => sum + item.listaEsperaCebas, 0);
+                        const demanda = vagas > 0 ? (inscricoes / vagas).toFixed(1) : 0;
+                        const taxaSucesso = inscricoes > 0 ? Math.round((classificados / inscricoes) * 100) : 0;
+
+                        return {
+                            vagas: vagas.toLocaleString(),
+                            vagasSub: 'Bolsas Assistenciais CEBAS',
+                            inscricoes: inscricoes.toLocaleString(),
+                            demanda: `${demanda}x cand / vaga`,
+                            sucessoLabel: 'Classificados (Bolsa)',
+                            sucessoValor: classificados.toLocaleString(),
+                            taxaSucesso: `${taxaSucesso}% de aproveitamento`,
+                            apoioLabel: 'Em Lista de Espera',
+                            apoioValor: listaEspera.toLocaleString(),
+                            apoioSub: 'Aguardando classificação'
+                        };
+                    } else if (this.tab === 'geral') {
+                        const vagas = list.reduce((sum, item) => sum + item.totalVagas, 0);
+                        const inscricoes = list.reduce((sum, item) => sum + (item.inscritosVestibular + item.inscritosCebas), 0);
+                        const matriculados = list.reduce((sum, item) => sum + item.matriculados, 0);
+                        const convocados = list.reduce((sum, item) => sum + item.convocados, 0);
+                        const demanda = vagas > 0 ? (inscricoes / vagas).toFixed(1) : 0;
+                        const taxaOcupacao = vagas > 0 ? Math.round((matriculados / vagas) * 100) : 0;
+
+                        return {
+                            vagas: vagas.toLocaleString(),
+                            vagasSub: 'Total Combinado (Geral)',
+                            inscricoes: inscricoes.toLocaleString(),
+                            demanda: `${demanda}x cand / vaga total`,
+                            sucessoLabel: 'Matriculados Totais',
+                            sucessoValor: matriculados.toLocaleString(),
+                            taxaSucesso: `${taxaOcupacao}% de ocupação geral`,
+                            apoioLabel: 'Total Convocados',
+                            apoioValor: convocados.toLocaleString(),
+                            apoioSub: 'Processo seletivo ativo'
+                        };
+                    } else {
+                        const totalVagasAfetadas = list.reduce((sum, item) => sum + Math.abs(item.vagasMovimentadas), 0);
+                        const balancoLiquido = list.reduce((sum, item) => sum + item.vagasMovimentadas, 0);
+                        
+                        return {
+                            vagas: totalVagasAfetadas.toLocaleString(),
+                            vagasSub: 'Vagas Remanejadas / Alteradas',
+                            inscricoes: '-',
+                            demanda: 'N/A',
+                            sucessoLabel: 'Balanço Líquido (Saldo)',
+                            sucessoValor: balancoLiquido >= 0 ? `+${balancoLiquido}` : balancoLiquido.toLocaleString(),
+                            taxaSucesso: 'Vagas subtraídas ou adicionadas',
+                            apoioLabel: 'Cursos Alterados',
+                            apoioValor: list.filter(item => item.vagasMovimentadas !== 0).length.toString(),
+                            apoioSub: 'Cursos com observações'
+                        };
+                    }
+                }
+            };
+        }
+    </script>
+</body>
+</html>
