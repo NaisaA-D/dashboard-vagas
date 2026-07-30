@@ -333,16 +333,40 @@
                 },
 
                 get filteredList() {
-                    return this.vagasList.filter(item => {
-                        const matchesSearch = item.curso.toLowerCase().includes(this.search.toLowerCase());
-                        const matchesPeriodo = this.filtroPeriodo === '' || item.periodo === this.filtroPeriodo;
-                        
-                        // 1. Aplica a regra de ocultar por lista manual
-                        const ocultos = cursosOcultosPorProcesso[this.tab] || [];
-                        const ehOcultoManualmente = ocultos.some(bloqueado => {
-                            const [cursoBloq, periodoBloq] = bloqueado.split(' - ').map(s => s.trim().toLowerCase());
-                            return item.curso.toLowerCase().includes(cursoBloq) && item.periodo.toLowerCase() === periodoBloq;
-                        });
+    return this.vagasList.filter(item => {
+        const matchesSearch = item.curso.toLowerCase().includes(this.search.toLowerCase());
+        const matchesPeriodo = this.filtroPeriodo === '' || item.periodo === this.filtroPeriodo;
+        
+        // Aplica a regra de ocultar na aba Vestibular E na Visão Geral Combinada
+        const abasOcultar = ['vestibular', 'geral'];
+        if (abasOcultar.includes(this.tab)) {
+            const ocultos = cursosOcultosPorProcesso['vestibular'] || [];
+            const ehOcultoManualmente = ocultos.some(bloqueado => {
+                const partes = bloqueado.split(' - ');
+                if (partes.length < 2) return false;
+                const cursoBloq = partes[0].trim().toLowerCase();
+                const periodoBloq = partes[1].trim().toLowerCase();
+                
+                return item.curso.trim().toLowerCase().includes(cursoBloq) && 
+                       item.periodo.trim().toLowerCase() === periodoBloq;
+            });
+
+            if (ehOcultoManualmente) return false;
+        }
+
+        // Regra automática CEBAS: oculta cursos com 0 vagas CEBAS
+        if (this.tab === 'cebas' && item.vagasCebas <= 0) {
+            return false;
+        }
+
+        // Regra automática Vestibular: oculta cursos com 0 vagas Vestibular
+        if (this.tab === 'vestibular' && item.vagasVestibular <= 0) {
+            return false;
+        }
+
+        return matchesSearch && matchesPeriodo;
+    });
+}
 
                         if (ehOcultoManualmente) return false;
 
