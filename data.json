@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "31/07/2026 16:45",
+  "lastUpdated": "31/07/2026 16:55",
   "vagasList": [
     {
       "Curso": "Administração (Bacharelado)",
@@ -178,7 +178,7 @@
       "Doc. em análise\n(CEBAS)": "",
       "Aprovados\n(CEBAS)": "",
       "Comprovantes\nsem baixa": "",
-      "Pagos": 1,
+      "Pagos": "",
       "Pagos\n+Transf.": "",
       "Isentos\nCEBAS": "",
       "Isentos\nOutras Bolsas": "",
@@ -258,7 +258,7 @@
       "Doc. em análise\n(CEBAS)": "",
       "Aprovados\n(CEBAS)": "",
       "Comprovantes\nsem baixa": "",
-      "Pagos": 4,
+      "Pagos": "",
       "Pagos\n+Transf.": "",
       "Isentos\nCEBAS": "",
       "Isentos\nOutras Bolsas": "",
@@ -439,7 +439,7 @@
       "Vagas Restantes\nna turma": 7,
       "Turma": "22WDIR_2A/M",
       "Limite de alunos\nna sala/turma": 63,
-      "Observação": "-2 vaga transferência interna / -1 vaga bolsa funcionário / 2 vagas bolsa Cultura Cidadã"
+      "Observação": "-2 vaga transferência interna / -1 vaga bolsa funcionário / -2 vagas bolsa Cultura Cidadã"
     },
     {
       "Curso": "Engenharia (Bacharelado)",
@@ -938,7 +938,7 @@
       "Doc. em análise\n(CEBAS)": "",
       "Aprovados\n(CEBAS)": "",
       "Comprovantes\nsem baixa": "",
-      "Pagos": 3,
+      "Pagos": "",
       "Pagos\n+Transf.": "",
       "Isentos\nCEBAS": "",
       "Isentos\nOutras Bolsas": "",
@@ -978,7 +978,7 @@
       "Doc. em análise\n(CEBAS)": 0,
       "Aprovados\n(CEBAS)": 322,
       "Comprovantes\nsem baixa": 4,
-      "Pagos": 329,
+      "Pagos": 321,
       "Pagos\n+Transf.": 345,
       "Isentos\nCEBAS": 311,
       "Isentos\nOutras Bolsas": 10,
@@ -1002,7 +1002,7 @@
       "Observação": ""
     },
     {
-      "Curso": "Ultima atualização: 31/07/2026 16:44:56",
+      "Curso": "Ultima atualização: 31/07/2026 16:49:14",
       "Período": "Vagas",
       "Vagas\nVestibular": "",
       "Vagas\nCEBAS": "",
