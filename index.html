@@ -196,6 +196,9 @@
 
                             <!-- Colunas Visão Geral -->
                             <template x-if="tab === 'geral'">
+                                <th class="py-3.5 px-4 text-center">Veteranos (AD)</th>
+                            </template>
+                            <template x-if="tab === 'geral'">
                                 <th class="py-3.5 px-4 text-center">Total Matriculados</th>
                             </template>
                             <template x-if="tab === 'geral'">
@@ -282,7 +285,10 @@
 
                                 <!-- Geral Exclusivo -->
                                 <template x-if="tab === 'geral'">
-                                    <td class="py-3 px-4 text-center font-bold text-slate-900" x-text="item.classificadosCebas + item.pagosTransf"></td>
+                                    <td class="py-3 px-4 text-center font-semibold text-purple-700" x-text="item.matriculasVeteranos"></td>
+                                </template>
+                                <template x-if="tab === 'geral'">
+                                    <td class="py-3 px-4 text-center font-bold text-slate-900" x-text="item.classificadosCebas + item.pagosTransf + item.matriculasVeteranos"></td>
                                 </template>
                                 <template x-if="tab === 'geral'">
                                     <td class="py-3 px-4 text-center text-slate-500" x-text="item.limiteTurma"></td>
@@ -291,10 +297,10 @@
                                     <td class="py-3 px-4 text-center">
                                         <span class="px-2 py-1 rounded text-xs font-bold"
                                               :class="{
-                                                'bg-emerald-100 text-emerald-800': (item.limiteTurma > 0 ? Math.round(((item.classificadosCebas + item.pagosTransf) / item.limiteTurma) * 100) : 0) >= 80,
-                                                'bg-amber-100 text-amber-800': (item.limiteTurma > 0 ? Math.round(((item.classificadosCebas + item.pagosTransf) / item.limiteTurma) * 100) : 0) < 80
+                                                'bg-emerald-100 text-emerald-800': (item.limiteTurma > 0 ? Math.round(((item.classificadosCebas + item.pagosTransf + item.matriculasVeteranos) / item.limiteTurma) * 100) : 0) >= 80,
+                                                'bg-amber-100 text-amber-800': (item.limiteTurma > 0 ? Math.round(((item.classificadosCebas + item.pagosTransf + item.matriculasVeteranos) / item.limiteTurma) * 100) : 0) < 80
                                               }"
-                                              x-text="(item.limiteTurma > 0 ? Math.round(((item.classificadosCebas + item.pagosTransf) / item.limiteTurma) * 100) : ((item.vagasVestibular + item.vagasCebas) > 0 ? Math.round(((item.classificadosCebas + item.pagosTransf) / (item.vagasVestibular + item.vagasCebas)) * 100) : 0)) + '%'">
+                                              x-text="(item.limiteTurma > 0 ? Math.round(((item.classificadosCebas + item.pagosTransf + item.matriculasVeteranos) / item.limiteTurma) * 100) : ((item.vagasVestibular + item.vagasCebas) > 0 ? Math.round(((item.classificadosCebas + item.pagosTransf + item.matriculasVeteranos) / (item.vagasVestibular + item.vagasCebas)) * 100) : 0)) + '%'">
                                         </span>
                                     </td>
                                 </template>
@@ -367,6 +373,15 @@
                                         item["Pagos+Transf"]
                                     );
 
+                                    const veteranosVal = Number(
+                                        item["Matrículas Veteranos (AD)"] ||
+                                        item["Matrículas Veteranos"] ||
+                                        item["Veteranos (AD)"] ||
+                                        item["Veteranos"] ||
+                                        item["Matriculas Veteranos"] ||
+                                        item["Matriculas Veteranos (AD)"]
+                                    ) || 0;
+
                                     return {
                                         curso: item["Curso"],
                                         periodo: item["Período"],
@@ -379,6 +394,7 @@
                                         pagos: pagosVal,
                                         // Usa o valor mapeado; se vier indefinido/zerado/NaN, faz fallback para pagosVal
                                         pagosTransf: !isNaN(pagosTransfVal) && pagosTransfVal > 0 ? pagosTransfVal : pagosVal,
+                                        matriculasVeteranos: veteranosVal,
                                         limiteTurma: Number(item["Limite de alunos na sala/turma"] || item["Limite Turma"] || item["Limite de alunos\nna sala/turma"]) || 0,
                                         classificadosCebas: Number(item["Aprovados\n(CEBAS)"] || item["Classificados\n(CEBAS)"]) || 0,
                                         listaEsperaCebas: Number(item["Lista de espera\n(CEBAS)"]) || 0,
@@ -478,7 +494,7 @@
                         const vagasTotalCalculado = list.reduce((sum, item) => sum + (item.vagasVestibular + item.vagasCebas), 0);
                         const limiteTotalCalculado = list.reduce((sum, item) => sum + item.limiteTurma, 0);
                         const inscricoes = list.reduce((sum, item) => sum + (item.inscritosVestibular + item.inscritosCebas), 0);
-                        const matriculados = list.reduce((sum, item) => sum + (item.classificadosCebas + item.pagosTransf), 0);
+                        const matriculados = list.reduce((sum, item) => sum + (item.classificadosCebas + item.pagosTransf + item.matriculasVeteranos), 0);
                         const convocados = list.reduce((sum, item) => sum + item.convocados, 0);
                         const demanda = vagasTotalCalculado > 0 ? (inscricoes / vagasTotalCalculado).toFixed(1) : '0';
                         const taxaOcupacao = limiteTotalCalculado > 0 ? Math.round((matriculados / limiteTotalCalculado) * 100) : 0;
