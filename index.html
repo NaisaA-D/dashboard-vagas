@@ -66,7 +66,7 @@
                     <span>Visão Geral Combinada</span>
                 </button>
                 <button @click="tab = 'movimentacao'" :class="{ 'bg-blue-50 text-blue-700 font-semibold': tab === 'movimentacao', 'text-slate-600 hover:text-slate-900 hover:bg-slate-50': tab !== 'movimentacao' }" class="px-4 py-2.5 rounded-lg text-sm font-medium transition-all flex items-center space-x-2 whitespace-nowrap">
-                    <i class="ph ph-[#000] ph-arrows-left-right text-lg"></i>
+                    <i class="ph ph-arrows-down-up text-lg"></i>
                     <span>Movimentação de Vagas</span>
                 </button>
             </nav>
@@ -199,7 +199,10 @@
                                 <th class="py-3.5 px-4 text-center">Total Matriculados</th>
                             </template>
                             <template x-if="tab === 'geral'">
-                                <th class="py-3.5 px-4 text-center">% Ocupação Geral</th>
+                                <th class="py-3.5 px-4 text-center">Limite Turma</th>
+                            </template>
+                            <template x-if="tab === 'geral'">
+                                <th class="py-3.5 px-4 text-center">% Ocupação (Limite)</th>
                             </template>
 
                             <!-- Colunas Movimentação -->
@@ -279,16 +282,19 @@
 
                                 <!-- Geral Exclusivo -->
                                 <template x-if="tab === 'geral'">
-                                    <td class="py-3 px-4 text-center font-bold text-slate-900" x-text="item.classificadosCebas + item.pagos"></td>
+                                    <td class="py-3 px-4 text-center font-bold text-slate-900" x-text="item.classificadosCebas + item.pagosTransf"></td>
+                                </template>
+                                <template x-if="tab === 'geral'">
+                                    <td class="py-3 px-4 text-center text-slate-500" x-text="item.limiteTurma"></td>
                                 </template>
                                 <template x-if="tab === 'geral'">
                                     <td class="py-3 px-4 text-center">
                                         <span class="px-2 py-1 rounded text-xs font-bold"
                                               :class="{
-                                                'bg-emerald-100 text-emerald-800': (item.vagasVestibular + item.vagasCebas) > 0 && Math.round(((item.classificadosCebas + item.pagos) / (item.vagasVestibular + item.vagasCebas)) * 100) >= 80,
-                                                'bg-amber-100 text-amber-800': (item.vagasVestibular + item.vagasCebas) > 0 && Math.round(((item.classificadosCebas + item.pagos) / (item.vagasVestibular + item.vagasCebas)) * 100) < 80
+                                                'bg-emerald-100 text-emerald-800': (item.limiteTurma > 0 ? Math.round(((item.classificadosCebas + item.pagosTransf) / item.limiteTurma) * 100) : 0) >= 80,
+                                                'bg-amber-100 text-amber-800': (item.limiteTurma > 0 ? Math.round(((item.classificadosCebas + item.pagosTransf) / item.limiteTurma) * 100) : 0) < 80
                                               }"
-                                              x-text="((item.vagasVestibular + item.vagasCebas) > 0 ? Math.round(((item.classificadosCebas + item.pagos) / (item.vagasVestibular + item.vagasCebas)) * 100) : 0) + '%'">
+                                              x-text="(item.limiteTurma > 0 ? Math.round(((item.classificadosCebas + item.pagosTransf) / item.limiteTurma) * 100) : ((item.vagasVestibular + item.vagasCebas) > 0 ? Math.round(((item.classificadosCebas + item.pagosTransf) / (item.vagasVestibular + item.vagasCebas)) * 100) : 0)) + '%'">
                                         </span>
                                     </td>
                                 </template>
@@ -470,11 +476,12 @@
 
                     } else if (this.tab === 'geral') {
                         const vagasTotalCalculado = list.reduce((sum, item) => sum + (item.vagasVestibular + item.vagasCebas), 0);
+                        const limiteTotalCalculado = list.reduce((sum, item) => sum + item.limiteTurma, 0);
                         const inscricoes = list.reduce((sum, item) => sum + (item.inscritosVestibular + item.inscritosCebas), 0);
-                        const matriculados = list.reduce((sum, item) => sum + (item.classificadosCebas + item.pagos), 0);
+                        const matriculados = list.reduce((sum, item) => sum + (item.classificadosCebas + item.pagosTransf), 0);
                         const convocados = list.reduce((sum, item) => sum + item.convocados, 0);
                         const demanda = vagasTotalCalculado > 0 ? (inscricoes / vagasTotalCalculado).toFixed(1) : '0';
-                        const taxaOcupacao = vagasTotalCalculado > 0 ? Math.round((matriculados / vagasTotalCalculado) * 100) : 0;
+                        const taxaOcupacao = limiteTotalCalculado > 0 ? Math.round((matriculados / limiteTotalCalculado) * 100) : 0;
 
                         return {
                             vagas: vagasTotalCalculado.toLocaleString('pt-BR'),
@@ -483,7 +490,7 @@
                             demanda: `${demanda}x cand / vaga total`,
                             sucessoLabel: 'Matriculados Totais',
                             sucessoValor: matriculados.toLocaleString('pt-BR'),
-                            taxaSucesso: `${taxaOcupacao}% de ocupação geral`,
+                            taxaSucesso: `${taxaOcupacao}% de ocupação s/ limite`,
                             apoioLabel: 'Total Convocados',
                             apoioValor: convocados.toLocaleString('pt-BR'),
                             apoioSub: 'Processo seletivo ativo'
