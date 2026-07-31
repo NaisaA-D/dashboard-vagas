@@ -348,25 +348,40 @@
                             
                             this.vagasList = (data.vagasList || [])
                                 .filter(item => item["Curso"] && item["Curso"] !== "Totais" && !item["Curso"].includes("Ultima atualização"))
-                                .map(item => ({
-                                    curso: item["Curso"],
-                                    periodo: item["Período"],
-                                    vagasVestibular: Number(item["Vagas\nVestibular"] || item["Vagas Vestibular"]) || 0,
-                                    vagasCebas: Number(item["Vagas\nCEBAS"] || item["Vagas CEBAS"]) || 0,
-                                    totalVagas: Number(item["Vagas\nTotal"] || item["Vagas Total"]) || 0,
-                                    inscritosVestibular: Number(item["Inscrições\n(vestibular)"] || item["Inscrições (vestibular)"]) || 0,
-                                    inscritosCebas: Number(item["Inscrições\n(CEBAS)"] || item["Inscrições (CEBAS)"]) || 0,
-                                    convocados: Number(item["Convocados"]) || 0,
-                                    pagos: Number(item["Pagos"]) || 0,
-                                    pagosTransf: Number(item["Pagos +Transf."] || item["Pagos + Transf."] || item["Pagos +Transf\n"] || item["Pagos + Transf\n"]) || 0,
-                                    limiteTurma: Number(item["Limite de alunos na sala/turma"] || item["Limite Turma"] || item["Limite de alunos\nna sala/turma"]) || 0,
-                                    classificadosCebas: Number(item["Aprovados\n(CEBAS)"] || item["Classificados\n(CEBAS)"]) || 0,
-                                    listaEsperaCebas: Number(item["Lista de espera\n(CEBAS)"]) || 0,
-                                    docAnaliseCebas: Number(item["Doc. em análise\n(CEBAS)"]) || 0,
-                                    matriculados: Number(item["Matriculados"]) || 0,
-                                    vagasMovimentadas: Number(item["Transferência\nInterna"] || item["Transferência Interna"]) || 0,
-                                    observacao: item["Observação"] || ''
-                                }));
+                                .map(item => {
+                                    const pagosVal = Number(item["Pagos"]) || 0;
+                                    
+                                    // Mapeia todas as possíveis variações do nome da coluna vinda do JSON/Apps Script
+                                    const pagosTransfVal = Number(
+                                        item["Pagos +Transf."] || 
+                                        item["Pagos + Transf."] || 
+                                        item["Pagos +Transf\n"] || 
+                                        item["Pagos + Transf\n"] ||
+                                        item["Pagos+Transf."] ||
+                                        item["Pagos+Transf"]
+                                    );
+
+                                    return {
+                                        curso: item["Curso"],
+                                        periodo: item["Período"],
+                                        vagasVestibular: Number(item["Vagas\nVestibular"] || item["Vagas Vestibular"]) || 0,
+                                        vagasCebas: Number(item["Vagas\nCEBAS"] || item["Vagas CEBAS"]) || 0,
+                                        totalVagas: Number(item["Vagas\nTotal"] || item["Vagas Total"]) || 0,
+                                        inscritosVestibular: Number(item["Inscrições\n(vestibular)"] || item["Inscrições (vestibular)"]) || 0,
+                                        inscritosCebas: Number(item["Inscrições\n(CEBAS)"] || item["Inscrições (CEBAS)"]) || 0,
+                                        convocados: Number(item["Convocados"]) || 0,
+                                        pagos: pagosVal,
+                                        // Usa o valor mapeado; se vier indefinido/zerado/NaN, faz fallback para pagosVal
+                                        pagosTransf: !isNaN(pagosTransfVal) && pagosTransfVal > 0 ? pagosTransfVal : pagosVal,
+                                        limiteTurma: Number(item["Limite de alunos na sala/turma"] || item["Limite Turma"] || item["Limite de alunos\nna sala/turma"]) || 0,
+                                        classificadosCebas: Number(item["Aprovados\n(CEBAS)"] || item["Classificados\n(CEBAS)"]) || 0,
+                                        listaEsperaCebas: Number(item["Lista de espera\n(CEBAS)"]) || 0,
+                                        docAnaliseCebas: Number(item["Doc. em análise\n(CEBAS)"]) || 0,
+                                        matriculados: Number(item["Matriculados"]) || 0,
+                                        vagasMovimentadas: Number(item["Transferência\nInterna"] || item["Transferência Interna"]) || 0,
+                                        observacao: item["Observação"] || ''
+                                    };
+                                });
 
                             this.loading = false;
                         })
