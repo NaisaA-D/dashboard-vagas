@@ -373,7 +373,11 @@
                                         item["Pagos+Transf"]
                                     );
 
+                                    // Mapeia detalhadamente as variações da coluna "AD" ou "Veteranos"
                                     const veteranosVal = Number(
+                                        item["AD"] ||
+                                        item["A.D."] ||
+                                        item["AD (Veteranos)"] ||
                                         item["Matrículas Veteranos (AD)"] ||
                                         item["Matrículas Veteranos"] ||
                                         item["Veteranos (AD)"] ||
