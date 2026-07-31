@@ -131,6 +131,8 @@
                                         <th class="py-4 px-4 text-center">Inscrições</th>
                                         <th class="py-4 px-4 text-center">Convocados</th>
                                         <th class="py-4 px-4 text-center">Pagos</th>
+                                        <th class="py-4 px-4 text-center">Pagos + Transf.</th>
+                                        <th class="py-4 px-4 text-center">Limite Turma</th>
                                         <th class="py-4 px-4 text-center">Ocupação (Vest.)</th>
                                     </tr>
                                 </thead>
@@ -145,6 +147,8 @@
                                             <td class="py-4 px-4 text-center text-slate-600" x-text="item.inscritosVestibular"></td>
                                             <td class="py-4 px-4 text-center text-slate-600" x-text="item.convocados"></td>
                                             <td class="py-4 px-4 text-center text-emerald-600 font-semibold" x-text="item.pagos"></td>
+                                            <td class="py-4 px-4 text-center text-indigo-600 font-semibold" x-text="item.pagosTransf"></td>
+                                            <td class="py-4 px-4 text-center text-slate-600 font-medium" x-text="item.limiteTurma"></td>
                                             <td class="py-4 px-4 text-center">
                                                 <div class="flex items-center justify-center space-x-2">
                                                     <div class="w-16 bg-slate-100 rounded-full h-2">
@@ -211,6 +215,8 @@
                                         <th class="py-4 px-4 text-center">Vagas Totais</th>
                                         <th class="py-4 px-4 text-center">Total Inscrições</th>
                                         <th class="py-4 px-4 text-center">Total Matriculados</th>
+                                        <th class="py-4 px-4 text-center">Pagos + Transf.</th>
+                                        <th class="py-4 px-4 text-center">Limite Turma</th>
                                         <th class="py-4 px-4 text-center">Ocupação Total</th>
                                     </tr>
                                 </thead>
@@ -226,6 +232,8 @@
                                             <td class="py-4 px-4 text-center font-bold text-slate-900" x-text="item.vagasVestibular + item.vagasCebas"></td>
                                             <td class="py-4 px-4 text-center text-slate-600 font-medium" x-text="item.inscritosVestibular + item.inscritosCebas"></td>
                                             <td class="py-4 px-4 text-center text-emerald-600 font-bold" x-text="item.classificadosCebas + item.pagos"></td>
+                                            <td class="py-4 px-4 text-center text-indigo-600 font-semibold" x-text="item.pagosTransf"></td>
+                                            <td class="py-4 px-4 text-center text-slate-600 font-medium" x-text="item.limiteTurma"></td>
                                             <td class="py-4 px-4 text-center">
                                                 <div class="flex items-center justify-center space-x-2">
                                                     <div class="w-16 bg-slate-100 rounded-full h-2">
@@ -324,6 +332,8 @@
                                     inscritosCebas: Number(item["Inscrições\n(CEBAS)"] || item["Inscrições (CEBAS)"]) || 0,
                                     convocados: Number(item["Convocados"]) || 0,
                                     pagos: Number(item["Pagos"]) || 0,
+                                    pagosTransf: Number(item["Pagos +Transf."] || item["Pagos + Transf."]) || 0,
+                                    limiteTurma: Number(item["Limite de alunos na sala/turma"] || item["Limite Turma"]) || 0,
                                     classificadosCebas: Number(item["Aprovados\n(CEBAS)"] || item["Classificados\n(CEBAS)"]) || 0,
                                     listaEsperaCebas: Number(item["Lista de espera\n(CEBAS)"]) || 0,
                                     docAnaliseCebas: Number(item["Doc. em análise\n(CEBAS)"]) || 0,
@@ -385,7 +395,8 @@
                         const pagos = list.reduce((sum, item) => sum + item.pagos, 0);
                         const convocados = list.reduce((sum, item) => sum + item.convocados, 0);
                         const demanda = vagas > 0 ? (inscricoes / vagas).toFixed(1) : '0';
-                        const taxaSucesso = convocados > 0 ? Math.round((pagos / convocados) * 100) : 0;
+                        const metaVestibular = 680;
+                        const pctMeta = Math.round((pagos / metaVestibular) * 100);
 
                         return {
                             vagas: vagas.toLocaleString('pt-BR'),
@@ -394,7 +405,7 @@
                             demanda: `${demanda}x cand / vaga`,
                             sucessoLabel: 'Matrículas Pagas',
                             sucessoValor: pagos.toLocaleString('pt-BR'),
-                            taxaSucesso: `${taxaSucesso}% conv. matriculados`,
+                            taxaSucesso: `${pctMeta}% de ${metaVestibular} (Meta)`,
                             apoioLabel: 'Convocados',
                             apoioValor: convocados.toLocaleString('pt-BR'),
                             apoioSub: 'Aguardando ação'
