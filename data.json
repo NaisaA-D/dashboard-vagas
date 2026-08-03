@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "03/08/2026 10:08",
+  "lastUpdated": "03/08/2026 10:28",
   "vagasList": [
     {
       "Curso": "Administração (Bacharelado)",
@@ -31,7 +31,7 @@
       "Outras\nSituações": "",
       "Matriculados\nVestibular": 13,
       "Matriculados\nCEBAS": 34,
-      "Matrículas\nVeteranos": "",
+      "Matrículas\nVeteranos": 0,
       "Matriculados\n(Total)": 53,
       "Vagas Restantes\nVestibular": 14,
       "Vagas Restantes\nCEBAS": 2,
@@ -41,7 +41,9 @@
       "Limite de alunos\nna sala/turma": 54,
       "Observação": "-1 vaga para bolsa funcionário",
       "PagosTransf": 18,
-      "Pagos + Transf.": 18
+      "Pagos + Transf.": 18,
+      "Veteranos": 0,
+      "Matrículas Veteranos": 0
     },
     {
       "Curso": "Análise e Desenvolvimento de Sistemas (Tecnólogo)",
@@ -83,7 +85,9 @@
       "Limite de alunos\nna sala/turma": 60,
       "Observação": "-1 vaga para transferência interna",
       "PagosTransf": 22,
-      "Pagos + Transf.": 22
+      "Pagos + Transf.": 22,
+      "Veteranos": 30,
+      "Matrículas Veteranos": 30
     },
     {
       "Curso": "Análise e Desenvolvimento de Sistemas (Tecnólogo)",
@@ -115,7 +119,7 @@
       "Outras\nSituações": 1,
       "Matriculados\nVestibular": 8,
       "Matriculados\nCEBAS": "",
-      "Matrículas\nVeteranos": "",
+      "Matrículas\nVeteranos": 0,
       "Matriculados\n(Total)": 18,
       "Vagas Restantes\nVestibular": 2,
       "Vagas Restantes\nCEBAS": "",
@@ -125,7 +129,9 @@
       "Limite de alunos\nna sala/turma": 20,
       "Observação": "2 transferências matutino para noturno / 1 transferência de calouro vindo de Ciência da Computação noturno",
       "PagosTransf": 18,
-      "Pagos + Transf.": 18
+      "Pagos + Transf.": 18,
+      "Veteranos": 0,
+      "Matrículas Veteranos": 0
     },
     {
       "Curso": "Arquitetura e Urbanismo (Bacharelado)",
@@ -167,7 +173,9 @@
       "Limite de alunos\nna sala/turma": 70,
       "Observação": "+1 vaga adicionada por transferência interna",
       "PagosTransf": 5,
-      "Pagos + Transf.": 5
+      "Pagos + Transf.": 5,
+      "Veteranos": 53,
+      "Matrículas Veteranos": 53
     },
     {
       "Curso": "Ciência da Computação (Bacharelado)",
@@ -209,7 +217,9 @@
       "Limite de alunos\nna sala/turma": 60,
       "Observação": "",
       "PagosTransf": 0,
-      "Pagos + Transf.": 0
+      "Pagos + Transf.": 0,
+      "Veteranos": 31,
+      "Matrículas Veteranos": 31
     },
     {
       "Curso": "Ciência da Computação (Bacharelado)",
@@ -251,7 +261,9 @@
       "Limite de alunos\nna sala/turma": 70,
       "Observação": "-1 vaga para transferência interna, veterano de Engenharia da Comp.",
       "PagosTransf": 54,
-      "Pagos + Transf.": 54
+      "Pagos + Transf.": 54,
+      "Veteranos": 1,
+      "Matrículas Veteranos": 1
     },
     {
       "Curso": "Ciência de Dados e Inteligência Artificial (Bacharelado)",
@@ -283,7 +295,7 @@
       "Outras\nSituações": "",
       "Matriculados\nVestibular": 2,
       "Matriculados\nCEBAS": "",
-      "Matrículas\nVeteranos": "",
+      "Matrículas\nVeteranos": 0,
       "Matriculados\n(Total)": "",
       "Vagas Restantes\nVestibular": 48,
       "Vagas Restantes\nCEBAS": "",
@@ -293,7 +305,9 @@
       "Limite de alunos\nna sala/turma": "",
       "Observação": "",
       "PagosTransf": 0,
-      "Pagos + Transf.": 0
+      "Pagos + Transf.": 0,
+      "Veteranos": 0,
+      "Matrículas Veteranos": 0
     },
     {
       "Curso": "Ciências Contábeis (Bacharelado)",
@@ -335,7 +349,9 @@
       "Limite de alunos\nna sala/turma": 70,
       "Observação": "-2 vagas tranferência interna",
       "PagosTransf": 13,
-      "Pagos + Transf.": 13
+      "Pagos + Transf.": 13,
+      "Veteranos": 27,
+      "Matrículas Veteranos": 27
     },
     {
       "Curso": "Ciências Econômicas (Bacharelado)",
@@ -377,7 +393,9 @@
       "Limite de alunos\nna sala/turma": 70,
       "Observação": "-1 vaga transferência interna (Arquitetura 2º sem. para C. Econ 1º sem.)",
       "PagosTransf": 9,
-      "Pagos + Transf.": 9
+      "Pagos + Transf.": 9,
+      "Veteranos": 45,
+      "Matrículas Veteranos": 45
     },
     {
       "Curso": "Design (Bacharelado)",
@@ -419,7 +437,9 @@
       "Limite de alunos\nna sala/turma": 68,
       "Observação": "-1 vaga para bolsa funcionário",
       "PagosTransf": 18,
-      "Pagos + Transf.": 18
+      "Pagos + Transf.": 18,
+      "Veteranos": 40,
+      "Matrículas Veteranos": 40
     },
     {
       "Curso": "Direito (Bacharelado)",
@@ -461,7 +481,9 @@
       "Limite de alunos\nna sala/turma": 63,
       "Observação": "-2 vaga transferência interna / -1 vaga bolsa funcionário / -2 vagas bolsa Cultura Cidadã",
       "PagosTransf": 12,
-      "Pagos + Transf.": 12
+      "Pagos + Transf.": 12,
+      "Veteranos": 29,
+      "Matrículas Veteranos": 29
     },
     {
       "Curso": "Engenharia (Bacharelado)",
@@ -503,7 +525,9 @@
       "Limite de alunos\nna sala/turma": 68,
       "Observação": "",
       "PagosTransf": 12,
-      "Pagos + Transf.": 12
+      "Pagos + Transf.": 12,
+      "Veteranos": 44,
+      "Matrículas Veteranos": 44
     },
     {
       "Curso": "Engenharia (Bacharelado)",
@@ -545,7 +569,9 @@
       "Limite de alunos\nna sala/turma": 70,
       "Observação": "-1 vaga transferência interna / -1 vaga para bolsa funcionário",
       "PagosTransf": 36,
-      "Pagos + Transf.": 36
+      "Pagos + Transf.": 36,
+      "Veteranos": 25,
+      "Matrículas Veteranos": 25
     },
     {
       "Curso": "Engenharia de Software (Bacharelado)",
@@ -587,7 +613,9 @@
       "Limite de alunos\nna sala/turma": 70,
       "Observação": "",
       "PagosTransf": 0,
-      "Pagos + Transf.": 0
+      "Pagos + Transf.": 0,
+      "Veteranos": 20,
+      "Matrículas Veteranos": 20
     },
     {
       "Curso": "Engenharia de Software (Bacharelado)",
@@ -619,7 +647,7 @@
       "Outras\nSituações": "",
       "Matriculados\nVestibular": 29,
       "Matriculados\nCEBAS": "",
-      "Matrículas\nVeteranos": "",
+      "Matrículas\nVeteranos": 0,
       "Matriculados\n(Total)": 30,
       "Vagas Restantes\nVestibular": 41,
       "Vagas Restantes\nCEBAS": "",
@@ -629,7 +657,9 @@
       "Limite de alunos\nna sala/turma": 70,
       "Observação": "-1 vaga para bolsa funcionário",
       "PagosTransf": 31,
-      "Pagos + Transf.": 31
+      "Pagos + Transf.": 31,
+      "Veteranos": 0,
+      "Matrículas Veteranos": 0
     },
     {
       "Curso": "Gestão de Negócios Imobiliários (Tecnólogo)",
@@ -661,7 +691,7 @@
       "Outras\nSituações": "",
       "Matriculados\nVestibular": "",
       "Matriculados\nCEBAS": "",
-      "Matrículas\nVeteranos": "",
+      "Matrículas\nVeteranos": 0,
       "Matriculados\n(Total)": "",
       "Vagas Restantes\nVestibular": 30,
       "Vagas Restantes\nCEBAS": 30,
@@ -671,7 +701,9 @@
       "Limite de alunos\nna sala/turma": 15,
       "Observação": "",
       "PagosTransf": 0,
-      "Pagos + Transf.": 0
+      "Pagos + Transf.": 0,
+      "Veteranos": 0,
+      "Matrículas Veteranos": 0
     },
     {
       "Curso": "Gestão de Recursos Humanos (Tecnólogo)",
@@ -703,7 +735,7 @@
       "Outras\nSituações": "",
       "Matriculados\nVestibular": 3,
       "Matriculados\nCEBAS": 43,
-      "Matrículas\nVeteranos": "",
+      "Matrículas\nVeteranos": 0,
       "Matriculados\n(Total)": 52,
       "Vagas Restantes\nVestibular": 15,
       "Vagas Restantes\nCEBAS": 3,
@@ -713,7 +745,9 @@
       "Limite de alunos\nna sala/turma": 70,
       "Observação": "-2 vagas transferência interna",
       "PagosTransf": 6,
-      "Pagos + Transf.": 6
+      "Pagos + Transf.": 6,
+      "Veteranos": 0,
+      "Matrículas Veteranos": 0
     },
     {
       "Curso": "Gestão Pública (Tecnólogo)",
@@ -745,7 +779,7 @@
       "Outras\nSituações": "",
       "Matriculados\nVestibular": 4,
       "Matriculados\nCEBAS": 28,
-      "Matrículas\nVeteranos": "",
+      "Matrículas\nVeteranos": 0,
       "Matriculados\n(Total)": 35,
       "Vagas Restantes\nVestibular": 9,
       "Vagas Restantes\nCEBAS": 17,
@@ -755,7 +789,9 @@
       "Limite de alunos\nna sala/turma": 60,
       "Observação": "-2 vagas bolsa funcionário / -2 vagas transferência interna / +1 vaga transferência para Gestão de RH",
       "PagosTransf": 6,
-      "Pagos + Transf.": 6
+      "Pagos + Transf.": 6,
+      "Veteranos": 0,
+      "Matrículas Veteranos": 0
     },
     {
       "Curso": "Marketing (Tecnólogo)",
@@ -787,7 +823,7 @@
       "Outras\nSituações": "",
       "Matriculados\nVestibular": 2,
       "Matriculados\nCEBAS": 24,
-      "Matrículas\nVeteranos": "",
+      "Matrículas\nVeteranos": 0,
       "Matriculados\n(Total)": 29,
       "Vagas Restantes\nVestibular": 17,
       "Vagas Restantes\nCEBAS": 15,
@@ -797,7 +833,9 @@
       "Limite de alunos\nna sala/turma": 70,
       "Observação": "",
       "PagosTransf": 4,
-      "Pagos + Transf.": 4
+      "Pagos + Transf.": 4,
+      "Veteranos": 0,
+      "Matrículas Veteranos": 0
     },
     {
       "Curso": "Pedagogia (Licenciatura)",
@@ -829,7 +867,7 @@
       "Outras\nSituações": 1,
       "Matriculados\nVestibular": 23,
       "Matriculados\nCEBAS": 58,
-      "Matrículas\nVeteranos": "",
+      "Matrículas\nVeteranos": 0,
       "Matriculados\n(Total)": 92,
       "Vagas Restantes\nVestibular": 10,
       "Vagas Restantes\nCEBAS": 18,
@@ -839,7 +877,9 @@
       "Limite de alunos\nna sala/turma": 120,
       "Observação": "-1 vaga transferência interna",
       "PagosTransf": 32,
-      "Pagos + Transf.": 32
+      "Pagos + Transf.": 32,
+      "Veteranos": 0,
+      "Matrículas Veteranos": 0
     },
     {
       "Curso": "Psicologia (Bacharelado)",
@@ -881,7 +921,9 @@
       "Limite de alunos\nna sala/turma": 51,
       "Observação": "-1 vaga transferência interna",
       "PagosTransf": 19,
-      "Pagos + Transf.": 19
+      "Pagos + Transf.": 19,
+      "Veteranos": 28,
+      "Matrículas Veteranos": 28
     },
     {
       "Curso": "Psicologia (Bacharelado)",
@@ -913,7 +955,7 @@
       "Outras\nSituações": "",
       "Matriculados\nVestibular": 17,
       "Matriculados\nCEBAS": 15,
-      "Matrículas\nVeteranos": "",
+      "Matrículas\nVeteranos": 0,
       "Matriculados\n(Total)": 37,
       "Vagas Restantes\nVestibular": 24,
       "Vagas Restantes\nCEBAS": -7,
@@ -923,7 +965,9 @@
       "Limite de alunos\nna sala/turma": 55,
       "Observação": "-1 vaga bolsa funcionário / -1 vaga transferência interna",
       "PagosTransf": 21,
-      "Pagos + Transf.": 21
+      "Pagos + Transf.": 21,
+      "Veteranos": 0,
+      "Matrículas Veteranos": 0
     },
     {
       "Curso": "Química (Bacharelado)",
@@ -965,7 +1009,9 @@
       "Limite de alunos\nna sala/turma": 70,
       "Observação": "-1 vaga transferência interna",
       "PagosTransf": 10,
-      "Pagos + Transf.": 10
+      "Pagos + Transf.": 10,
+      "Veteranos": 28,
+      "Matrículas Veteranos": 28
     },
     {
       "Curso": "Segurança da Informação (Tecnólogo)",
@@ -997,7 +1043,7 @@
       "Outras\nSituações": "",
       "Matriculados\nVestibular": "",
       "Matriculados\nCEBAS": "",
-      "Matrículas\nVeteranos": "",
+      "Matrículas\nVeteranos": 0,
       "Matriculados\n(Total)": "",
       "Vagas Restantes\nVestibular": 20,
       "Vagas Restantes\nCEBAS": "",
@@ -1007,7 +1053,9 @@
       "Limite de alunos\nna sala/turma": 20,
       "Observação": "",
       "PagosTransf": 0,
-      "Pagos + Transf.": 0
+      "Pagos + Transf.": 0,
+      "Veteranos": 0,
+      "Matrículas Veteranos": 0
     },
     {
       "Curso": "Totais",
@@ -1039,7 +1087,7 @@
       "Outras\nSituações": 7,
       "Matriculados\nVestibular": 262,
       "Matriculados\nCEBAS": "",
-      "Matrículas\nVeteranos": "",
+      "Matrículas\nVeteranos": 0,
       "Matriculados\n(Total)": 1033,
       "Vagas Restantes\nVestibular": 352,
       "Vagas Restantes\nCEBAS": 110,
@@ -1049,10 +1097,12 @@
       "Limite de alunos\nna sala/turma": 1414,
       "Observação": "",
       "PagosTransf": 346,
-      "Pagos + Transf.": 346
+      "Pagos + Transf.": 346,
+      "Veteranos": 0,
+      "Matrículas Veteranos": 0
     },
     {
-      "Curso": "Ultima atualização: 03/08/2026 10:08:36",
+      "Curso": "Ultima atualização: 03/08/2026 10:28:00",
       "Período": "Vagas",
       "Vagas\nVestibular": "",
       "Vagas\nCEBAS": "",
@@ -1081,7 +1131,7 @@
       "Outras\nSituações": "",
       "Matriculados\nVestibular": "",
       "Matriculados\nCEBAS": "",
-      "Matrículas\nVeteranos": "",
+      "Matrículas\nVeteranos": 0,
       "Matriculados\n(Total)": "",
       "Vagas Restantes\nVestibular": "Turmas e ensalamento",
       "Vagas Restantes\nCEBAS": "",
@@ -1091,7 +1141,9 @@
       "Limite de alunos\nna sala/turma": "",
       "Observação": "",
       "PagosTransf": 0,
-      "Pagos + Transf.": 0
+      "Pagos + Transf.": 0,
+      "Veteranos": 0,
+      "Matrículas Veteranos": 0
     }
   ]
 }
