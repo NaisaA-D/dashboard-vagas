@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "03/08/2026 14:10",
+  "lastUpdated": "03/08/2026 14:24",
   "vagasList": [
     {
       "Curso": "Administração (Bacharelado)",
@@ -18,7 +18,7 @@
       "Doc. em análise\n(CEBAS)": "",
       "Aprovados\n(CEBAS)": 38,
       "Comprovantes\nsem baixa": "",
-      "Pagos": 18,
+      "Pagos": 16,
       "Pagos\n+Transf.": 19,
       "Isentos\nCEBAS": 38,
       "Isentos\nOutras Bolsas": "",
@@ -40,13 +40,14 @@
       "Turma": "123ADM_2D/N",
       "Limite de alunos\nna sala/turma": 54,
       "Observação": "-1 vaga para bolsa funcionário",
-      "PagosTransf": 19,
-      "Pagos + Transf.": 19,
+      "PagosTransf": 17,
+      "Pagos + Transf.": 17,
       "Aprovados (CEBAS)": 38,
       "Classificados (CEBAS)": 38,
       "Veteranos": 0,
       "AD": 0,
-      "Matrículas Veteranos": 0
+      "Matrículas Veteranos": 0,
+      "Cancelamentos Vestibular": 2
     },
     {
       "Curso": "Análise e Desenvolvimento de Sistemas (Tecnólogo)",
@@ -93,7 +94,8 @@
       "Classificados (CEBAS)": 6,
       "Veteranos": 30,
       "AD": 30,
-      "Matrículas Veteranos": 30
+      "Matrículas Veteranos": 30,
+      "Cancelamentos Vestibular": 0
     },
     {
       "Curso": "Análise e Desenvolvimento de Sistemas (Tecnólogo)",
@@ -140,7 +142,8 @@
       "Classificados (CEBAS)": 0,
       "Veteranos": 0,
       "AD": 0,
-      "Matrículas Veteranos": 0
+      "Matrículas Veteranos": 0,
+      "Cancelamentos Vestibular": 0
     },
     {
       "Curso": "Arquitetura e Urbanismo (Bacharelado)",
@@ -187,7 +190,8 @@
       "Classificados (CEBAS)": 0,
       "Veteranos": 53,
       "AD": 53,
-      "Matrículas Veteranos": 53
+      "Matrículas Veteranos": 53,
+      "Cancelamentos Vestibular": 0
     },
     {
       "Curso": "Ciência da Computação (Bacharelado)",
@@ -234,7 +238,8 @@
       "Classificados (CEBAS)": 0,
       "Veteranos": 31,
       "AD": 31,
-      "Matrículas Veteranos": 31
+      "Matrículas Veteranos": 31,
+      "Cancelamentos Vestibular": 1
     },
     {
       "Curso": "Ciência da Computação (Bacharelado)",
@@ -253,7 +258,7 @@
       "Doc. em análise\n(CEBAS)": "",
       "Aprovados\n(CEBAS)": 9,
       "Comprovantes\nsem baixa": 1,
-      "Pagos": 55,
+      "Pagos": 53,
       "Pagos\n+Transf.": 55,
       "Isentos\nCEBAS": 9,
       "Isentos\nOutras Bolsas": "",
@@ -275,13 +280,14 @@
       "Turma": "153CDC_2D/N",
       "Limite de alunos\nna sala/turma": 70,
       "Observação": "-1 vaga para transferência interna, veterano de Engenharia da Comp.",
-      "PagosTransf": 55,
-      "Pagos + Transf.": 55,
+      "PagosTransf": 53,
+      "Pagos + Transf.": 53,
       "Aprovados (CEBAS)": 9,
       "Classificados (CEBAS)": 9,
       "Veteranos": 1,
       "AD": 1,
-      "Matrículas Veteranos": 1
+      "Matrículas Veteranos": 1,
+      "Cancelamentos Vestibular": 2
     },
     {
       "Curso": "Ciência de Dados e Inteligência Artificial (Bacharelado)",
@@ -328,7 +334,8 @@
       "Classificados (CEBAS)": 0,
       "Veteranos": 0,
       "AD": 0,
-      "Matrículas Veteranos": 0
+      "Matrículas Veteranos": 0,
+      "Cancelamentos Vestibular": 2
     },
     {
       "Curso": "Ciências Contábeis (Bacharelado)",
@@ -375,7 +382,8 @@
       "Classificados (CEBAS)": 22,
       "Veteranos": 27,
       "AD": 27,
-      "Matrículas Veteranos": 27
+      "Matrículas Veteranos": 27,
+      "Cancelamentos Vestibular": 0
     },
     {
       "Curso": "Ciências Econômicas (Bacharelado)",
@@ -422,7 +430,8 @@
       "Classificados (CEBAS)": 6,
       "Veteranos": 45,
       "AD": 45,
-      "Matrículas Veteranos": 45
+      "Matrículas Veteranos": 45,
+      "Cancelamentos Vestibular": 0
     },
     {
       "Curso": "Design (Bacharelado)",
@@ -469,7 +478,8 @@
       "Classificados (CEBAS)": 5,
       "Veteranos": 40,
       "AD": 40,
-      "Matrículas Veteranos": 40
+      "Matrículas Veteranos": 40,
+      "Cancelamentos Vestibular": 0
     },
     {
       "Curso": "Direito (Bacharelado)",
@@ -488,7 +498,7 @@
       "Doc. em análise\n(CEBAS)": "",
       "Aprovados\n(CEBAS)": 17,
       "Comprovantes\nsem baixa": "",
-      "Pagos": 7,
+      "Pagos": 6,
       "Pagos\n+Transf.": 12,
       "Isentos\nCEBAS": 15,
       "Isentos\nOutras Bolsas": 3,
@@ -510,13 +520,14 @@
       "Turma": "22WDIR_2A/M",
       "Limite de alunos\nna sala/turma": 63,
       "Observação": "-2 vaga transferência interna / -1 vaga bolsa funcionário / -2 vagas bolsa Cultura Cidadã",
-      "PagosTransf": 12,
-      "Pagos + Transf.": 12,
+      "PagosTransf": 11,
+      "Pagos + Transf.": 11,
       "Aprovados (CEBAS)": 17,
       "Classificados (CEBAS)": 17,
       "Veteranos": 29,
       "AD": 29,
-      "Matrículas Veteranos": 29
+      "Matrículas Veteranos": 29,
+      "Cancelamentos Vestibular": 1
     },
     {
       "Curso": "Engenharia (Bacharelado)",
@@ -535,7 +546,7 @@
       "Doc. em análise\n(CEBAS)": "",
       "Aprovados\n(CEBAS)": 11,
       "Comprovantes\nsem baixa": "",
-      "Pagos": 12,
+      "Pagos": 11,
       "Pagos\n+Transf.": 12,
       "Isentos\nCEBAS": 10,
       "Isentos\nOutras Bolsas": "",
@@ -557,13 +568,14 @@
       "Turma": "620ENG_2A/M",
       "Limite de alunos\nna sala/turma": 68,
       "Observação": "",
-      "PagosTransf": 12,
-      "Pagos + Transf.": 12,
+      "PagosTransf": 11,
+      "Pagos + Transf.": 11,
       "Aprovados (CEBAS)": 11,
       "Classificados (CEBAS)": 11,
       "Veteranos": 44,
       "AD": 44,
-      "Matrículas Veteranos": 44
+      "Matrículas Veteranos": 44,
+      "Cancelamentos Vestibular": 1
     },
     {
       "Curso": "Engenharia (Bacharelado)",
@@ -582,7 +594,7 @@
       "Doc. em análise\n(CEBAS)": "",
       "Aprovados\n(CEBAS)": 12,
       "Comprovantes\nsem baixa": 1,
-      "Pagos": 36,
+      "Pagos": 34,
       "Pagos\n+Transf.": 39,
       "Isentos\nCEBAS": 11,
       "Isentos\nOutras Bolsas": 1,
@@ -604,13 +616,14 @@
       "Turma": "620ENG_2F/N",
       "Limite de alunos\nna sala/turma": 70,
       "Observação": "-1 vaga transferência interna / -1 vaga para bolsa funcionário",
-      "PagosTransf": 39,
-      "Pagos + Transf.": 39,
+      "PagosTransf": 37,
+      "Pagos + Transf.": 37,
       "Aprovados (CEBAS)": 12,
       "Classificados (CEBAS)": 12,
       "Veteranos": 25,
       "AD": 25,
-      "Matrículas Veteranos": 25
+      "Matrículas Veteranos": 25,
+      "Cancelamentos Vestibular": 2
     },
     {
       "Curso": "Engenharia de Software (Bacharelado)",
@@ -657,7 +670,8 @@
       "Classificados (CEBAS)": 0,
       "Veteranos": 20,
       "AD": 20,
-      "Matrículas Veteranos": 20
+      "Matrículas Veteranos": 20,
+      "Cancelamentos Vestibular": 0
     },
     {
       "Curso": "Engenharia de Software (Bacharelado)",
@@ -676,7 +690,7 @@
       "Doc. em análise\n(CEBAS)": "",
       "Aprovados\n(CEBAS)": 0,
       "Comprovantes\nsem baixa": "",
-      "Pagos": 32,
+      "Pagos": 30,
       "Pagos\n+Transf.": 31,
       "Isentos\nCEBAS": "",
       "Isentos\nOutras Bolsas": 1,
@@ -698,13 +712,14 @@
       "Turma": "628SOF_2D/N",
       "Limite de alunos\nna sala/turma": 70,
       "Observação": "-1 vaga para bolsa funcionário",
-      "PagosTransf": 31,
-      "Pagos + Transf.": 31,
+      "PagosTransf": 29,
+      "Pagos + Transf.": 29,
       "Aprovados (CEBAS)": 0,
       "Classificados (CEBAS)": 0,
       "Veteranos": 0,
       "AD": 0,
-      "Matrículas Veteranos": 0
+      "Matrículas Veteranos": 0,
+      "Cancelamentos Vestibular": 2
     },
     {
       "Curso": "Gestão de Negócios Imobiliários (Tecnólogo)",
@@ -751,7 +766,8 @@
       "Classificados (CEBAS)": 0,
       "Veteranos": 0,
       "AD": 0,
-      "Matrículas Veteranos": 0
+      "Matrículas Veteranos": 0,
+      "Cancelamentos Vestibular": 0
     },
     {
       "Curso": "Gestão de Recursos Humanos (Tecnólogo)",
@@ -770,7 +786,7 @@
       "Doc. em análise\n(CEBAS)": "",
       "Aprovados\n(CEBAS)": 47,
       "Comprovantes\nsem baixa": "",
-      "Pagos": 4,
+      "Pagos": 3,
       "Pagos\n+Transf.": 6,
       "Isentos\nCEBAS": 47,
       "Isentos\nOutras Bolsas": "",
@@ -792,13 +808,14 @@
       "Turma": "EADRHU_2L",
       "Limite de alunos\nna sala/turma": 70,
       "Observação": "-2 vagas transferência interna",
-      "PagosTransf": 6,
-      "Pagos + Transf.": 6,
+      "PagosTransf": 5,
+      "Pagos + Transf.": 5,
       "Aprovados (CEBAS)": 47,
       "Classificados (CEBAS)": 47,
       "Veteranos": 0,
       "AD": 0,
-      "Matrículas Veteranos": 0
+      "Matrículas Veteranos": 0,
+      "Cancelamentos Vestibular": 1
     },
     {
       "Curso": "Gestão Pública (Tecnólogo)",
@@ -845,7 +862,8 @@
       "Classificados (CEBAS)": 28,
       "Veteranos": 0,
       "AD": 0,
-      "Matrículas Veteranos": 0
+      "Matrículas Veteranos": 0,
+      "Cancelamentos Vestibular": 0
     },
     {
       "Curso": "Marketing (Tecnólogo)",
@@ -864,7 +882,7 @@
       "Doc. em análise\n(CEBAS)": "",
       "Aprovados\n(CEBAS)": 25,
       "Comprovantes\nsem baixa": "",
-      "Pagos": 4,
+      "Pagos": 3,
       "Pagos\n+Transf.": 4,
       "Isentos\nCEBAS": 25,
       "Isentos\nOutras Bolsas": 1,
@@ -886,13 +904,14 @@
       "Turma": "EADMKD_2L",
       "Limite de alunos\nna sala/turma": 70,
       "Observação": "",
-      "PagosTransf": 4,
-      "Pagos + Transf.": 4,
+      "PagosTransf": 3,
+      "Pagos + Transf.": 3,
       "Aprovados (CEBAS)": 25,
       "Classificados (CEBAS)": 25,
       "Veteranos": 0,
       "AD": 0,
-      "Matrículas Veteranos": 0
+      "Matrículas Veteranos": 0,
+      "Cancelamentos Vestibular": 1
     },
     {
       "Curso": "Pedagogia (Licenciatura)",
@@ -911,7 +930,7 @@
       "Doc. em análise\n(CEBAS)": "",
       "Aprovados\n(CEBAS)": 62,
       "Comprovantes\nsem baixa": "",
-      "Pagos": 32,
+      "Pagos": 30,
       "Pagos\n+Transf.": 33,
       "Isentos\nCEBAS": 62,
       "Isentos\nOutras Bolsas": "",
@@ -933,13 +952,14 @@
       "Turma": "SPRPED_2J/N",
       "Limite de alunos\nna sala/turma": 120,
       "Observação": "-1 vaga transferência interna",
-      "PagosTransf": 33,
-      "Pagos + Transf.": 33,
+      "PagosTransf": 31,
+      "Pagos + Transf.": 31,
       "Aprovados (CEBAS)": 62,
       "Classificados (CEBAS)": 62,
       "Veteranos": 0,
       "AD": 0,
-      "Matrículas Veteranos": 0
+      "Matrículas Veteranos": 0,
+      "Cancelamentos Vestibular": 2
     },
     {
       "Curso": "Psicologia (Bacharelado)",
@@ -958,7 +978,7 @@
       "Doc. em análise\n(CEBAS)": "",
       "Aprovados\n(CEBAS)": 0,
       "Comprovantes\nsem baixa": "",
-      "Pagos": 20,
+      "Pagos": 18,
       "Pagos\n+Transf.": 19,
       "Isentos\nCEBAS": "",
       "Isentos\nOutras Bolsas": "",
@@ -980,13 +1000,14 @@
       "Turma": "22UPSI_2C/M",
       "Limite de alunos\nna sala/turma": 51,
       "Observação": "-1 vaga transferência interna",
-      "PagosTransf": 19,
-      "Pagos + Transf.": 19,
+      "PagosTransf": 17,
+      "Pagos + Transf.": 17,
       "Aprovados (CEBAS)": 0,
       "Classificados (CEBAS)": 0,
       "Veteranos": 28,
       "AD": 28,
-      "Matrículas Veteranos": 28
+      "Matrículas Veteranos": 28,
+      "Cancelamentos Vestibular": 2
     },
     {
       "Curso": "Psicologia (Bacharelado)",
@@ -1005,7 +1026,7 @@
       "Doc. em análise\n(CEBAS)": "",
       "Aprovados\n(CEBAS)": 19,
       "Comprovantes\nsem baixa": 3,
-      "Pagos": 23,
+      "Pagos": 21,
       "Pagos\n+Transf.": 23,
       "Isentos\nCEBAS": 17,
       "Isentos\nOutras Bolsas": "",
@@ -1027,13 +1048,14 @@
       "Turma": "22UPSI_2F/N",
       "Limite de alunos\nna sala/turma": 55,
       "Observação": "-1 vaga bolsa funcionário / -1 vaga transferência interna",
-      "PagosTransf": 23,
-      "Pagos + Transf.": 23,
+      "PagosTransf": 21,
+      "Pagos + Transf.": 21,
       "Aprovados (CEBAS)": 19,
       "Classificados (CEBAS)": 19,
       "Veteranos": 0,
       "AD": 0,
-      "Matrículas Veteranos": 0
+      "Matrículas Veteranos": 0,
+      "Cancelamentos Vestibular": 2
     },
     {
       "Curso": "Química (Bacharelado)",
@@ -1052,7 +1074,7 @@
       "Doc. em análise\n(CEBAS)": "",
       "Aprovados\n(CEBAS)": 15,
       "Comprovantes\nsem baixa": "",
-      "Pagos": 9,
+      "Pagos": 7,
       "Pagos\n+Transf.": 10,
       "Isentos\nCEBAS": 14,
       "Isentos\nOutras Bolsas": "",
@@ -1074,13 +1096,14 @@
       "Turma": "228QUI_2B/N",
       "Limite de alunos\nna sala/turma": 70,
       "Observação": "-1 vaga transferência interna",
-      "PagosTransf": 10,
-      "Pagos + Transf.": 10,
+      "PagosTransf": 8,
+      "Pagos + Transf.": 8,
       "Aprovados (CEBAS)": 15,
       "Classificados (CEBAS)": 15,
       "Veteranos": 28,
       "AD": 28,
-      "Matrículas Veteranos": 28
+      "Matrículas Veteranos": 28,
+      "Cancelamentos Vestibular": 2
     },
     {
       "Curso": "Segurança da Informação (Tecnólogo)",
@@ -1127,7 +1150,8 @@
       "Classificados (CEBAS)": 0,
       "Veteranos": 0,
       "AD": 0,
-      "Matrículas Veteranos": 0
+      "Matrículas Veteranos": 0,
+      "Cancelamentos Vestibular": 1
     },
     {
       "Curso": "Totais",
@@ -1146,7 +1170,7 @@
       "Doc. em análise\n(CEBAS)": 0,
       "Aprovados\n(CEBAS)": 322,
       "Comprovantes\nsem baixa": 5,
-      "Pagos": 334,
+      "Pagos": 310,
       "Pagos\n+Transf.": 358,
       "Isentos\nCEBAS": 311,
       "Isentos\nOutras Bolsas": 11,
@@ -1168,13 +1192,14 @@
       "Turma": "",
       "Limite de alunos\nna sala/turma": 1414,
       "Observação": "",
-      "PagosTransf": 358,
-      "Pagos + Transf.": 358,
+      "PagosTransf": 334,
+      "Pagos + Transf.": 334,
       "Aprovados (CEBAS)": 322,
       "Classificados (CEBAS)": 322,
       "Veteranos": 401,
       "AD": 401,
-      "Matrículas Veteranos": 401
+      "Matrículas Veteranos": 401,
+      "Cancelamentos Vestibular": 24
     },
     {
       "Curso": "Ultima atualização: 03/08/2026 13:03:39",
@@ -1221,7 +1246,8 @@
       "Classificados (CEBAS)": 0,
       "Veteranos": 0,
       "AD": 0,
-      "Matrículas Veteranos": 0
+      "Matrículas Veteranos": 0,
+      "Cancelamentos Vestibular": 0
     }
   ]
 }
