@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "03/08/2026 09:18",
+  "lastUpdated": "03/08/2026 09:33",
   "vagasList": [
     {
       "Curso": "Administração (Bacharelado)",
@@ -999,6 +999,46 @@
       "Vagas Restantes\nna turma": 382,
       "Turma": "",
       "Limite de alunos\nna sala/turma": 1414,
+      "Observação": ""
+    },
+    {
+      "Curso": "Ultima atualização: 03/08/2026 09:00:04",
+      "Período": "Vagas",
+      "Vagas\nVestibular": "",
+      "Vagas\nCEBAS": "",
+      "Bolsa\nFuncionário": "",
+      "Transferência\nInterna": "",
+      "Vagas\nTotal": "",
+      "Inscrições\n(vestibular)": "Vestibular / CRM",
+      "Inscrições\n(CEBAS)": "",
+      "Inscrições\n(total)": "",
+      "Convocados": "",
+      "Classificados\n(CEBAS)": "",
+      "Lista de espera\n(CEBAS)": "",
+      "Doc. em análise\n(CEBAS)": "",
+      "Aprovados\n(CEBAS)": "",
+      "Comprovantes\nsem baixa": "Baixas",
+      "Pagos": "",
+      "Pagos\n+Transf.": "",
+      "Isentos\nCEBAS": "",
+      "Isentos\nOutras Bolsas": "",
+      "Integrados": "TOTVS",
+      "Pendente\nPagamento": "",
+      "Pendente\nContrato": "",
+      "Pendente\nDocumentos": "",
+      "Cancelamentos/\nDesistências": "",
+      "Transferências\nde curso/turno": "",
+      "Outras\nSituações": "",
+      "Matriculados\nVestibular": "",
+      "Matriculados\nCEBAS": "",
+      "Matrículas\nVeteranos": "",
+      "Matriculados\n(Total)": "",
+      "Vagas Restantes\nVestibular": "Turmas e ensalamento",
+      "Vagas Restantes\nCEBAS": "",
+      "Vagas Restantes\nFuncionário": "",
+      "Vagas Restantes\nna turma": "",
+      "Turma": "",
+      "Limite de alunos\nna sala/turma": "",
       "Observação": ""
     }
   ]
