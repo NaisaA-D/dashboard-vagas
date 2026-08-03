@@ -196,24 +196,24 @@
                                 <th class="py-3 px-2 text-center">Lista Espera</th>
                             </template>
 
-                            <!-- Colunas Visão Geral Com Destaque Visual em Bloco -->
+                            <!-- Colunas Visão Geral Com Destaque Visual em Bloco e Linhas Divisórias -->
                             <template x-if="tab === 'geral'">
-                                <th class="py-3 px-2 text-center bg-blue-100/70 text-blue-900 border-l border-blue-200 whitespace-nowrap font-extrabold">Ingressantes Vest.</th>
+                                <th class="py-3 px-2 text-center bg-blue-100/70 text-blue-900 border-l-2 border-blue-400 whitespace-normal font-extrabold leading-tight">Ingressantes<br>Vest.</th>
                             </template>
                             <template x-if="tab === 'geral'">
-                                <th class="py-3 px-2 text-center bg-blue-100/70 text-blue-900 whitespace-nowrap font-extrabold">Ingressantes CEBAS</th>
+                                <th class="py-3 px-2 text-center bg-blue-100/70 text-blue-900 whitespace-normal font-extrabold leading-tight">Ingressantes<br>CEBAS</th>
                             </template>
                             <template x-if="tab === 'geral'">
-                                <th class="py-3 px-2 text-center bg-blue-100/70 text-blue-900 whitespace-nowrap font-extrabold">Isentos / Outras bolsas</th>
+                                <th class="py-3 px-2 text-center bg-blue-100/70 text-blue-900 whitespace-normal font-extrabold leading-tight">Isentos /<br>Outras bolsas</th>
                             </template>
                             <template x-if="tab === 'geral'">
-                                <th class="py-3 px-2 text-center bg-blue-100/70 text-blue-900 whitespace-nowrap font-extrabold">Transferência Interna</th>
+                                <th class="py-3 px-2 text-center bg-blue-100/70 text-blue-900 whitespace-normal font-extrabold leading-tight">Transferência<br>Interna</th>
                             </template>
                             <template x-if="tab === 'geral'">
-                                <th class="py-3 px-2 text-center bg-blue-100/70 text-blue-900 whitespace-nowrap font-extrabold">Veteranos Turma</th>
+                                <th class="py-3 px-2 text-center bg-blue-100/70 text-blue-900 whitespace-normal font-extrabold leading-tight">Veteranos<br>Turma</th>
                             </template>
                             <template x-if="tab === 'geral'">
-                                <th class="py-3 px-2 text-center bg-blue-200/80 text-blue-950 border-r border-blue-300 whitespace-nowrap font-black">Total Matriculados</th>
+                                <th class="py-3 px-2 text-center bg-blue-200/80 text-blue-950 border-r-2 border-blue-400 whitespace-normal font-black leading-tight">Total<br>Matriculados</th>
                             </template>
 
                             <template x-if="tab === 'geral'">
@@ -298,9 +298,9 @@
                                     <td class="py-2.5 px-2 text-center text-slate-500" x-text="item.listaEsperaCebas"></td>
                                 </template>
 
-                                <!-- Geral Exclusivo (Com Destaque Visual em Bloco) -->
+                                <!-- Geral Exclusivo (Com Divisórias no Início e no Fim do Bloco) -->
                                 <template x-if="tab === 'geral'">
-                                    <td class="py-2.5 px-2 text-center font-bold text-emerald-700 bg-blue-50/40 border-l border-blue-100" x-text="item.pagos"></td>
+                                    <td class="py-2.5 px-2 text-center font-bold text-emerald-700 bg-blue-50/40 border-l-2 border-blue-300" x-text="item.pagos"></td>
                                 </template>
                                 <template x-if="tab === 'geral'">
                                     <td class="py-2.5 px-2 text-center font-bold text-indigo-700 bg-blue-50/40" x-text="item.classificadosCebas"></td>
@@ -315,7 +315,7 @@
                                     <td class="py-2.5 px-2 text-center font-bold text-purple-700 bg-blue-50/40" x-text="item.matriculasVeteranos"></td>
                                 </template>
                                 <template x-if="tab === 'geral'">
-                                    <td class="py-2.5 px-2 text-center font-black text-blue-900 bg-blue-100/50 border-r border-blue-200 text-sm" x-text="item.classificadosCebas + item.pagosTransf + item.matriculasVeteranos"></td>
+                                    <td class="py-2.5 px-2 text-center font-black text-blue-900 bg-blue-100/50 border-r-2 border-blue-300 text-sm" x-text="item.classificadosCebas + item.pagosTransf + item.matriculasVeteranos"></td>
                                 </template>
 
                                 <template x-if="tab === 'geral'">
