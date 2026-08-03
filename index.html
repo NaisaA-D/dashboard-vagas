@@ -315,7 +315,7 @@
                                     <td class="py-2.5 px-2 text-center font-bold text-purple-700 bg-blue-50/40" x-text="item.matriculasVeteranos"></td>
                                 </template>
                                 <template x-if="tab === 'geral'">
-                                    <td class="py-2.5 px-2 text-center font-black text-blue-900 bg-blue-100/50 border-r-2 border-blue-300 text-sm" x-text="item.classificadosCebas + item.pagosTransf + item.matriculasVeteranos"></td>
+                                    <td class="py-2.5 px-2 text-center font-black text-blue-900 bg-blue-100/50 border-r-2 border-blue-300 text-sm" x-text="item.pagos + item.classificadosCebas + item.isentosBolsas + item.vagasMovimentadas + item.matriculasVeteranos"></td>
                                 </template>
 
                                 <template x-if="tab === 'geral'">
@@ -325,10 +325,10 @@
                                     <td class="py-2.5 px-2 text-center">
                                         <span class="px-2 py-0.5 rounded text-[11px] font-bold inline-block"
                                               :class="{
-                                                'bg-emerald-100 text-emerald-800': (item.limiteTurma > 0 ? Math.round(((item.classificadosCebas + item.pagosTransf + item.matriculasVeteranos) / item.limiteTurma) * 100) : 0) >= 80,
-                                                'bg-amber-100 text-amber-800': (item.limiteTurma > 0 ? Math.round(((item.classificadosCebas + item.pagosTransf + item.matriculasVeteranos) / item.limiteTurma) * 100) : 0) < 80
+                                                'bg-emerald-100 text-emerald-800': (item.limiteTurma > 0 ? Math.round(((item.pagos + item.classificadosCebas + item.isentosBolsas + item.vagasMovimentadas + item.matriculasVeteranos) / item.limiteTurma) * 100) : 0) >= 80,
+                                                'bg-amber-100 text-amber-800': (item.limiteTurma > 0 ? Math.round(((item.pagos + item.classificadosCebas + item.isentosBolsas + item.vagasMovimentadas + item.matriculasVeteranos) / item.limiteTurma) * 100) : 0) < 80
                                               }"
-                                              x-text="(item.limiteTurma > 0 ? Math.round(((item.classificadosCebas + item.pagosTransf + item.matriculasVeteranos) / item.limiteTurma) * 100) : ((item.vagasVestibular + item.vagasCebas) > 0 ? Math.round(((item.classificadosCebas + item.pagosTransf + item.matriculasVeteranos) / (item.vagasVestibular + item.vagasCebas)) * 100) : 0)) + '%'">
+                                              x-text="(item.limiteTurma > 0 ? Math.round(((item.pagos + item.classificadosCebas + item.isentosBolsas + item.vagasMovimentadas + item.matriculasVeteranos) / item.limiteTurma) * 100) : ((item.vagasVestibular + item.vagasCebas) > 0 ? Math.round(((item.pagos + item.classificadosCebas + item.isentosBolsas + item.vagasMovimentadas + item.matriculasVeteranos) / (item.vagasVestibular + item.vagasCebas)) * 100) : 0)) + '%'">
                                         </span>
                                     </td>
                                 </template>
@@ -389,24 +389,19 @@
                             this.vagasList = (data.vagasList || [])
                                 .filter(item => item["Curso"] && item["Curso"] !== "Totais" && !item["Curso"].includes("Ultima atualização"))
                                 .map(item => {
-                                    const pagosBruto = Number(item["Pagos"]) || 0;
-                                    
-                                    // Mapeia o valor de Cancelamentos/Desistências vindo da Coluna Y
-                                    const canceladosVal = Number(
-                                        item["Cancelados"] || 
-                                        item["Cancelamento"] || 
-                                        item["Cancelamentos Vestibular"] ||
-                                        item["Desistências"] || 
-                                        item["Desistencia"] || 
-                                        item["Cancelamentos/Desistências"] || 
-                                        item["Cancelados/Desistências"] ||
-                                        item["Cancelamento / Desistência"]
+                                    // 1. Ingressantes Vestibular (sem subtrações indevidas de cancelamentos)
+                                    const pagosVal = Number(item["Pagos"] || item["Ingressantes Vest."] || item["Vestibular"]) || 0;
+
+                                    // 2. Ingressantes CEBAS
+                                    const cebasVal = Number(
+                                        item["Aprovados (CEBAS)"] || 
+                                        item["Aprovados\n(CEBAS)"] || 
+                                        item["Classificados (CEBAS)"] || 
+                                        item["Classificados\n(CEBAS)"] ||
+                                        item["CEBAS"]
                                     ) || 0;
 
-                                    // Subtrai os cancelamentos/desistências dos Ingressantes Vestibular
-                                    const pagosVal = Math.max(0, pagosBruto - canceladosVal);
-
-                                    // Mapeia todas as possíveis variações do nome da coluna vinda do JSON/Apps Script
+                                    // Mapeia Pagos + Transf.
                                     const pagosTransfVal = Number(
                                         item["Pagos +Transf."] || 
                                         item["Pagos + Transf."] || 
@@ -416,7 +411,7 @@
                                         item["Pagos+Transf"]
                                     );
 
-                                    // Mapeia Isentos / Outras Bolsas (Coluna T / Índice 19)
+                                    // 3. Isentos / Outras Bolsas
                                     const isentosBolsasVal = Number(
                                         item["Isentos / Outras bolsas"] ||
                                         item["Isentos / Outras Bolsas"] ||
@@ -424,7 +419,15 @@
                                         item["Isentos"]
                                     ) || 0;
 
-                                    // Mapeia detalhadamente as variações da coluna "AD" ou "Veteranos"
+                                    // 4. Transferência Interna
+                                    const transfInternaVal = Number(
+                                        item["Transferência Interna"] ||
+                                        item["Transferência\nInterna"] ||
+                                        item["Transf. Interna"] ||
+                                        item["Transferencia Interna"]
+                                    ) || 0;
+
+                                    // 5. Veteranos Turma (AD)
                                     const veteranosVal = Number(
                                         item["AD"] ||
                                         item["A.D."] ||
@@ -437,13 +440,6 @@
                                         item["Matriculas Veteranos (AD)"]
                                     ) || 0;
 
-                                    // Mapeia Transferência Interna (Coluna F / Índice 5)
-                                    const transfInternaVal = Number(
-                                        item["Transferência Interna"] ||
-                                        item["Transferência\nInterna"] ||
-                                        item["Transf. Interna"]
-                                    ) || 0;
-
                                     return {
                                         curso: item["Curso"],
                                         periodo: item["Período"],
@@ -453,17 +449,18 @@
                                         inscritosVestibular: Number(item["Inscrições\n(vestibular)"] || item["Inscrições (vestibular)"]) || 0,
                                         inscritosCebas: Number(item["Inscrições\n(CEBAS)"] || item["Inscrições (CEBAS)"]) || 0,
                                         convocados: Number(item["Convocados"]) || 0,
+                                        
+                                        // As 5 colunas base
                                         pagos: pagosVal,
-                                        // Usa o valor mapeado; se vier indefinido/zerado/NaN, faz fallback para pagosVal
-                                        pagosTransf: !isNaN(pagosTransfVal) && pagosTransfVal > 0 ? Math.max(0, pagosTransfVal - canceladosVal) : pagosVal,
+                                        classificadosCebas: cebasVal,
                                         isentosBolsas: isentosBolsasVal,
+                                        vagasMovimentadas: transfInternaVal,
                                         matriculasVeteranos: veteranosVal,
+
+                                        pagosTransf: !isNaN(pagosTransfVal) && pagosTransfVal > 0 ? pagosTransfVal : pagosVal,
                                         limiteTurma: Number(item["Limite de alunos na sala/turma"] || item["Limite Turma"] || item["Limite de alunos\nna sala/turma"]) || 0,
-                                        classificadosCebas: Number(item["Aprovados\n(CEBAS)"] || item["Aprovados (CEBAS)"] || item["Classificados\n(CEBAS)"] || item["Classificados (CEBAS)"]) || 0,
                                         listaEsperaCebas: Number(item["Lista de espera\n(CEBAS)"]) || 0,
                                         docAnaliseCebas: Number(item["Doc. em análise\n(CEBAS)"]) || 0,
-                                        matriculados: Number(item["Matriculados"]) || 0,
-                                        vagasMovimentadas: transfInternaVal,
                                         observacao: item["Observação"] || ''
                                     };
                                 });
@@ -557,7 +554,7 @@
                         const vagasTotalCalculado = list.reduce((sum, item) => sum + (item.vagasVestibular + item.vagasCebas), 0);
                         const limiteTotalCalculado = list.reduce((sum, item) => sum + item.limiteTurma, 0);
                         const inscricoes = list.reduce((sum, item) => sum + (item.inscritosVestibular + item.inscritosCebas), 0);
-                        const matriculados = list.reduce((sum, item) => sum + (item.classificadosCebas + item.pagosTransf + item.matriculasVeteranos), 0);
+                        const matriculados = list.reduce((sum, item) => sum + (item.pagos + item.classificadosCebas + item.isentosBolsas + item.vagasMovimentadas + item.matriculasVeteranos), 0);
                         const convocados = list.reduce((sum, item) => sum + item.convocados, 0);
                         const demanda = vagasTotalCalculado > 0 ? (inscricoes / vagasTotalCalculado).toFixed(1) : '0';
                         const taxaOcupacao = limiteTotalCalculado > 0 ? Math.round((matriculados / limiteTotalCalculado) * 100) : 0;
