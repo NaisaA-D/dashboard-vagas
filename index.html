@@ -149,94 +149,95 @@
         <!-- Tabela Principal -->
         <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
             <div class="overflow-x-auto">
-                <table class="w-full text-left border-collapse text-sm">
+                <table class="w-full text-left border-collapse text-xs">
                     <thead>
-                        <tr class="bg-slate-50 border-b border-slate-200 text-slate-600 font-semibold text-xs uppercase tracking-wider">
-                            <th class="py-3.5 px-4">Curso / Modalidade</th>
-                            <th class="py-3.5 px-4 text-center">Turno</th>
+                        <tr class="bg-slate-100/80 border-b border-slate-200 text-slate-700 font-bold uppercase tracking-tight text-[11px]">
+                            <th class="py-3 px-3">Curso / Modalidade</th>
+                            <th class="py-3 px-2 text-center">Turno</th>
                             
                             <!-- Colunas dinâmicas dependendo da Aba -->
                             <template x-if="tab === 'vestibular'">
-                                <th class="py-3.5 px-4 text-center">Vagas Vest.</th>
+                                <th class="py-3 px-2 text-center whitespace-nowrap">Vagas Vest.</th>
                             </template>
                             <template x-if="tab === 'cebas'">
-                                <th class="py-3.5 px-4 text-center">Vagas CEBAS</th>
+                                <th class="py-3 px-2 text-center whitespace-nowrap">Vagas CEBAS</th>
                             </template>
                             <template x-if="tab === 'geral'">
-                                <th class="py-3.5 px-4 text-center">Vagas Totais</th>
+                                <th class="py-3 px-2 text-center whitespace-nowrap">Vagas Totais</th>
                             </template>
 
-                            <th class="py-3.5 px-4 text-center">Inscritos</th>
+                            <th class="py-3 px-2 text-center">Inscritos</th>
                             
                             <!-- Colunas Específicas Vestibular -->
                             <template x-if="tab === 'vestibular'">
-                                <th class="py-3.5 px-4 text-center">Convocados</th>
+                                <th class="py-3 px-2 text-center">Convocados</th>
                             </template>
                             <template x-if="tab === 'vestibular'">
-                                <th class="py-3.5 px-4 text-center">Pagos</th>
+                                <th class="py-3 px-2 text-center">Pagos</th>
                             </template>
                             <template x-if="tab === 'vestibular'">
-                                <th class="py-3.5 px-4 text-center">Pagos + Transf.</th>
+                                <th class="py-3 px-2 text-center">Pagos + Transf.</th>
                             </template>
                             <template x-if="tab === 'vestibular'">
-                                <th class="py-3.5 px-4 text-center">Limite Turma</th>
+                                <th class="py-3 px-2 text-center">Limite Turma</th>
                             </template>
                             <template x-if="tab === 'vestibular'">
-                                <th class="py-3.5 px-4 text-center">% Ocupação</th>
+                                <th class="py-3 px-2 text-center">% Ocupação</th>
                             </template>
 
                             <!-- Colunas Específicas CEBAS -->
                             <template x-if="tab === 'cebas'">
-                                <th class="py-3.5 px-4 text-center">Classificados</th>
+                                <th class="py-3 px-2 text-center">Classificados</th>
                             </template>
                             <template x-if="tab === 'cebas'">
-                                <th class="py-3.5 px-4 text-center">Doc. Análise</th>
+                                <th class="py-3 px-2 text-center">Doc. Análise</th>
                             </template>
                             <template x-if="tab === 'cebas'">
-                                <th class="py-3.5 px-4 text-center">Lista Espera</th>
+                                <th class="py-3 px-2 text-center">Lista Espera</th>
                             </template>
 
-                            <!-- Colunas Visão Geral -->
+                            <!-- Colunas Visão Geral Com Destaque Visual em Bloco -->
                             <template x-if="tab === 'geral'">
-                                <th class="py-3.5 px-4 text-center">Ingressantes Vestibular</th>
+                                <th class="py-3 px-2 text-center bg-blue-100/70 text-blue-900 border-l border-blue-200 whitespace-nowrap font-extrabold">Ingressantes Vest.</th>
                             </template>
                             <template x-if="tab === 'geral'">
-                                <th class="py-3.5 px-4 text-center">Ingressantes Cebas</th>
+                                <th class="py-3 px-2 text-center bg-blue-100/70 text-blue-900 whitespace-nowrap font-extrabold">Ingressantes CEBAS</th>
                             </template>
                             <template x-if="tab === 'geral'">
-                                <th class="py-3.5 px-4 text-center">Transferências</th>
+                                <th class="py-3 px-2 text-center bg-blue-100/70 text-blue-900 whitespace-nowrap font-extrabold">Transferências</th>
                             </template>
                             <template x-if="tab === 'geral'">
-                                <th class="py-3.5 px-4 text-center">Veteranos na Turma</th>
+                                <th class="py-3 px-2 text-center bg-blue-100/70 text-blue-900 whitespace-nowrap font-extrabold">Veteranos Turma</th>
                             </template>
                             <template x-if="tab === 'geral'">
-                                <th class="py-3.5 px-4 text-center">Total Matriculados</th>
+                                <th class="py-3 px-2 text-center bg-blue-200/80 text-blue-950 border-r border-blue-300 whitespace-nowrap font-black">Total Matriculados</th>
+                            </template>
+
+                            <template x-if="tab === 'geral'">
+                                <th class="py-3 px-2 text-center whitespace-nowrap">Limite Turma</th>
                             </template>
                             <template x-if="tab === 'geral'">
-                                <th class="py-3.5 px-4 text-center">Limite Turma</th>
-                            </template>
-                            <template x-if="tab === 'geral'">
-                                <th class="py-3.5 px-4 text-center">% Ocupação (Limite)</th>
+                                <th class="py-3 px-2 text-center whitespace-nowrap">% Ocupação</th>
                             </template>
 
                             <!-- Colunas Movimentação -->
                             <template x-if="tab === 'movimentacao'">
-                                <th class="py-3.5 px-4 text-center">Transferência / Ajustes</th>
+                                <th class="py-3 px-2 text-center">Transferência / Ajustes</th>
                             </template>
                             <template x-if="tab === 'movimentacao'">
-                                <th class="py-3.5 px-4">Observações</th>
+                                <th class="py-3 px-3">Observações</th>
                             </template>
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-slate-100">
                         <template x-for="item in filteredList" :key="item.curso + item.periodo">
-                            <tr class="hover:bg-slate-50 transition-colors text-slate-700">
+                            <tr class="hover:bg-slate-50/80 transition-colors text-slate-700">
                                 <!-- Nome do Curso -->
-                                <td class="py-3 px-4 font-medium text-slate-900" x-text="item.curso"></td>
+                                <td class="py-2.5 px-3 font-semibold text-slate-900 text-xs" x-text="item.curso"></td>
                                 
                                 <!-- Periodo -->
-                                <td class="py-3 px-4 text-center">
-                                    <span class="inline-block px-2 py-0.5 text-xs font-semibold rounded"
+                                <td class="py-2.5 px-2 text-center">
+                                    <span class="inline-block px-1.5 py-0.5 text-[10px] font-bold uppercase rounded"
                                           :class="{
                                             'bg-amber-100 text-amber-800': item.periodo === 'Matutino',
                                             'bg-indigo-100 text-indigo-800': item.periodo === 'Noturno',
@@ -248,35 +249,35 @@
 
                                 <!-- Vagas (Vestibular / CEBAS / Geral) -->
                                 <template x-if="tab === 'vestibular'">
-                                    <td class="py-3 px-4 text-center font-semibold" x-text="item.vagasVestibular"></td>
+                                    <td class="py-2.5 px-2 text-center font-semibold" x-text="item.vagasVestibular"></td>
                                 </template>
                                 <template x-if="tab === 'cebas'">
-                                    <td class="py-3 px-4 text-center font-semibold" x-text="item.vagasCebas"></td>
+                                    <td class="py-2.5 px-2 text-center font-semibold" x-text="item.vagasCebas"></td>
                                 </template>
                                 <template x-if="tab === 'geral'">
-                                    <td class="py-3 px-4 text-center font-semibold text-blue-700" x-text="item.vagasVestibular + item.vagasCebas"></td>
+                                    <td class="py-2.5 px-2 text-center font-bold text-slate-800" x-text="item.vagasVestibular + item.vagasCebas"></td>
                                 </template>
 
                                 <!-- Inscritos -->
-                                <td class="py-3 px-4 text-center">
+                                <td class="py-2.5 px-2 text-center font-medium text-slate-600">
                                     <span x-text="tab === 'cebas' ? item.inscritosCebas : (tab === 'vestibular' ? item.inscritosVestibular : item.inscritosVestibular + item.inscritosCebas)"></span>
                                 </td>
 
                                 <!-- Vestibular Exclusivo -->
                                 <template x-if="tab === 'vestibular'">
-                                    <td class="py-3 px-4 text-center" x-text="item.convocados"></td>
+                                    <td class="py-2.5 px-2 text-center" x-text="item.convocados"></td>
                                 </template>
                                 <template x-if="tab === 'vestibular'">
-                                    <td class="py-3 px-4 text-center font-semibold text-emerald-600" x-text="item.pagos"></td>
+                                    <td class="py-2.5 px-2 text-center font-semibold text-emerald-600" x-text="item.pagos"></td>
                                 </template>
                                 <template x-if="tab === 'vestibular'">
-                                    <td class="py-3 px-4 text-center font-semibold text-blue-600" x-text="item.pagosTransf"></td>
+                                    <td class="py-2.5 px-2 text-center font-semibold text-blue-600" x-text="item.pagosTransf"></td>
                                 </template>
                                 <template x-if="tab === 'vestibular'">
-                                    <td class="py-3 px-4 text-center text-slate-500" x-text="item.limiteTurma"></td>
+                                    <td class="py-2.5 px-2 text-center text-slate-500" x-text="item.limiteTurma"></td>
                                 </template>
                                 <template x-if="tab === 'vestibular'">
-                                    <td class="py-3 px-4 text-center">
+                                    <td class="py-2.5 px-2 text-center">
                                         <div class="flex items-center justify-center space-x-1">
                                             <span class="font-bold" x-text="(item.limiteTurma > 0 ? Math.round((item.pagosTransf / item.limiteTurma) * 100) : (item.vagasVestibular > 0 ? Math.round((item.pagosTransf / item.vagasVestibular) * 100) : 0)) + '%'"></span>
                                         </div>
@@ -285,37 +286,38 @@
 
                                 <!-- CEBAS Exclusivo -->
                                 <template x-if="tab === 'cebas'">
-                                    <td class="py-3 px-4 text-center font-semibold text-emerald-600" x-text="item.classificadosCebas"></td>
+                                    <td class="py-2.5 px-2 text-center font-semibold text-emerald-600" x-text="item.classificadosCebas"></td>
                                 </template>
                                 <template x-if="tab === 'cebas'">
-                                    <td class="py-3 px-4 text-center text-amber-600" x-text="item.docAnaliseCebas"></td>
+                                    <td class="py-2.5 px-2 text-center text-amber-600" x-text="item.docAnaliseCebas"></td>
                                 </template>
                                 <template x-if="tab === 'cebas'">
-                                    <td class="py-3 px-4 text-center text-slate-500" x-text="item.listaEsperaCebas"></td>
+                                    <td class="py-2.5 px-2 text-center text-slate-500" x-text="item.listaEsperaCebas"></td>
                                 </template>
 
-                                <!-- Geral Exclusivo -->
+                                <!-- Geral Exclusivo (Com Destaque Visual em Bloco) -->
                                 <template x-if="tab === 'geral'">
-                                    <td class="py-3 px-4 text-center font-semibold text-emerald-600" x-text="item.pagos"></td>
+                                    <td class="py-2.5 px-2 text-center font-bold text-emerald-700 bg-blue-50/40 border-l border-blue-100" x-text="item.pagos"></td>
                                 </template>
                                 <template x-if="tab === 'geral'">
-                                    <td class="py-3 px-4 text-center font-semibold text-blue-600" x-text="item.classificadosCebas"></td>
+                                    <td class="py-2.5 px-2 text-center font-bold text-indigo-700 bg-blue-50/40" x-text="item.classificadosCebas"></td>
                                 </template>
                                 <template x-if="tab === 'geral'">
-                                    <td class="py-3 px-4 text-center font-semibold text-amber-600" x-text="Math.max(0, item.pagosTransf - item.pagos)"></td>
+                                    <td class="py-2.5 px-2 text-center font-bold text-amber-700 bg-blue-50/40" x-text="Math.max(0, item.pagosTransf - item.pagos)"></td>
                                 </template>
                                 <template x-if="tab === 'geral'">
-                                    <td class="py-3 px-4 text-center font-semibold text-purple-700" x-text="item.matriculasVeteranos"></td>
+                                    <td class="py-2.5 px-2 text-center font-bold text-purple-700 bg-blue-50/40" x-text="item.matriculasVeteranos"></td>
                                 </template>
                                 <template x-if="tab === 'geral'">
-                                    <td class="py-3 px-4 text-center font-bold text-slate-900" x-text="item.classificadosCebas + item.pagosTransf + item.matriculasVeteranos"></td>
+                                    <td class="py-2.5 px-2 text-center font-black text-blue-900 bg-blue-100/50 border-r border-blue-200 text-sm" x-text="item.classificadosCebas + item.pagosTransf + item.matriculasVeteranos"></td>
+                                </template>
+
+                                <template x-if="tab === 'geral'">
+                                    <td class="py-2.5 px-2 text-center text-slate-500 font-medium" x-text="item.limiteTurma"></td>
                                 </template>
                                 <template x-if="tab === 'geral'">
-                                    <td class="py-3 px-4 text-center text-slate-500" x-text="item.limiteTurma"></td>
-                                </template>
-                                <template x-if="tab === 'geral'">
-                                    <td class="py-3 px-4 text-center">
-                                        <span class="px-2 py-1 rounded text-xs font-bold"
+                                    <td class="py-2.5 px-2 text-center">
+                                        <span class="px-2 py-0.5 rounded text-[11px] font-bold inline-block"
                                               :class="{
                                                 'bg-emerald-100 text-emerald-800': (item.limiteTurma > 0 ? Math.round(((item.classificadosCebas + item.pagosTransf + item.matriculasVeteranos) / item.limiteTurma) * 100) : 0) >= 80,
                                                 'bg-amber-100 text-amber-800': (item.limiteTurma > 0 ? Math.round(((item.classificadosCebas + item.pagosTransf + item.matriculasVeteranos) / item.limiteTurma) * 100) : 0) < 80
@@ -327,10 +329,10 @@
 
                                 <!-- Movimentação -->
                                 <template x-if="tab === 'movimentacao'">
-                                    <td class="py-3 px-4 text-center font-semibold" :class="item.vagasMovimentadas > 0 ? 'text-emerald-600' : (item.vagasMovimentadas < 0 ? 'text-rose-600' : 'text-slate-400')" x-text="item.vagasMovimentadas > 0 ? '+' + item.vagasMovimentadas : item.vagasMovimentadas"></td>
+                                    <td class="py-2.5 px-2 text-center font-semibold" :class="item.vagasMovimentadas > 0 ? 'text-emerald-600' : (item.vagasMovimentadas < 0 ? 'text-rose-600' : 'text-slate-400')" x-text="item.vagasMovimentadas > 0 ? '+' + item.vagasMovimentadas : item.vagasMovimentadas"></td>
                                 </template>
                                 <template x-if="tab === 'movimentacao'">
-                                    <td class="py-3 px-4 text-xs text-slate-500 italic" x-text="item.observacao || 'Sem observações'"></td>
+                                    <td class="py-2.5 px-3 text-xs text-slate-500 italic" x-text="item.observacao || 'Sem observações'"></td>
                                 </template>
                             </tr>
                         </template>
