@@ -389,8 +389,32 @@
                             this.vagasList = (data.vagasList || [])
                                 .filter(item => item["Curso"] && item["Curso"] !== "Totais" && !item["Curso"].includes("Ultima atualização"))
                                 .map(item => {
-                                    // 1. Ingressantes Vestibular (sem subtrações indevidas de cancelamentos)
-                                    const pagosVal = Number(item["Pagos"] || item["Ingressantes Vest."] || item["Vestibular"]) || 0;
+                                    const pagosBruto = Number(item["Pagos"] || item["Ingressantes Vest."] || item["Vestibular"]) || 0;
+                                    
+                                    // Mapeia a Coluna Y de Cancelamentos / Desistências
+                                    const canceladosVal = Number(
+                                        item["Cancelados"] || 
+                                        item["Cancelamento"] || 
+                                        item["Cancelamentos Vestibular"] ||
+                                        item["Desistências"] || 
+                                        item["Desistencia"] || 
+                                        item["Cancelamentos/Desistências"] || 
+                                        item["Cancelados/Desistências"] ||
+                                        item["Cancelamento / Desistência"]
+                                    ) || 0;
+
+                                    // Subtrai os cancelamentos/desistências APENAS dos Ingressantes Vestibular
+                                    const pagosVal = Math.max(0, pagosBruto - canceladosVal);
+
+                                    // Mapeia a coluna Pagos + Transf.
+                                    const pagosTransfVal = Number(
+                                        item["Pagos +Transf."] || 
+                                        item["Pagos + Transf."] || 
+                                        item["Pagos +Transf\n"] || 
+                                        item["Pagos + Transf\n"] ||
+                                        item["Pagos+Transf."] ||
+                                        item["Pagos+Transf"]
+                                    );
 
                                     // 2. Ingressantes CEBAS
                                     const cebasVal = Number(
@@ -400,16 +424,6 @@
                                         item["Classificados\n(CEBAS)"] ||
                                         item["CEBAS"]
                                     ) || 0;
-
-                                    // Mapeia Pagos + Transf.
-                                    const pagosTransfVal = Number(
-                                        item["Pagos +Transf."] || 
-                                        item["Pagos + Transf."] || 
-                                        item["Pagos +Transf\n"] || 
-                                        item["Pagos + Transf\n"] ||
-                                        item["Pagos+Transf."] ||
-                                        item["Pagos+Transf"]
-                                    );
 
                                     // 3. Isentos / Outras Bolsas
                                     const isentosBolsasVal = Number(
@@ -450,14 +464,17 @@
                                         inscritosCebas: Number(item["Inscrições\n(CEBAS)"] || item["Inscrições (CEBAS)"]) || 0,
                                         convocados: Number(item["Convocados"]) || 0,
                                         
-                                        // As 5 colunas base
+                                        // Pagos já com o abatimento da coluna Y
                                         pagos: pagosVal,
+                                        
                                         classificadosCebas: cebasVal,
                                         isentosBolsas: isentosBolsasVal,
                                         vagasMovimentadas: transfInternaVal,
                                         matriculasVeteranos: veteranosVal,
 
-                                        pagosTransf: !isNaN(pagosTransfVal) && pagosTransfVal > 0 ? pagosTransfVal : pagosVal,
+                                        // Pagos + Transf. com o abatimento da coluna Y
+                                        pagosTransf: !isNaN(pagosTransfVal) && pagosTransfVal > 0 ? Math.max(0, pagosTransfVal - canceladosVal) : pagosVal,
+                                        
                                         limiteTurma: Number(item["Limite de alunos na sala/turma"] || item["Limite Turma"] || item["Limite de alunos\nna sala/turma"]) || 0,
                                         listaEsperaCebas: Number(item["Lista de espera\n(CEBAS)"]) || 0,
                                         docAnaliseCebas: Number(item["Doc. em análise\n(CEBAS)"]) || 0,
