@@ -383,8 +383,22 @@
                             this.vagasList = (data.vagasList || [])
                                 .filter(item => item["Curso"] && item["Curso"] !== "Totais" && !item["Curso"].includes("Ultima atualização"))
                                 .map(item => {
-                                    const pagosVal = Number(item["Pagos"]) || 0;
+                                    const pagosBruto = Number(item["Pagos"]) || 0;
                                     
+                                    // Mapeia o valor de Cancelamentos/Desistências vindo da Coluna Y
+                                    const canceladosVal = Number(
+                                        item["Cancelados"] || 
+                                        item["Cancelamento"] || 
+                                        item["Desistências"] || 
+                                        item["Desistencia"] || 
+                                        item["Cancelamentos/Desistências"] || 
+                                        item["Cancelados/Desistências"] ||
+                                        item["Cancelamento / Desistência"]
+                                    ) || 0;
+
+                                    // Subtrai os cancelamentos/desistências dos Ingressantes Vestibular
+                                    const pagosVal = Math.max(0, pagosBruto - canceladosVal);
+
                                     // Mapeia todas as possíveis variações do nome da coluna vinda do JSON/Apps Script
                                     const pagosTransfVal = Number(
                                         item["Pagos +Transf."] || 
@@ -419,7 +433,7 @@
                                         convocados: Number(item["Convocados"]) || 0,
                                         pagos: pagosVal,
                                         // Usa o valor mapeado; se vier indefinido/zerado/NaN, faz fallback para pagosVal
-                                        pagosTransf: !isNaN(pagosTransfVal) && pagosTransfVal > 0 ? pagosTransfVal : pagosVal,
+                                        pagosTransf: !isNaN(pagosTransfVal) && pagosTransfVal > 0 ? Math.max(0, pagosTransfVal - canceladosVal) : pagosVal,
                                         matriculasVeteranos: veteranosVal,
                                         limiteTurma: Number(item["Limite de alunos na sala/turma"] || item["Limite Turma"] || item["Limite de alunos\nna sala/turma"]) || 0,
                                         classificadosCebas: Number(item["Aprovados\n(CEBAS)"] || item["Classificados\n(CEBAS)"]) || 0,
