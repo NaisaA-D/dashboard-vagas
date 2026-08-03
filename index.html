@@ -204,7 +204,10 @@
                                 <th class="py-3 px-2 text-center bg-blue-100/70 text-blue-900 whitespace-nowrap font-extrabold">Ingressantes CEBAS</th>
                             </template>
                             <template x-if="tab === 'geral'">
-                                <th class="py-3 px-2 text-center bg-blue-100/70 text-blue-900 whitespace-nowrap font-extrabold">Transferências</th>
+                                <th class="py-3 px-2 text-center bg-blue-100/70 text-blue-900 whitespace-nowrap font-extrabold">Isentos / Outras bolsas</th>
+                            </template>
+                            <template x-if="tab === 'geral'">
+                                <th class="py-3 px-2 text-center bg-blue-100/70 text-blue-900 whitespace-nowrap font-extrabold">Transferência Interna</th>
                             </template>
                             <template x-if="tab === 'geral'">
                                 <th class="py-3 px-2 text-center bg-blue-100/70 text-blue-900 whitespace-nowrap font-extrabold">Veteranos Turma</th>
@@ -303,7 +306,10 @@
                                     <td class="py-2.5 px-2 text-center font-bold text-indigo-700 bg-blue-50/40" x-text="item.classificadosCebas"></td>
                                 </template>
                                 <template x-if="tab === 'geral'">
-                                    <td class="py-2.5 px-2 text-center font-bold text-amber-700 bg-blue-50/40" x-text="Math.max(0, item.pagosTransf - item.pagos)"></td>
+                                    <td class="py-2.5 px-2 text-center font-bold text-amber-700 bg-blue-50/40" x-text="item.isentosBolsas"></td>
+                                </template>
+                                <template x-if="tab === 'geral'">
+                                    <td class="py-2.5 px-2 text-center font-bold text-cyan-700 bg-blue-50/40" x-text="item.vagasMovimentadas"></td>
                                 </template>
                                 <template x-if="tab === 'geral'">
                                     <td class="py-2.5 px-2 text-center font-bold text-purple-700 bg-blue-50/40" x-text="item.matriculasVeteranos"></td>
@@ -339,7 +345,7 @@
 
                         <!-- Mensagem quando não há resultados -->
                         <tr x-show="filteredList.length === 0">
-                            <td colspan="12" class="py-8 text-center text-slate-400">
+                            <td colspan="14" class="py-8 text-center text-slate-400">
                                 <i class="ph ph-warning-circle text-3xl mb-1 inline-block"></i>
                                 <p class="text-sm">Nenhum curso encontrado para os filtros selecionados.</p>
                             </td>
@@ -389,6 +395,7 @@
                                     const canceladosVal = Number(
                                         item["Cancelados"] || 
                                         item["Cancelamento"] || 
+                                        item["Cancelamentos Vestibular"] ||
                                         item["Desistências"] || 
                                         item["Desistencia"] || 
                                         item["Cancelamentos/Desistências"] || 
@@ -409,6 +416,14 @@
                                         item["Pagos+Transf"]
                                     );
 
+                                    // Mapeia Isentos / Outras Bolsas (Coluna T / Índice 19)
+                                    const isentosBolsasVal = Number(
+                                        item["Isentos / Outras bolsas"] ||
+                                        item["Isentos / Outras Bolsas"] ||
+                                        item["Outras Bolsas"] ||
+                                        item["Isentos"]
+                                    ) || 0;
+
                                     // Mapeia detalhadamente as variações da coluna "AD" ou "Veteranos"
                                     const veteranosVal = Number(
                                         item["AD"] ||
@@ -420,6 +435,13 @@
                                         item["Veteranos"] ||
                                         item["Matriculas Veteranos"] ||
                                         item["Matriculas Veteranos (AD)"]
+                                    ) || 0;
+
+                                    // Mapeia Transferência Interna (Coluna F / Índice 5)
+                                    const transfInternaVal = Number(
+                                        item["Transferência Interna"] ||
+                                        item["Transferência\nInterna"] ||
+                                        item["Transf. Interna"]
                                     ) || 0;
 
                                     return {
@@ -434,13 +456,14 @@
                                         pagos: pagosVal,
                                         // Usa o valor mapeado; se vier indefinido/zerado/NaN, faz fallback para pagosVal
                                         pagosTransf: !isNaN(pagosTransfVal) && pagosTransfVal > 0 ? Math.max(0, pagosTransfVal - canceladosVal) : pagosVal,
+                                        isentosBolsas: isentosBolsasVal,
                                         matriculasVeteranos: veteranosVal,
                                         limiteTurma: Number(item["Limite de alunos na sala/turma"] || item["Limite Turma"] || item["Limite de alunos\nna sala/turma"]) || 0,
-                                        classificadosCebas: Number(item["Aprovados\n(CEBAS)"] || item["Classificados\n(CEBAS)"]) || 0,
+                                        classificadosCebas: Number(item["Aprovados\n(CEBAS)"] || item["Aprovados (CEBAS)"] || item["Classificados\n(CEBAS)"] || item["Classificados (CEBAS)"]) || 0,
                                         listaEsperaCebas: Number(item["Lista de espera\n(CEBAS)"]) || 0,
                                         docAnaliseCebas: Number(item["Doc. em análise\n(CEBAS)"]) || 0,
                                         matriculados: Number(item["Matriculados"]) || 0,
-                                        vagasMovimentadas: Number(item["Transferência\nInterna"] || item["Transferência Interna"]) || 0,
+                                        vagasMovimentadas: transfInternaVal,
                                         observacao: item["Observação"] || ''
                                     };
                                 });
