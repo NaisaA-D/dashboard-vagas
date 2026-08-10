@@ -182,7 +182,7 @@
                                 <th class="py-3 px-2 text-center">Limite Turma</th>
                             </template>
                             <template x-if="tab === 'vestibular'">
-                                <th class="py-3 px-2 text-center">% Ocupação</th>
+                                <th class="py-3 px-2 text-center whitespace-nowrap">Vagas Restantes</th>
                             </template>
 
                             <!-- Colunas Específicas CEBAS -->
@@ -220,7 +220,7 @@
                                 <th class="py-3 px-2 text-center whitespace-nowrap">Limite Turma</th>
                             </template>
                             <template x-if="tab === 'geral'">
-                                <th class="py-3 px-2 text-center whitespace-nowrap">% Ocupação</th>
+                                <th class="py-3 px-2 text-center whitespace-nowrap">Vagas Restantes</th>
                             </template>
 
                             <!-- Colunas Movimentação -->
@@ -280,11 +280,7 @@
                                     <td class="py-2.5 px-2 text-center text-slate-500" x-text="item.limiteTurma"></td>
                                 </template>
                                 <template x-if="tab === 'vestibular'">
-                                    <td class="py-2.5 px-2 text-center">
-                                        <div class="flex items-center justify-center space-x-1">
-                                            <span class="font-bold" x-text="(item.limiteTurma > 0 ? Math.round((item.pagosTransf / item.limiteTurma) * 100) : (item.vagasVestibular > 0 ? Math.round((item.pagosTransf / item.vagasVestibular) * 100) : 0)) + '%'"></span>
-                                        </div>
-                                    </td>
+                                    <td class="py-2.5 px-2 text-center font-bold text-slate-800" x-text="item.vagasRestantes"></td>
                                 </template>
 
                                 <!-- CEBAS Exclusivo -->
@@ -322,15 +318,7 @@
                                     <td class="py-2.5 px-2 text-center text-slate-500 font-medium" x-text="item.limiteTurma"></td>
                                 </template>
                                 <template x-if="tab === 'geral'">
-                                    <td class="py-2.5 px-2 text-center">
-                                        <span class="px-2 py-0.5 rounded text-[11px] font-bold inline-block"
-                                              :class="{
-                                                'bg-emerald-100 text-emerald-800': (item.limiteTurma > 0 ? Math.round(((item.pagos + item.classificadosCebas + item.isentosBolsas + item.vagasMovimentadas + item.matriculasVeteranos) / item.limiteTurma) * 100) : 0) >= 80,
-                                                'bg-amber-100 text-amber-800': (item.limiteTurma > 0 ? Math.round(((item.pagos + item.classificadosCebas + item.isentosBolsas + item.vagasMovimentadas + item.matriculasVeteranos) / item.limiteTurma) * 100) : 0) < 80
-                                              }"
-                                              x-text="(item.limiteTurma > 0 ? Math.round(((item.pagos + item.classificadosCebas + item.isentosBolsas + item.vagasMovimentadas + item.matriculasVeteranos) / item.limiteTurma) * 100) : ((item.vagasVestibular + item.vagasCebas) > 0 ? Math.round(((item.pagos + item.classificadosCebas + item.isentosBolsas + item.vagasMovimentadas + item.matriculasVeteranos) / (item.vagasVestibular + item.vagasCebas)) * 100) : 0)) + '%'">
-                                        </span>
-                                    </td>
+                                    <td class="py-2.5 px-2 text-center font-bold text-slate-800" x-text="item.vagasRestantesGeral"></td>
                                 </template>
 
                                 <!-- Movimentação -->
@@ -454,11 +442,31 @@
                                         item["Matriculas Veteranos (AD)"]
                                     ) || 0;
 
+                                    const vagasVestibular = Number(item["Vagas\nVestibular"] || item["Vagas Vestibular"]) || 0;
+                                    const vagasCebas = Number(item["Vagas\nCEBAS"] || item["Vagas CEBAS"]) || 0;
+                                    const limiteTurma = Number(item["Limite de alunos na sala/turma"] || item["Limite Turma"] || item["Limite de alunos\nna sala/turma"]) || 0;
+                                    
+                                    const totalMatriculados = pagosVal + cebasVal + isentosBolsasVal + transfInternaVal + veteranosVal;
+                                    const pagosTransfCalculado = !isNaN(pagosTransfVal) && pagosTransfVal > 0 ? Math.max(0, pagosTransfVal - canceladosVal) : pagosVal;
+
+                                    // Captura o valor diretamente da Coluna AN ("Cancelamentos Vestibular" / Vagas Restantes)
+                                    const cancelamentosOuVagasRestantesAN = Number(
+                                        item["Cancelamentos Vestibular"] || 
+                                        item["Cancelamentos\nVestibular"] || 
+                                        item["Vagas Restantes"]
+                                    );
+
+                                    // Vagas restantes na aba Vestibular (Usa o valor direto da planilha ou calcula: Limite/Vagas - Pagos+Transf)
+                                    const vagasRestantesVest = !isNaN(cancelamentosOuVagasRestantesAN) ? cancelamentosOuVagasRestantesAN : (limiteTurma > 0 ? Math.max(0, limiteTurma - pagosTransfCalculado) : Math.max(0, vagasVestibular - pagosTransfCalculado));
+                                    
+                                    // Vagas restantes na aba Geral
+                                    const vagasRestantesGer = limiteTurma > 0 ? Math.max(0, limiteTurma - totalMatriculados) : Math.max(0, (vagasVestibular + vagasCebas) - totalMatriculados);
+
                                     return {
                                         curso: item["Curso"],
                                         periodo: item["Período"],
-                                        vagasVestibular: Number(item["Vagas\nVestibular"] || item["Vagas Vestibular"]) || 0,
-                                        vagasCebas: Number(item["Vagas\nCEBAS"] || item["Vagas CEBAS"]) || 0,
+                                        vagasVestibular: vagasVestibular,
+                                        vagasCebas: vagasCebas,
                                         totalVagas: Number(item["Vagas\nTotal"] || item["Vagas Total"]) || 0,
                                         inscritosVestibular: Number(item["Inscrições\n(vestibular)"] || item["Inscrições (vestibular)"]) || 0,
                                         inscritosCebas: Number(item["Inscrições\n(CEBAS)"] || item["Inscrições (CEBAS)"]) || 0,
@@ -473,9 +481,11 @@
                                         matriculasVeteranos: veteranosVal,
 
                                         // Pagos + Transf. com o abatimento da coluna Y
-                                        pagosTransf: !isNaN(pagosTransfVal) && pagosTransfVal > 0 ? Math.max(0, pagosTransfVal - canceladosVal) : pagosVal,
+                                        pagosTransf: pagosTransfCalculado,
                                         
-                                        limiteTurma: Number(item["Limite de alunos na sala/turma"] || item["Limite Turma"] || item["Limite de alunos\nna sala/turma"]) || 0,
+                                        limiteTurma: limiteTurma,
+                                        vagasRestantes: vagasRestantesVest,
+                                        vagasRestantesGeral: vagasRestantesGer,
                                         listaEsperaCebas: Number(item["Lista de espera\n(CEBAS)"]) || 0,
                                         docAnaliseCebas: Number(item["Doc. em análise\n(CEBAS)"]) || 0,
                                         observacao: item["Observação"] || ''
