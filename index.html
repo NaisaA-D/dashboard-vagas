@@ -182,7 +182,7 @@
                                 <th class="py-3 px-2 text-center">Limite Turma</th>
                             </template>
                             <template x-if="tab === 'vestibular'">
-                                <th class="py-3 px-2 text-center whitespace-nowrap">Vagas Restantes</th>
+                                <th class="py-3 px-2 text-center whitespace-nowrap">Vagas Restantes na Turma</th>
                             </template>
 
                             <!-- Colunas Específicas CEBAS -->
@@ -220,7 +220,7 @@
                                 <th class="py-3 px-2 text-center whitespace-nowrap">Limite Turma</th>
                             </template>
                             <template x-if="tab === 'geral'">
-                                <th class="py-3 px-2 text-center whitespace-nowrap">Vagas Restantes</th>
+                                <th class="py-3 px-2 text-center whitespace-nowrap">Vagas Restantes na Turma</th>
                             </template>
 
                             <!-- Colunas Movimentação -->
@@ -294,7 +294,7 @@
                                     <td class="py-2.5 px-2 text-center text-slate-500" x-text="item.listaEsperaCebas"></td>
                                 </template>
 
-                                <!-- Geral Exclusivo (Com Divisórias no Início e no Fim do Bloco) -->
+                                <!-- Geral Exclusivo -->
                                 <template x-if="tab === 'geral'">
                                     <td class="py-2.5 px-2 text-center font-bold text-emerald-700 bg-blue-50/40 border-l-2 border-blue-300" x-text="item.pagos"></td>
                                 </template>
@@ -318,7 +318,7 @@
                                     <td class="py-2.5 px-2 text-center text-slate-500 font-medium" x-text="item.limiteTurma"></td>
                                 </template>
                                 <template x-if="tab === 'geral'">
-                                    <td class="py-2.5 px-2 text-center font-bold text-slate-800" x-text="item.vagasRestantesGeral"></td>
+                                    <td class="py-2.5 px-2 text-center font-bold text-slate-800" x-text="item.vagasRestantes"></td>
                                 </template>
 
                                 <!-- Movimentação -->
@@ -347,7 +347,6 @@
 
     <!-- JavaScript Principal com Alpine.js Data Engine -->
     <script>
-        // Cursos que NÃO devem aparecer em Vagas Vestibular e Visão Geral
         const cursosOcultosPorProcesso = {
             "vestibular": [
                 "Ciência da Computação - Matutino",
@@ -379,7 +378,6 @@
                                 .map(item => {
                                     const pagosBruto = Number(item["Pagos"] || item["Ingressantes Vest."] || item["Vestibular"]) || 0;
                                     
-                                    // Mapeia a Coluna Y de Cancelamentos / Desistências
                                     const canceladosVal = Number(
                                         item["Cancelados"] || 
                                         item["Cancelamento"] || 
@@ -391,10 +389,8 @@
                                         item["Cancelamento / Desistência"]
                                     ) || 0;
 
-                                    // Subtrai os cancelamentos/desistências APENAS dos Ingressantes Vestibular
                                     const pagosVal = Math.max(0, pagosBruto - canceladosVal);
 
-                                    // Mapeia a coluna Pagos + Transf.
                                     const pagosTransfVal = Number(
                                         item["Pagos +Transf."] || 
                                         item["Pagos + Transf."] || 
@@ -404,7 +400,6 @@
                                         item["Pagos+Transf"]
                                     );
 
-                                    // 2. Ingressantes CEBAS
                                     const cebasVal = Number(
                                         item["Aprovados (CEBAS)"] || 
                                         item["Aprovados\n(CEBAS)"] || 
@@ -413,7 +408,6 @@
                                         item["CEBAS"]
                                     ) || 0;
 
-                                    // 3. Isentos / Outras Bolsas
                                     const isentosBolsasVal = Number(
                                         item["Isentos / Outras bolsas"] ||
                                         item["Isentos / Outras Bolsas"] ||
@@ -421,7 +415,6 @@
                                         item["Isentos"]
                                     ) || 0;
 
-                                    // 4. Transferência Interna
                                     const transfInternaVal = Number(
                                         item["Transferência Interna"] ||
                                         item["Transferência\nInterna"] ||
@@ -429,7 +422,6 @@
                                         item["Transferencia Interna"]
                                     ) || 0;
 
-                                    // 5. Veteranos Turma (AD)
                                     const veteranosVal = Number(
                                         item["AD"] ||
                                         item["A.D."] ||
@@ -446,21 +438,19 @@
                                     const vagasCebas = Number(item["Vagas\nCEBAS"] || item["Vagas CEBAS"]) || 0;
                                     const limiteTurma = Number(item["Limite de alunos na sala/turma"] || item["Limite Turma"] || item["Limite de alunos\nna sala/turma"]) || 0;
                                     
-                                    const totalMatriculados = pagosVal + cebasVal + isentosBolsasVal + transfInternaVal + veteranosVal;
                                     const pagosTransfCalculado = !isNaN(pagosTransfVal) && pagosTransfVal > 0 ? Math.max(0, pagosTransfVal - canceladosVal) : pagosVal;
 
-                                    // Captura o valor diretamente da Coluna AN ("Cancelamentos Vestibular" / Vagas Restantes)
-                                    const cancelamentosOuVagasRestantesAN = Number(
-                                        item["Cancelamentos Vestibular"] || 
-                                        item["Cancelamentos\nVestibular"] || 
+                                    // Captura o valor diretamente da Coluna AI ("Vagas Restantes na turma")
+                                    const vagasRestantesAI = Number(
+                                        item["Vagas Restantes na turma"] || 
+                                        item["Vagas Restantes\nna turma"] || 
                                         item["Vagas Restantes"]
                                     );
 
-                                    // Vagas restantes na aba Vestibular (Usa o valor direto da planilha ou calcula: Limite/Vagas - Pagos+Transf)
-                                    const vagasRestantesVest = !isNaN(cancelamentosOuVagasRestantesAN) ? cancelamentosOuVagasRestantesAN : (limiteTurma > 0 ? Math.max(0, limiteTurma - pagosTransfCalculado) : Math.max(0, vagasVestibular - pagosTransfCalculado));
-                                    
-                                    // Vagas restantes na aba Geral
-                                    const vagasRestantesGer = limiteTurma > 0 ? Math.max(0, limiteTurma - totalMatriculados) : Math.max(0, (vagasVestibular + vagasCebas) - totalMatriculados);
+                                    // Caso a chave da coluna AI venha preenchida do backend/Google Apps Script, usa ela. Senão calcula a diferença.
+                                    const vagasRestantesVal = !isNaN(vagasRestantesAI) 
+                                        ? vagasRestantesAI 
+                                        : (limiteTurma > 0 ? Math.max(0, limiteTurma - pagosTransfCalculado) : Math.max(0, vagasVestibular - pagosTransfCalculado));
 
                                     return {
                                         curso: item["Curso"],
@@ -471,21 +461,14 @@
                                         inscritosVestibular: Number(item["Inscrições\n(vestibular)"] || item["Inscrições (vestibular)"]) || 0,
                                         inscritosCebas: Number(item["Inscrições\n(CEBAS)"] || item["Inscrições (CEBAS)"]) || 0,
                                         convocados: Number(item["Convocados"]) || 0,
-                                        
-                                        // Pagos já com o abatimento da coluna Y
                                         pagos: pagosVal,
-                                        
                                         classificadosCebas: cebasVal,
                                         isentosBolsas: isentosBolsasVal,
                                         vagasMovimentadas: transfInternaVal,
                                         matriculasVeteranos: veteranosVal,
-
-                                        // Pagos + Transf. com o abatimento da coluna Y
                                         pagosTransf: pagosTransfCalculado,
-                                        
                                         limiteTurma: limiteTurma,
-                                        vagasRestantes: vagasRestantesVest,
-                                        vagasRestantesGeral: vagasRestantesGer,
+                                        vagasRestantes: vagasRestantesVal,
                                         listaEsperaCebas: Number(item["Lista de espera\n(CEBAS)"]) || 0,
                                         docAnaliseCebas: Number(item["Doc. em análise\n(CEBAS)"]) || 0,
                                         observacao: item["Observação"] || ''
@@ -505,7 +488,6 @@
                         const matchesSearch = item.curso.toLowerCase().includes(this.search.toLowerCase());
                         const matchesPeriodo = this.filtroPeriodo === '' || item.periodo === this.filtroPeriodo;
                         
-                        // Ocultar manualmente apenas a lista informada na aba Vestibular e Visão Geral
                         const abasOcultar = ['vestibular', 'geral'];
                         if (abasOcultar.includes(this.tab)) {
                             const ocultos = cursosOcultosPorProcesso['vestibular'] || [];
@@ -522,7 +504,6 @@
                             if (ehOcultoManualmente) return false;
                         }
 
-                        // Filtro exclusivo para a aba CEBAS (ocultar cursos que não possuem vagas CEBAS ofertadas)
                         if (this.tab === 'cebas' && item.vagasCebas <= 0) {
                             return false;
                         }
