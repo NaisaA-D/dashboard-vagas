@@ -197,7 +197,7 @@
 
                             <!-- Colunas Específicas CEBAS -->
                             <template x-if="tab === 'cebas'">
-                                <th class="py-3 px-2 text-center">Classificados</th>
+                                <th class="py-3 px-2 text-center">Matriculados</th>
                             </template>
                             <template x-if="tab === 'cebas'">
                                 <th class="py-3 px-2 text-center">Doc. Análise</th>
@@ -296,7 +296,7 @@
 
                                 <!-- CEBAS Exclusivo -->
                                 <template x-if="tab === 'cebas'">
-                                    <td class="py-2.5 px-2 text-center font-semibold text-emerald-600" x-text="item.classificadosCebas"></td>
+                                    <td class="py-2.5 px-2 text-center font-semibold text-emerald-600" x-text="item.matriculadosCebas"></td>
                                 </template>
                                 <template x-if="tab === 'cebas'">
                                     <td class="py-2.5 px-2 text-center text-amber-600" x-text="item.docAnaliseCebas"></td>
@@ -310,7 +310,7 @@
                                     <td class="py-2.5 px-2 text-center font-bold text-emerald-700 bg-blue-50/40 border-l-2 border-blue-300" x-text="item.ingressantesPagos"></td>
                                 </template>
                                 <template x-if="tab === 'geral'">
-                                    <td class="py-2.5 px-2 text-center font-bold text-indigo-700 bg-blue-50/40" x-text="item.classificadosCebas"></td>
+                                    <td class="py-2.5 px-2 text-center font-bold text-indigo-700 bg-blue-50/40" x-text="item.matriculadosCebas"></td>
                                 </template>
                                 <template x-if="tab === 'geral'">
                                     <td class="py-2.5 px-2 text-center font-bold text-amber-700 bg-blue-50/40" x-text="item.isentosBolsas"></td>
@@ -322,7 +322,7 @@
                                     <td class="py-2.5 px-2 text-center font-bold text-purple-700 bg-blue-50/40" x-text="item.matriculasVeteranos"></td>
                                 </template>
                                 <template x-if="tab === 'geral'">
-                                    <td class="py-2.5 px-2 text-center font-black text-blue-900 bg-blue-100/50 border-r-2 border-blue-300 text-sm" x-text="item.ingressantesPagos + item.classificadosCebas + item.isentosBolsas + item.vagasMovimentadas + item.matriculasVeteranos"></td>
+                                    <td class="py-2.5 px-2 text-center font-black text-blue-900 bg-blue-100/50 border-r-2 border-blue-300 text-sm" x-text="item.ingressantesPagos + item.matriculadosCebas + item.isentosBolsas + item.vagasMovimentadas + item.matriculasVeteranos"></td>
                                 </template>
 
                                 <template x-if="tab === 'geral'">
@@ -396,12 +396,12 @@
                                         item["Pre+Matriculados Vestibular"]
                                     ) || 0;
 
-                                    const cebasVal = Number(
-                                        item["Aprovados (CEBAS)"] || 
-                                        item["Aprovados\n(CEBAS)"] || 
-                                        item["Classificados (CEBAS)"] || 
-                                        item["Classificados\n(CEBAS)"] ||
-                                        item["CEBAS"]
+                                    const preMatriculadosCebas = Number(
+                                        item["Pré-Matriculados CEBAS"] ||
+                                        item["Pré+Matriculados CEBAS"] || 
+                                        item["Pré+Matriculados\nCEBAS"] ||
+                                        item["Pre+Matriculados CEBAS"] ||
+                                        item["Pré-Matriculados\nCEBAS"]
                                     ) || 0;
 
                                     const isentosBolsasVal = Number(
@@ -456,7 +456,7 @@
                                         inscritosCebas: Number(item["Inscrições\n(CEBAS)"] || item["Inscrições (CEBAS)"]) || 0,
                                         convocados: Number(item["Convocados"]) || 0,
                                         ingressantesPagos: preMatriculadosVest,
-                                        classificadosCebas: cebasVal,
+                                        matriculadosCebas: preMatriculadosCebas,
                                         isentosBolsas: isentosBolsasVal,
                                         vagasMovimentadas: transfInternaVal,
                                         matriculasVeteranos: veteranosVal,
@@ -535,10 +535,10 @@
                     } else if (this.tab === 'cebas') {
                         const vagas = list.reduce((sum, item) => sum + item.vagasCebas, 0);
                         const inscricoes = list.reduce((sum, item) => sum + item.inscritosCebas, 0);
-                        const classificados = list.reduce((sum, item) => sum + item.classificadosCebas, 0);
+                        const matriculados = list.reduce((sum, item) => sum + item.matriculadosCebas, 0);
                         const listaEspera = list.reduce((sum, item) => sum + item.listaEsperaCebas, 0);
                         const demanda = vagas > 0 ? (inscricoes / vagas).toFixed(1) : '0';
-                        const taxaSucesso = inscricoes > 0 ? Math.round((classificados / inscricoes) * 100) : 0;
+                        const taxaSucesso = inscricoes > 0 ? Math.round((matriculados / inscricoes) * 100) : 0;
 
                         return {
                             vagas: vagas.toLocaleString('pt-BR'),
@@ -546,8 +546,8 @@
                             vagasRestantesTotal: totalVagasRestantes.toLocaleString('pt-BR'),
                             inscricoes: inscricoes.toLocaleString('pt-BR'),
                             demanda: `${demanda}x cand / vaga`,
-                            sucessoLabel: 'Classificados',
-                            sucessoValor: classificados.toLocaleString('pt-BR'),
+                            sucessoLabel: 'Matriculados',
+                            sucessoValor: matriculados.toLocaleString('pt-BR'),
                             taxaSucesso: `${taxaSucesso}% de aproveitamento`,
                             apoioLabel: 'Em Lista de Espera',
                             apoioValor: listaEspera.toLocaleString('pt-BR'),
@@ -558,7 +558,7 @@
                         const vagasTotalCalculado = list.reduce((sum, item) => sum + (item.vagasVestibular + item.vagasCebas), 0);
                         const limiteTotalCalculado = list.reduce((sum, item) => sum + item.limiteTurma, 0);
                         const inscricoes = list.reduce((sum, item) => sum + (item.inscritosVestibular + item.inscritosCebas), 0);
-                        const matriculados = list.reduce((sum, item) => sum + (item.ingressantesPagos + item.classificadosCebas + item.isentosBolsas + item.vagasMovimentadas + item.matriculasVeteranos), 0);
+                        const matriculados = list.reduce((sum, item) => sum + (item.ingressantesPagos + item.matriculadosCebas + item.isentosBolsas + item.vagasMovimentadas + item.matriculasVeteranos), 0);
                         const convocados = list.reduce((sum, item) => sum + item.convocados, 0);
                         const demanda = vagasTotalCalculado > 0 ? (inscricoes / vagasTotalCalculado).toFixed(1) : '0';
                         const taxaOcupacao = limiteTotalCalculado > 0 ? Math.round((matriculados / limiteTotalCalculado) * 100) : 0;
