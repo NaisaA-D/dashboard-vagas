@@ -75,53 +75,65 @@
         </div>
 
         <!-- KPI Cards Dynamic Header -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8" x-data="{ kpis: getKpis() }" x-effect="kpis = getKpis()">
-            <!-- KPI 1 -->
-            <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mb-8" x-data="{ kpis: getKpis() }" x-effect="kpis = getKpis()">
+            <!-- KPI 1: Vagas Totais -->
+            <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
                 <div class="flex items-center justify-between mb-2">
-                    <span class="text-xs font-semibold uppercase tracking-wider text-slate-500">Total de Vagas</span>
+                    <span class="text-[11px] font-semibold uppercase tracking-wider text-slate-500">Total Vagas</span>
                     <div class="p-2 bg-blue-50 text-blue-600 rounded-lg">
-                        <i class="ph ph-users-three text-xl"></i>
+                        <i class="ph ph-users-three text-lg"></i>
                     </div>
                 </div>
-                <div class="text-2xl font-extrabold text-slate-900" x-text="kpis.vagas">0</div>
-                <p class="text-xs text-slate-500 mt-1" x-text="kpis.vagasSub"></p>
+                <div class="text-xl font-extrabold text-slate-900" x-text="kpis.vagas">0</div>
+                <p class="text-[11px] text-slate-500 mt-1" x-text="kpis.vagasSub"></p>
             </div>
 
-            <!-- KPI 2 -->
-            <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+            <!-- KPI NOVO: Vagas Restantes -->
+            <div class="bg-white p-4 rounded-xl border border-red-200 bg-red-50/20 shadow-sm">
                 <div class="flex items-center justify-between mb-2">
-                    <span class="text-xs font-semibold uppercase tracking-wider text-slate-500">Inscrições Totais</span>
+                    <span class="text-[11px] font-semibold uppercase tracking-wider text-red-600">Vagas Restantes</span>
+                    <div class="p-2 bg-red-100 text-red-600 rounded-lg">
+                        <i class="ph ph-door text-lg"></i>
+                    </div>
+                </div>
+                <div class="text-xl font-extrabold text-red-600" x-text="kpis.vagasRestantesTotal">0</div>
+                <p class="text-[11px] text-red-500 mt-1">Disponíveis nas turmas</p>
+            </div>
+
+            <!-- KPI 2: Inscrições -->
+            <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="text-[11px] font-semibold uppercase tracking-wider text-slate-500">Inscrições</span>
                     <div class="p-2 bg-indigo-50 text-indigo-600 rounded-lg">
-                        <i class="ph ph-user-plus text-xl"></i>
+                        <i class="ph ph-user-plus text-lg"></i>
                     </div>
                 </div>
-                <div class="text-2xl font-extrabold text-slate-900" x-text="kpis.inscricoes">0</div>
-                <p class="text-xs text-slate-500 mt-1" x-text="kpis.demanda"></p>
+                <div class="text-xl font-extrabold text-slate-900" x-text="kpis.inscricoes">0</div>
+                <p class="text-[11px] text-slate-500 mt-1" x-text="kpis.demanda"></p>
             </div>
 
-            <!-- KPI 3 -->
-            <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+            <!-- KPI 3: Resultado -->
+            <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
                 <div class="flex items-center justify-between mb-2">
-                    <span class="text-xs font-semibold uppercase tracking-wider text-slate-500" x-text="kpis.sucessoLabel">Resultado</span>
+                    <span class="text-[11px] font-semibold uppercase tracking-wider text-slate-500" x-text="kpis.sucessoLabel">Resultado</span>
                     <div class="p-2 bg-emerald-50 text-emerald-600 rounded-lg">
-                        <i class="ph ph-check-circle text-xl"></i>
+                        <i class="ph ph-check-circle text-lg"></i>
                     </div>
                 </div>
-                <div class="text-2xl font-extrabold text-slate-900" x-text="kpis.sucessoValor">0</div>
-                <p class="text-xs text-emerald-600 font-medium mt-1" x-text="kpis.taxaSucesso"></p>
+                <div class="text-xl font-extrabold text-slate-900" x-text="kpis.sucessoValor">0</div>
+                <p class="text-[11px] text-emerald-600 font-medium mt-1" x-text="kpis.taxaSucesso"></p>
             </div>
 
-            <!-- KPI 4 -->
-            <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+            <!-- KPI 4: Acompanhamento -->
+            <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
                 <div class="flex items-center justify-between mb-2">
-                    <span class="text-xs font-semibold uppercase tracking-wider text-slate-500" x-text="kpis.apoioLabel">Acompanhamento</span>
+                    <span class="text-[11px] font-semibold uppercase tracking-wider text-slate-500" x-text="kpis.apoioLabel">Acompanhamento</span>
                     <div class="p-2 bg-amber-50 text-amber-600 rounded-lg">
-                        <i class="ph ph-clock text-xl"></i>
+                        <i class="ph ph-clock text-lg"></i>
                     </div>
                 </div>
-                <div class="text-2xl font-extrabold text-slate-900" x-text="kpis.apoioValor">0</div>
-                <p class="text-xs text-slate-500 mt-1" x-text="kpis.apoioSub"></p>
+                <div class="text-xl font-extrabold text-slate-900" x-text="kpis.apoioValor">0</div>
+                <p class="text-[11px] text-slate-500 mt-1" x-text="kpis.apoioSub"></p>
             </div>
         </div>
 
@@ -157,7 +169,7 @@
                             
                             <!-- Colunas dinâmicas dependendo da Aba -->
                             <template x-if="tab === 'vestibular'">
-                                <th class="py-3 px-2 text-center whitespace-nowrap">Vagas Vest.</th>
+                                <th class="py-3 px-2 text-center whitespace-nowrap border-l-2 border-slate-300 bg-slate-200/60 text-slate-800 font-black">Vagas Vest.</th>
                             </template>
                             <template x-if="tab === 'cebas'">
                                 <th class="py-3 px-2 text-center whitespace-nowrap">Vagas CEBAS</th>
@@ -168,9 +180,9 @@
 
                             <th class="py-3 px-2 text-center">Inscritos</th>
                             
-                            <!-- Colunas Específicas Vestibular -->
+                            <!-- Colunas Específicas Vestibular com Demarcação Reforçada -->
                             <template x-if="tab === 'vestibular'">
-                                <th class="py-3 px-2 text-center">Convocados</th>
+                                <th class="py-3 px-2 text-center border-l border-slate-200">Convocados</th>
                             </template>
                             <template x-if="tab === 'vestibular'">
                                 <th class="py-3 px-2 text-center">Pagos</th>
@@ -179,10 +191,11 @@
                                 <th class="py-3 px-2 text-center">Pagos + Transf.</th>
                             </template>
                             <template x-if="tab === 'vestibular'">
-                                <th class="py-3 px-2 text-center">Limite Turma</th>
+                                <th class="py-3 px-2 text-center border-r-2 border-slate-300">Limite Turma</th>
                             </template>
+                            
                             <template x-if="tab === 'vestibular'">
-                                <th class="py-3 px-2 text-center whitespace-nowrap">Vagas Restantes na Turma</th>
+                                <th class="py-3 px-2 text-center whitespace-normal leading-tight text-red-700 font-extrabold bg-red-50/50">Vagas Restantes<br>na Turma</th>
                             </template>
 
                             <!-- Colunas Específicas CEBAS -->
@@ -196,7 +209,7 @@
                                 <th class="py-3 px-2 text-center">Lista Espera</th>
                             </template>
 
-                            <!-- Colunas Visão Geral Com Destaque Visual em Bloco e Linhas Divisórias -->
+                            <!-- Colunas Visão Geral Com Destaque Visual em Bloco -->
                             <template x-if="tab === 'geral'">
                                 <th class="py-3 px-2 text-center bg-blue-100/70 text-blue-900 border-l-2 border-blue-400 whitespace-normal font-extrabold leading-tight">Ingressantes<br>Vest.</th>
                             </template>
@@ -219,8 +232,10 @@
                             <template x-if="tab === 'geral'">
                                 <th class="py-3 px-2 text-center whitespace-nowrap">Limite Turma</th>
                             </template>
+
+                            <!-- Vagas Restantes em 2 linhas em Geral -->
                             <template x-if="tab === 'geral'">
-                                <th class="py-3 px-2 text-center whitespace-nowrap">Vagas Restantes na Turma</th>
+                                <th class="py-3 px-2 text-center whitespace-normal leading-tight text-red-700 font-extrabold bg-red-50/50">Vagas Restantes<br>na Turma</th>
                             </template>
 
                             <!-- Colunas Movimentação -->
@@ -252,7 +267,7 @@
 
                                 <!-- Vagas (Vestibular / CEBAS / Geral) -->
                                 <template x-if="tab === 'vestibular'">
-                                    <td class="py-2.5 px-2 text-center font-semibold" x-text="item.vagasVestibular"></td>
+                                    <td class="py-2.5 px-2 text-center font-black text-slate-900 border-l-2 border-slate-300 bg-slate-100/50" x-text="item.vagasVestibular"></td>
                                 </template>
                                 <template x-if="tab === 'cebas'">
                                     <td class="py-2.5 px-2 text-center font-semibold" x-text="item.vagasCebas"></td>
@@ -266,9 +281,9 @@
                                     <span x-text="tab === 'cebas' ? item.inscritosCebas : (tab === 'vestibular' ? item.inscritosVestibular : item.inscritosVestibular + item.inscritosCebas)"></span>
                                 </td>
 
-                                <!-- Vestibular Exclusivo -->
+                                <!-- Vestibular Exclusivo com Demarcações -->
                                 <template x-if="tab === 'vestibular'">
-                                    <td class="py-2.5 px-2 text-center" x-text="item.convocados"></td>
+                                    <td class="py-2.5 px-2 text-center border-l border-slate-200" x-text="item.convocados"></td>
                                 </template>
                                 <template x-if="tab === 'vestibular'">
                                     <td class="py-2.5 px-2 text-center font-semibold text-emerald-600" x-text="item.pagos"></td>
@@ -277,10 +292,12 @@
                                     <td class="py-2.5 px-2 text-center font-semibold text-blue-600" x-text="item.pagosTransf"></td>
                                 </template>
                                 <template x-if="tab === 'vestibular'">
-                                    <td class="py-2.5 px-2 text-center text-slate-500" x-text="item.limiteTurma"></td>
+                                    <td class="py-2.5 px-2 text-center text-slate-500 font-medium border-r-2 border-slate-300" x-text="item.limiteTurma"></td>
                                 </template>
+                                
+                                <!-- Vagas Restantes na Turma em VERMELHO -->
                                 <template x-if="tab === 'vestibular'">
-                                    <td class="py-2.5 px-2 text-center font-bold text-slate-800" x-text="item.vagasRestantes"></td>
+                                    <td class="py-2.5 px-2 text-center font-bold text-red-600 bg-red-50/20" x-text="item.vagasRestantes"></td>
                                 </template>
 
                                 <!-- CEBAS Exclusivo -->
@@ -317,8 +334,10 @@
                                 <template x-if="tab === 'geral'">
                                     <td class="py-2.5 px-2 text-center text-slate-500 font-medium" x-text="item.limiteTurma"></td>
                                 </template>
+                                
+                                <!-- Vagas Restantes em VERMELHO na visão Geral -->
                                 <template x-if="tab === 'geral'">
-                                    <td class="py-2.5 px-2 text-center font-bold text-slate-800" x-text="item.vagasRestantes"></td>
+                                    <td class="py-2.5 px-2 text-center font-bold text-red-600 bg-red-50/20" x-text="item.vagasRestantes"></td>
                                 </template>
 
                                 <!-- Movimentação -->
@@ -440,14 +459,14 @@
                                     
                                     const pagosTransfCalculado = !isNaN(pagosTransfVal) && pagosTransfVal > 0 ? Math.max(0, pagosTransfVal - canceladosVal) : pagosVal;
 
-                                    // Captura o valor diretamente da Coluna AI ("Vagas Restantes na turma")
+                                    // Coluna AI: Vagas Restantes na Turma
                                     const vagasRestantesAI = Number(
                                         item["Vagas Restantes na turma"] || 
+                                        item["Vagas Restantes na Turma"] || 
                                         item["Vagas Restantes\nna turma"] || 
                                         item["Vagas Restantes"]
                                     );
 
-                                    // Caso a chave da coluna AI venha preenchida do backend/Google Apps Script, usa ela. Senão calcula a diferença.
                                     const vagasRestantesVal = !isNaN(vagasRestantesAI) 
                                         ? vagasRestantesAI 
                                         : (limiteTurma > 0 ? Math.max(0, limiteTurma - pagosTransfCalculado) : Math.max(0, vagasVestibular - pagosTransfCalculado));
@@ -514,6 +533,7 @@
 
                 getKpis() {
                     const list = this.filteredList;
+                    const totalVagasRestantes = list.reduce((sum, item) => sum + item.vagasRestantes, 0);
 
                     if (this.tab === 'vestibular') {
                         const vagas = list.reduce((sum, item) => sum + item.vagasVestibular, 0);
@@ -526,7 +546,8 @@
 
                         return {
                             vagas: vagas.toLocaleString('pt-BR'),
-                            vagasSub: 'Ingresso por Vestibular Tradicional',
+                            vagasSub: 'Vestibular Tradicional',
+                            vagasRestantesTotal: totalVagasRestantes.toLocaleString('pt-BR'),
                             inscricoes: inscricoes.toLocaleString('pt-BR'),
                             demanda: `${demanda}x cand / vaga`,
                             sucessoLabel: 'Matrículas Pagas',
@@ -547,15 +568,16 @@
 
                         return {
                             vagas: vagas.toLocaleString('pt-BR'),
-                            vagasSub: 'Bolsas Assistenciais CEBAS',
+                            vagasSub: 'Bolsas CEBAS',
+                            vagasRestantesTotal: totalVagasRestantes.toLocaleString('pt-BR'),
                             inscricoes: inscricoes.toLocaleString('pt-BR'),
                             demanda: `${demanda}x cand / vaga`,
-                            sucessoLabel: 'Classificados (Bolsa)',
+                            sucessoLabel: 'Classificados',
                             sucessoValor: classificados.toLocaleString('pt-BR'),
                             taxaSucesso: `${taxaSucesso}% de aproveitamento`,
                             apoioLabel: 'Em Lista de Espera',
                             apoioValor: listaEspera.toLocaleString('pt-BR'),
-                            apoioSub: 'Aguardando classificação'
+                            apoioSub: 'Aguardando vaga'
                         };
 
                     } else if (this.tab === 'geral') {
@@ -569,12 +591,13 @@
 
                         return {
                             vagas: vagasTotalCalculado.toLocaleString('pt-BR'),
-                            vagasSub: 'Total Combinado (Vestibular + CEBAS)',
+                            vagasSub: 'Vestibular + CEBAS',
+                            vagasRestantesTotal: totalVagasRestantes.toLocaleString('pt-BR'),
                             inscricoes: inscricoes.toLocaleString('pt-BR'),
-                            demanda: `${demanda}x cand / vaga total`,
+                            demanda: `${demanda}x cand / vaga`,
                             sucessoLabel: 'Matriculados Totais',
                             sucessoValor: matriculados.toLocaleString('pt-BR'),
-                            taxaSucesso: `${taxaOcupacao}% de ocupação s/ limite`,
+                            taxaSucesso: `${taxaOcupacao}% ocupado s/ limite`,
                             apoioLabel: 'Total Convocados',
                             apoioValor: convocados.toLocaleString('pt-BR'),
                             apoioSub: 'Processo seletivo ativo'
@@ -586,15 +609,16 @@
                         
                         return {
                             vagas: totalVagasAfetadas.toLocaleString('pt-BR'),
-                            vagasSub: 'Vagas Remanejadas / Alteradas',
+                            vagasSub: 'Vagas Remanejadas',
+                            vagasRestantesTotal: totalVagasRestantes.toLocaleString('pt-BR'),
                             inscricoes: '-',
                             demanda: 'N/A',
-                            sucessoLabel: 'Balanço Líquido (Saldo)',
+                            sucessoLabel: 'Balanço Líquido',
                             sucessoValor: balancoLiquido >= 0 ? `+${balancoLiquido}` : balancoLiquido.toLocaleString('pt-BR'),
-                            taxaSucesso: 'Vagas subtraídas ou adicionadas',
+                            taxaSucesso: 'Saldo de vagas',
                             apoioLabel: 'Cursos Alterados',
                             apoioValor: list.filter(item => item.vagasMovimentadas !== 0).length.toString(),
-                            apoioSub: 'Cursos com observações'
+                            apoioSub: 'Possuem movimentações'
                         };
                     }
                 }
